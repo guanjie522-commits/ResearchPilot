@@ -381,6 +381,16 @@ def validate_citations(
         re.findall(r"[\w.\-]+\.pdf", answer, flags=re.IGNORECASE)
     )
     invalid_source_files = sorted(mentioned_files - valid_source_files)
+    valid_dois = {
+        item["doi"]
+        for item in evidence
+        if item["source_type"] == "crossref_metadata" and item.get("doi")
+    }
+    mentioned_dois = set(
+        match.rstrip(".,;)]")
+        for match in re.findall(r"10\.\d{4,9}/[^\s]+", answer)
+    )
+    invalid_dois = sorted(mentioned_dois - valid_dois)
 
     page_checks = []
     page_mismatches = []
@@ -420,6 +430,7 @@ def validate_citations(
         passed = (
             not unknown_ids
             and not invalid_source_files
+            and not invalid_dois
             and not page_mismatches
             and (bool(used_ids) or insufficient_marker)
         )
@@ -427,6 +438,7 @@ def validate_citations(
         passed = (
             not used_ids
             and not mentioned_files
+            and not mentioned_dois
             and insufficient_marker
         )
     return {
@@ -437,6 +449,9 @@ def validate_citations(
         "valid_source_files": sorted(valid_source_files),
         "mentioned_source_files": sorted(mentioned_files),
         "invalid_source_files": invalid_source_files,
+        "valid_dois": sorted(valid_dois),
+        "mentioned_dois": sorted(mentioned_dois),
+        "invalid_dois": invalid_dois,
         "page_checks": page_checks,
         "page_mismatches": page_mismatches,
         "insufficient_evidence_stated": insufficient_marker,
