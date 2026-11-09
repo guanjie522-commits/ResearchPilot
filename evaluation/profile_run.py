@@ -36,6 +36,11 @@ async def main() -> None:
         help="Comma-separated question IDs",
     )
     parser.add_argument("--timeout", type=float, default=1200.0)
+    parser.add_argument(
+        "--thinking-profile",
+        choices=["default", "no_think_planner_replanner_writer"],
+        default="default",
+    )
     args = parser.parse_args()
 
     dataset = json.loads(DATASET_PATH.read_text(encoding="utf-8"))
@@ -47,7 +52,10 @@ async def main() -> None:
     ]
     questions = [question_map[item] for item in question_ids]
     run_id = datetime.now(timezone.utc).strftime("%Y%m%dT%H%M%SZ")
-    output_path = RESULTS_DIR / f"profile_{run_id}.json"
+    profile_label = (
+        "A" if args.thinking_profile == "default" else "B"
+    )
+    output_path = RESULTS_DIR / f"profile_{profile_label}_{run_id}.json"
 
     adapter = MCPAdapter(
         PythonStdioTransport(
@@ -67,6 +75,7 @@ async def main() -> None:
             adapter.client,
             profiled_tools,
             profiler=profiler,
+            thinking_profile=args.thinking_profile,
         )
 
         for question in questions:
@@ -156,6 +165,22 @@ async def main() -> None:
         "run_id": run_id,
         "created_at": datetime.now(timezone.utc).isoformat(),
         "status": "completed_profile",
+        "thinking_profile": args.thinking_profile,
+        "model_configuration": {
+            "model": "qwen3:4b",
+            "temperature": 0,
+            "max_tokens": None,
+            "planner_reasoning": (
+                "default" if args.thinking_profile == "default" else False
+            ),
+            "replanner_reasoning": (
+                "default" if args.thinking_profile == "default" else False
+            ),
+            "executor_reasoning": "default",
+            "writer_reasoning": (
+                "default" if args.thinking_profile == "default" else False
+            ),
+        },
         "questions": question_ids,
         "profiles": profile_runs,
         "crossref_probe": crossref_probe,

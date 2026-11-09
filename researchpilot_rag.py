@@ -88,8 +88,21 @@ llm = ChatOllama(
     model="qwen3:4b",
     temperature=0,
 )
+no_thinking_llm = ChatOllama(
+    model="qwen3:4b",
+    temperature=0,
+    reasoning=False,
+)
 planner_llm = llm.with_structured_output(PlanOutput, method="json_schema")
 replanner_llm = llm.with_structured_output(ReplanDecision, method="json_schema")
+no_thinking_planner_llm = no_thinking_llm.with_structured_output(
+    PlanOutput,
+    method="json_schema",
+)
+no_thinking_replanner_llm = no_thinking_llm.with_structured_output(
+    ReplanDecision,
+    method="json_schema",
+)
 
 
 def render_message_content(content: Any) -> str:
@@ -104,12 +117,15 @@ def render_message_content(content: Any) -> str:
         )
     else:
         text = str(content)
-    return re.sub(
+    text = re.sub(
         r"<think\b[^>]*>.*?</think\s*>",
         "",
         text,
         flags=re.DOTALL | re.IGNORECASE,
-    ).strip()
+    )
+    if "</think>" in text.lower():
+        text = re.split(r"</think\s*>", text, flags=re.IGNORECASE)[-1]
+    return text.strip()
 
 
 def summarize(text: str, limit: int) -> str:
@@ -122,8 +138,16 @@ async def invoke_structured_once_retry(
     messages,
     label: str,
     callbacks=None,
+    thinking_setting: str = "default",
 ):
-    config = {"callbacks": callbacks} if callbacks else None
+    config = {
+        **({"callbacks": callbacks} if callbacks else {}),
+        "metadata": {
+            "node": label.lower(),
+            "thinking_setting": thinking_setting,
+        },
+        "tags": [f"node:{label.lower()}"],
+    }
     try:
         return await runnable.ainvoke(messages, config=config)
     except Exception as exc:
@@ -485,14 +509,21 @@ def build_research_graph(
     mcp_client,
     mcp_tools: list[BaseTool],
     profiler=None,
+    thinking_profile: str = "default",
 ):
     executor_agent = build_executor_agent(mcp_tools, profiler=profiler)
-    callback_config = (
-        {"callbacks": [profiler]}
-        if profiler is not None
-        else None
-    )
-
+    if thinking_profile == "default":
+        graph_planner_llm = planner_llm
+        graph_replanner_llm = replanner_llm
+        graph_writer_llm = llm
+        control_thinking_setting = "default"
+    elif thinking_profile == "no_think_planner_replanner_writer":
+        graph_planner_llm = no_thinking_planner_llm
+        graph_replanner_llm = no_thinking_replanner_llm
+        graph_writer_llm = no_thinking_llm
+        control_thinking_setting = "reasoning_false"
+    else:
+        raise ValueError(f"Unsupported thinking profile: {thinking_profile}")
     async def context_loader(state: ResearchState):
         print(f"\nOriginal Task: {state['original_task']}")
         contents = await mcp_client.read_resource(PROJECT_CONTEXT_URI)
@@ -520,7 +551,7 @@ def build_research_graph(
 
     async def planner(state: ResearchState):
         result = await invoke_structured_once_retry(
-            planner_llm,
+            graph_planner_llm,
             [
                 SystemMessage(
                     content=(
@@ -541,6 +572,7 @@ def build_research_graph(
             ],
             "Planner",
             callbacks=[profiler] if profiler is not None else None,
+            thinking_setting=control_thinking_setting,
         )
         print("\nInitial Plan:")
         for index, step in enumerate(result.steps, start=1):
@@ -573,6 +605,10 @@ def build_research_graph(
             config={
                 "recursion_limit": 10,
                 **({"callbacks": [profiler]} if profiler is not None else {}),
+                "metadata": {
+                    "node": "executor",
+                    "thinking_setting": "default",
+                },
             },
         )
 
@@ -673,7 +709,7 @@ def build_research_graph(
     async def replanner(state: ResearchState):
         remaining = state["plan"][state["current_step"] :]
         decision = await invoke_structured_once_retry(
-            replanner_llm,
+            graph_replanner_llm,
             [
                 SystemMessage(
                     content=(
@@ -711,6 +747,7 @@ def build_research_graph(
             ],
             "Replanner",
             callbacks=[profiler] if profiler is not None else None,
+            thinking_setting=control_thinking_setting,
         )
 
         count = state["replan_count"] + 1
@@ -803,9 +840,17 @@ def build_research_graph(
                 )
             ),
         ]
-        response = await llm.ainvoke(
+        writer_config = {
+            **({"callbacks": [profiler]} if profiler is not None else {}),
+            "metadata": {
+                "node": "writer",
+                "thinking_setting": control_thinking_setting,
+            },
+            "tags": ["node:writer"],
+        }
+        response = await graph_writer_llm.ainvoke(
             base_messages,
-            config=callback_config,
+            config=writer_config,
         )
         answer = render_message_content(response.content)
         validation = validate_citations(answer, state["evidence"])
@@ -820,9 +865,9 @@ def build_research_graph(
                     "若证据不足则明确写“证据不足”。"
                 )
             )
-            response = await llm.ainvoke(
+            response = await graph_writer_llm.ainvoke(
                 [*base_messages, correction],
-                config=callback_config,
+                config=writer_config,
             )
             answer = render_message_content(response.content)
             validation = validate_citations(answer, state["evidence"])

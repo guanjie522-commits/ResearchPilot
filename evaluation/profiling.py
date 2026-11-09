@@ -26,11 +26,13 @@ class PerformanceProfiler(BaseCallbackHandler):
         self.prompt_tokens: int | None = None
         self.completion_tokens: int | None = None
         self.total_tokens: int | None = None
+        self.llm_calls: list[dict[str, Any]] = []
         self.chroma_retrieval_seconds = 0.0
         self.crossref_api_seconds = 0.0
         self.generation_model_loaded_before_run: bool | None = None
         self.cold_start: bool | None = None
         self._llm_started: dict[str, float] = {}
+        self._llm_records: dict[str, dict[str, Any]] = {}
         self._generation_model_loaded_at_run_start()
 
     def _generation_model_loaded_at_run_start(self) -> None:
@@ -74,12 +76,49 @@ class PerformanceProfiler(BaseCallbackHandler):
 
     def on_llm_start(self, serialized, prompts, *, run_id, **kwargs) -> None:
         self.llm_call_count += 1
-        self._llm_started[str(run_id)] = time.perf_counter()
+        run_key = str(run_id)
+        metadata = kwargs.get("metadata") or {}
+        tags = kwargs.get("tags") or []
+        node = metadata.get("node")
+        if not node:
+            for tag in tags:
+                if str(tag).startswith("node:"):
+                    node = str(tag).split(":", 1)[1]
+                    break
+        record = {
+            "call_index": self.llm_call_count,
+            "node": node or "unavailable",
+            "configured_thinking_setting": metadata.get(
+                "thinking_setting",
+                "unavailable",
+            ),
+            "prompt_tokens": None,
+            "completion_tokens": None,
+            "total_tokens": None,
+            "generation_duration_seconds": None,
+            "wall_seconds": None,
+            "thinking_tokens": None,
+            "thinking_tokens_status": "unavailable",
+            "thinking_chars": None,
+            "final_answer_chars": None,
+            "has_tool_calls": None,
+            "error": None,
+        }
+        self._llm_started[run_key] = time.perf_counter()
+        self._llm_records[run_key] = record
+        self.llm_calls.append(record)
 
     def on_llm_end(self, response, *, run_id, **kwargs) -> None:
-        started = self._llm_started.pop(str(run_id), None)
+        run_key = str(run_id)
+        started = self._llm_started.pop(run_key, None)
+        record = self._llm_records.pop(run_key, None)
         if started is not None:
             self.llm_wall_seconds += time.perf_counter() - started
+            if record is not None:
+                record["wall_seconds"] = round(
+                    time.perf_counter() - started,
+                    6,
+                )
 
         for generation_list in getattr(response, "generations", []):
             for generation in generation_list:
@@ -120,9 +159,76 @@ class PerformanceProfiler(BaseCallbackHandler):
                     self.llm_generation_seconds = (
                         (self.llm_generation_seconds or 0.0) + seconds
                     )
+                if record is not None:
+                    record["prompt_tokens"] = (
+                        prompt_count if isinstance(prompt_count, int) else None
+                    )
+                    record["completion_tokens"] = (
+                        completion_count
+                        if isinstance(completion_count, int)
+                        else None
+                    )
+                    record["total_tokens"] = (
+                        total_count
+                        if isinstance(total_count, int)
+                        else (
+                            prompt_count + completion_count
+                            if isinstance(prompt_count, int)
+                            and isinstance(completion_count, int)
+                            else None
+                        )
+                    )
+                    record["generation_duration_seconds"] = (
+                        round(total_duration_ns / 1_000_000_000, 6)
+                        if isinstance(total_duration_ns, int)
+                        else None
+                    )
+                    content = str(getattr(message, "content", "") or "")
+                    thinking_text = str(
+                        (getattr(message, "additional_kwargs", None) or {}).get(
+                            "reasoning_content",
+                            "",
+                        )
+                        or ""
+                    )
+                    inline_thinking = "".join(
+                        re.findall(
+                            r"<think\b[^>]*>(.*?)</think\s*>",
+                            content,
+                            flags=re.DOTALL | re.IGNORECASE,
+                        )
+                    )
+                    if not inline_thinking and re.search(
+                        r"</think\s*>",
+                        content,
+                        flags=re.IGNORECASE,
+                    ):
+                        inline_thinking = re.split(
+                            r"</think\s*>",
+                            content,
+                            flags=re.IGNORECASE,
+                        )[0]
+                    thinking_text = thinking_text or inline_thinking
+                    if inline_thinking:
+                        final_text = re.split(
+                            r"</think\s*>",
+                            content,
+                            flags=re.IGNORECASE,
+                        )[-1].strip()
+                    else:
+                        final_text = content.strip()
+                    record["thinking_chars"] = len(thinking_text)
+                    record["final_answer_chars"] = len(final_text)
+                    record["has_tool_calls"] = bool(
+                        getattr(message, "tool_calls", None)
+                    )
 
     def on_llm_error(self, error, *, run_id, **kwargs) -> None:
-        self._llm_started.pop(str(run_id), None)
+        run_key = str(run_id)
+        self._llm_started.pop(run_key, None)
+        record = self._llm_records.pop(run_key, None)
+        if record is not None:
+            record["error"] = f"{type(error).__name__}: {error}"
         self.llm_error_count += 1
 
     def snapshot(self, state: dict[str, Any], total_seconds: float) -> dict[str, Any]:
@@ -157,6 +263,8 @@ class PerformanceProfiler(BaseCallbackHandler):
             "prompt_tokens": self.prompt_tokens,
             "completion_tokens": self.completion_tokens,
             "total_tokens": self.total_tokens,
+            "llm_calls": self.llm_calls,
+            "thinking_tokens_status": "unavailable",
             "token_metadata_status": (
                 "available"
                 if self.total_tokens is not None
