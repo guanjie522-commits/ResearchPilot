@@ -1,0 +1,15 @@
+.venv/
+__pycache__/
+*.py[cod]
+.DS_Store
+
+.env
+.env.*
+*.key
+*.pem
+*.token
+
+rag/papers/*.pdf
+rag/storage/
+evaluation/results/*.json
+skill-test-output/

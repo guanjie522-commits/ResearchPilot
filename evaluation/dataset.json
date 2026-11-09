@@ -1,0 +1,167 @@
+{
+  "version": "0.1",
+  "created_at": "2026-11-09",
+  "status": "candidate_pending_human_review",
+  "papers": [
+    "s41467-025-56194-1.pdf",
+    "1-s2.0-S2352847824001278-main.pdf",
+    "materials-4180042.pdf"
+  ],
+  "test_configuration": {
+    "embedding_model": "qwen3-embedding:0.6b",
+    "generation_model": "qwen3:4b",
+    "top_k": 4,
+    "temperature": 0,
+    "selected_smoke_test_ids": [
+      "q01",
+      "q04",
+      "q10"
+    ]
+  },
+  "questions": [
+    {
+      "question_id": "q01",
+      "question": "Using only the imported local PDFs, what design strategy is used to improve antiferroelectric polarization configuration for capacitive energy storage?",
+      "question_type": "fact_extraction",
+      "source_file": "s41467-025-56194-1.pdf",
+      "expected_source_page": 1,
+      "supporting_excerpt": "Design of antiferroelectric polarization conﬁguration for ultrahigh capacitive energy storage via increasing entropy",
+      "reference_answer": "The paper uses an entropy-increase strategy to design the antiferroelectric polarization configuration.",
+      "answerable": true,
+      "verification_status": "pending_human_review",
+      "excerpt_match": true
+    },
+    {
+      "question_id": "q02",
+      "question": "According to the paper, what competing effects make the antiferroelectric-ferroelectric phase transition a double-edged sword?",
+      "question_type": "fact_extraction",
+      "source_file": "s41467-025-56194-1.pdf",
+      "expected_source_page": 1,
+      "supporting_excerpt": "Electric ﬁeld induced antiferroelectric-ferroelectric phase transition is a double-edged sword for energy storage properties, which not only offers a congenital superiority with substantial energy storage density but also poses signiﬁcant challenges such as large polarization hysteresis and poor efﬁciency",
+      "reference_answer": "It provides high energy-storage density but also causes large polarization hysteresis and poor efficiency.",
+      "answerable": true,
+      "verification_status": "pending_human_review",
+      "excerpt_match": true
+    },
+    {
+      "question_id": "q03",
+      "question": "What recoverable energy-storage density and efficiency are reported for the medium-entropy antiferroelectrics?",
+      "question_type": "fact_extraction",
+      "source_file": "s41467-025-56194-1.pdf",
+      "expected_source_page": 1,
+      "supporting_excerpt": "recoverable energy storge density (14.8 J cm−3)a n de fﬁciency (90.2%)",
+      "reference_answer": "The reported recoverable energy-storage density is 14.8 J cm^-3 and the efficiency is 90.2%.",
+      "answerable": true,
+      "verification_status": "pending_human_review",
+      "excerpt_match": true
+    },
+    {
+      "question_id": "q04",
+      "question": "Using only the imported local PDFs, which three variables are investigated in the phase-field study of PZO-based antiferroelectric films?",
+      "question_type": "method_extraction",
+      "source_file": "1-s2.0-S2352847824001278-main.pdf",
+      "expected_source_page": 1,
+      "supporting_excerpt": "the effects of three variables, mis ﬁt strain between the thin ﬁlm and substrate, defect dipoles doping, and ﬁlm thickness, on the domain structure and energy storage performance of PZO-based antiferroelectric materials are comprehensively investigated via phase-ﬁeld simulations.",
+      "reference_answer": "The variables are misfit strain between film and substrate, defect-dipole doping, and film thickness.",
+      "answerable": true,
+      "verification_status": "pending_human_review",
+      "excerpt_match": true
+    },
+    {
+      "question_id": "q05",
+      "question": "What recoverable energy density and efficiency are achieved at 1.5% tensile strain and 2% defect-dipole concentration?",
+      "question_type": "fact_extraction",
+      "source_file": "1-s2.0-S2352847824001278-main.pdf",
+      "expected_source_page": 1,
+      "supporting_excerpt": "a recoverable energy density of 38.3 J/cm 3 and an energy storage ef ﬁciency of about 89.4% can be realized at 1.5% tensile strain and 2% defect dipole concentration.",
+      "reference_answer": "A recoverable energy density of 38.3 J/cm^3 and an efficiency of about 89.4%.",
+      "answerable": true,
+      "verification_status": "pending_human_review",
+      "excerpt_match": true
+    },
+    {
+      "question_id": "q06",
+      "question": "What numerical method is the proposed model for anisotropic gradient energy based on?",
+      "question_type": "method_extraction",
+      "source_file": "materials-4180042.pdf",
+      "expected_source_page": 1,
+      "supporting_excerpt": "we have developed a perturbation model for solv- ing anisotropic gradient energy based on Fourier spectral methods.",
+      "reference_answer": "It is based on Fourier spectral methods.",
+      "answerable": true,
+      "verification_status": "pending_human_review",
+      "excerpt_match": true
+    },
+    {
+      "question_id": "q07",
+      "question": "请用中文说明这篇论文主要通过什么设计策略提升反铁电储能性能。",
+      "question_type": "cross_language",
+      "source_file": "s41467-025-56194-1.pdf",
+      "expected_source_page": 1,
+      "supporting_excerpt": "Design of antiferroelectric polarization conﬁguration for ultrahigh capacitive energy storage via increasing entropy",
+      "reference_answer": "主要通过增加熵来设计反铁电极化构型。",
+      "answerable": true,
+      "verification_status": "pending_human_review",
+      "excerpt_match": true
+    },
+    {
+      "question_id": "q08",
+      "question": "请用中文概括相场模拟研究了哪三类变量对 PZO 基反铁电薄膜畴结构和储能性能的影响。",
+      "question_type": "cross_language",
+      "source_file": "1-s2.0-S2352847824001278-main.pdf",
+      "expected_source_page": 1,
+      "supporting_excerpt": "the effects of three variables, mis ﬁt strain between the thin ﬁlm and substrate, defect dipoles doping, and ﬁlm thickness, on the domain structure and energy storage performance of PZO-based antiferroelectric materials are comprehensively investigated via phase-ﬁeld simulations.",
+      "reference_answer": "研究者考察了薄膜与基底之间的失配应变、缺陷偶极子掺杂以及薄膜厚度三类变量。",
+      "answerable": true,
+      "verification_status": "pending_human_review",
+      "excerpt_match": true
+    },
+    {
+      "question_id": "q09",
+      "question": "请用中文说明这个扰动模型为何能处理以前常系数或各向同性近似难以处理的问题。",
+      "question_type": "cross_language",
+      "source_file": "materials-4180042.pdf",
+      "expected_source_page": 1,
+      "supporting_excerpt": "Through a Fou- rier-space perturbation scheme, we achieve the ability to treat the full anisotropic gradient energy tensor with spatial variations, overcoming limitations of previous constant-coeﬃ- cient or isotropic approximations.",
+      "reference_answer": "它通过傅里叶空间扰动方案处理具有空间变化的完整各向异性梯度能量张量。",
+      "answerable": true,
+      "verification_status": "pending_human_review",
+      "excerpt_match": true
+    },
+    {
+      "question_id": "q10",
+      "question": "根据当前已导入的本地 PDF，这些论文在 500 K 下测得的超导临界温度是多少？",
+      "question_type": "insufficient_evidence",
+      "source_file": null,
+      "expected_source_page": null,
+      "supporting_excerpt": null,
+      "reference_answer": "The imported papers do not provide a superconducting critical temperature at 500 K.",
+      "answerable": false,
+      "verification_status": "pending_human_review",
+      "excerpt_match": null
+    },
+    {
+      "question_id": "q11",
+      "question": "这些论文中优化的金纳米颗粒直径是多少纳米？",
+      "question_type": "insufficient_evidence",
+      "source_file": null,
+      "expected_source_page": null,
+      "supporting_excerpt": null,
+      "reference_answer": "The imported papers do not report an optimized gold-nanoparticle diameter.",
+      "answerable": false,
+      "verification_status": "pending_human_review",
+      "excerpt_match": null
+    },
+    {
+      "question_id": "q12",
+      "question": "这些论文中的随机对照临床试验共纳入多少名患者？",
+      "question_type": "insufficient_evidence",
+      "source_file": null,
+      "expected_source_page": null,
+      "supporting_excerpt": null,
+      "reference_answer": "The imported papers do not report a randomized clinical trial patient count.",
+      "answerable": false,
+      "verification_status": "pending_human_review",
+      "excerpt_match": null
+    }
+  ]
+}

@@ -1,0 +1,18 @@
+from pathlib import Path
+
+
+RAG_DIR = Path(__file__).resolve().parent
+DEFAULT_PDF_DIR = RAG_DIR / "papers"
+DEFAULT_STORAGE_DIR = RAG_DIR / "storage"
+DEFAULT_CHROMA_DIR = DEFAULT_STORAGE_DIR / "chroma"
+DEFAULT_INDEX_MANIFEST = DEFAULT_STORAGE_DIR / "index_manifest.json"
+
+COLLECTION_NAME = "researchpilot_papers"
+EMBEDDING_MODEL = "qwen3-embedding:0.6b"
+CHAT_MODEL = "qwen3:4b"
+CHUNK_SIZE = 900
+CHUNK_OVERLAP = 150
+DEFAULT_TOP_K = 4
+MAX_PDF_COUNT = 3
+RELEVANCE_THRESHOLD = 0.25
+MAX_CONTEXT_CHARS = 3600
