@@ -58,6 +58,9 @@ class PerformanceProfiler(BaseCallbackHandler):
         self.tool_seconds[name] += seconds
         self.tool_calls[name] += 1
 
+    def record_chroma_retrieval(self, seconds: float) -> None:
+        self.chroma_retrieval_seconds += seconds
+
     def record_internal_timings(self, tool_name: str, text: str) -> None:
         if tool_name == "retrieve_paper_evidence":
             match = re.search(
@@ -242,6 +245,10 @@ class PerformanceProfiler(BaseCallbackHandler):
                 self.node_seconds["context_loader"],
                 6,
             ),
+            "node_wall_seconds": {
+                name: round(seconds, 6)
+                for name, seconds in sorted(self.node_seconds.items())
+            },
             "mcp_tool_seconds": {
                 name: round(seconds, 6)
                 for name, seconds in sorted(self.tool_seconds.items())
