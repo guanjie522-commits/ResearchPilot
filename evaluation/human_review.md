@@ -333,7 +333,7 @@ These are explicitly stated in evidence [S4].
 
 ```
 
-> 数据清洗说明：原始 q09 保留不变；明确限定本地 PDF 的变体为 `q09_local_pdf`，当前尚未运行。
+> 数据清洗说明：原始 q09 保留不变；明确限定本地 PDF 的变体为 `q09_local_pdf`，已在任务12-G单独运行，结果仍待人工审核。
 
 ## q16
 

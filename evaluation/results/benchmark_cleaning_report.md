@@ -53,10 +53,10 @@
 - `derived_from: q09`；
 - 预期来源和工具与原题相同；
 - `source_scope_is_explicit: true`；
-- `execution_status: not_run`；
+- 任务12-F准备时为 `execution_status: not_run`；任务12-G已完成运行；
 - 参考答案仍为 `pending_human_review`。
 
-本次没有运行变体，也没有通过修改 Agent Prompt 让原题“通过”。
+本次任务12-G已另行运行该变体，但没有通过修改 Agent Prompt 让原题“通过”。
 
 ## q16 检索诊断
 
@@ -140,7 +140,7 @@ q09 选择了 `search_papers`。该指标只用于评测，不参与 Agent 路�
 
 - 原始 `formal_benchmark_pilot_20261110.json` 未修改，SHA-256 与提交版本一致。
 - q04 的 `mis fit` / `misfit` 归一化回归仍通过。
-- q09 原题保留，q09_local_pdf 独立存在且未运行。
+- q09 原题保留，q09_local_pdf 独立存在并已在任务12-G运行。
 - Deep q09/q16 的缺失 Token 仍为 `null` / `partial`，没有补成 0。
 - `run_benchmark.py --help` 和可靠性分析脚本均可运行。
 - 20 项评测器、指标和数据完整性测试全部通过。

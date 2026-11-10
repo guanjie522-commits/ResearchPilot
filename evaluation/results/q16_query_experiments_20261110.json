@@ -1,0 +1,741 @@
+{
+  "experiment_id": "q16_query_decomposition_20261110",
+  "created_at": "2026-11-10T06:32:16.897941+00:00",
+  "configuration": {
+    "embedding_model": "qwen3-embedding:0.6b",
+    "embedding_dimension": 1024,
+    "collection_count": 145,
+    "top_k": 4,
+    "relevance_threshold": 0.25,
+    "score_type": "chroma_relevance_1_minus_cosine_distance_higher_is_better",
+    "production_threshold_changed": false,
+    "target_original_text_used_as_query": false
+  },
+  "A_original_query": {
+    "query": "entropy",
+    "top_k": 4,
+    "source_filter_enabled": false,
+    "source_filter": null,
+    "raw_results": [
+      {
+        "source_file": "s41467-025-56194-1.pdf",
+        "page_number": 3,
+        "chunk_id": "c01c9f511e2a100e:p0003:c0002",
+        "relevance_score": 0.093935,
+        "score_type": "chroma_relevance_1_minus_cosine_distance_higher_is_better",
+        "passes_threshold": false,
+        "text_excerpt": "entropy increase effect by introducing an appropriate amount of La (Fig. 1c), realizing outstanding energy storage properties in incom- mensurate medium-entropy AFEs, which exhibit enormous application potential for advanced capacitors. Results and discussion Energy storage performance by increasing entropy We prepare a series of medium-entropy components PL xZSH (x =0 , 0.02, 0.04, 0.06) with conﬁgurational entropy (ΔSconﬁg) spanning from 1.10 R to 1.46 R to explore energy storage properties fr"
+      },
+      {
+        "source_file": "s41467-025-56194-1.pdf",
+        "page_number": 3,
+        "chunk_id": "c01c9f511e2a100e:p0003:c0004",
+        "relevance_score": 0.055755,
+        "score_type": "chroma_relevance_1_minus_cosine_distance_higher_is_better",
+        "passes_threshold": false,
+        "text_excerpt": "dielectric spectrum gradually broadens with increasing La (Supple- mentary Fig. 5), indicating that the macroscopic AFE nature of the PLxZSH samples are always maintained. It should be noted that EA-F, EF-A,a n dEb also increase with increasing La content. As a result, a small Wrec of 6.5 J cm−3 with a low η of 67.9% can be achieved in PL0ZSH AFE ceramic, which can be signi ﬁcantly improved to realize an ultrahigh Wrec of 16.3 J cm−3 with a highη of 81.2% in medium-entropy PL0.06ZSH sample by in"
+      },
+      {
+        "source_file": "materials-4180042.pdf",
+        "page_number": 3,
+        "chunk_id": "f831e3b0bc234f0b:p0003:c0001",
+        "relevance_score": 0.025202,
+        "score_type": "chroma_relevance_1_minus_cosine_distance_higher_is_better",
+        "passes_threshold": false,
+        "text_excerpt": "poral evolution of the polarization ﬁeld toward the free energy minimum ; σij is the stress tensor; D is the electric displacement; 𝜌௙ is the free charge density ; r and t are the spatial coordinate and time, respectively. E thermal is the thermal ﬁeld fol- lows[23]: ൻ𝐄thermal (𝐫ଵ, 𝑡ଵ) ⋅ 𝐄themal (𝐫ଶ, 𝑡ଶ)ൿ = 2𝑘஻𝑇𝐿𝛿(𝐫ଵ − 𝐫ଶ)𝛿(𝑡ଵ − 𝑡ଶ) ,where 𝑘஻ is the Bol ĵmann constant and T is the thermodynamic temperature. The total free energy of a bulk system can be deﬁned as follows, 𝐹 = 𝐹Land (𝑷) + 𝐹grad (𝑷"
+      },
+      {
+        "source_file": "materials-4180042.pdf",
+        "page_number": 6,
+        "chunk_id": "f831e3b0bc234f0b:p0006:c0000",
+        "relevance_score": 0.010102,
+        "score_type": "chroma_relevance_1_minus_cosine_distance_higher_is_better",
+        "passes_threshold": false,
+        "text_excerpt": "Materials 2026, 19, x FOR PEER REVIEW 6 of 11 https://doi.org/10.3390/xxxxx where 𝑅෠(௡) = ℱቂ𝛿𝐹୥୰ୟୢ (ଶ) /𝛿𝑃௜ (௡)ቃ − 𝐻ഥ|𝐤|ସ𝑃෠௜ (௡). 4. Result and Discussion: In our simulation, we employed the thermodynamic potential function of PZO ma- terial[5]. For the 2D simulation, we used a grid of 128Δx×128Δy×1Δz with Δx=Δy=Δz=1.0 nm. To verify the stability and convergence of the algorithm, we computed the evolution of the total free energy for the FE/AFE composite system (with spatially varying gradient c"
+      }
+    ],
+    "results_passing_threshold": [],
+    "execution_seconds": 0.039041,
+    "coverage": {
+      "hit_source_files": [],
+      "target_papers_hit": [],
+      "targets_hit_count": 0,
+      "targets_expected_count": 2,
+      "target_coverage": "0/2"
+    },
+    "threshold_sensitivity": [
+      {
+        "threshold": 0.25,
+        "passing_chunk_count": 0,
+        "passing_chunks": []
+      },
+      {
+        "threshold": 0.2,
+        "passing_chunk_count": 0,
+        "passing_chunks": []
+      },
+      {
+        "threshold": 0.15,
+        "passing_chunk_count": 0,
+        "passing_chunks": []
+      },
+      {
+        "threshold": 0.1,
+        "passing_chunk_count": 0,
+        "passing_chunks": []
+      },
+      {
+        "threshold": 0.05,
+        "passing_chunk_count": 2,
+        "passing_chunks": [
+          {
+            "source_file": "s41467-025-56194-1.pdf",
+            "page_number": 3,
+            "chunk_id": "c01c9f511e2a100e:p0003:c0002",
+            "relevance_score": 0.093935
+          },
+          {
+            "source_file": "s41467-025-56194-1.pdf",
+            "page_number": 3,
+            "chunk_id": "c01c9f511e2a100e:p0003:c0004",
+            "relevance_score": 0.055755
+          }
+        ]
+      },
+      {
+        "threshold": 0.0,
+        "passing_chunk_count": 4,
+        "passing_chunks": [
+          {
+            "source_file": "s41467-025-56194-1.pdf",
+            "page_number": 3,
+            "chunk_id": "c01c9f511e2a100e:p0003:c0002",
+            "relevance_score": 0.093935
+          },
+          {
+            "source_file": "s41467-025-56194-1.pdf",
+            "page_number": 3,
+            "chunk_id": "c01c9f511e2a100e:p0003:c0004",
+            "relevance_score": 0.055755
+          },
+          {
+            "source_file": "materials-4180042.pdf",
+            "page_number": 3,
+            "chunk_id": "f831e3b0bc234f0b:p0003:c0001",
+            "relevance_score": 0.025202
+          },
+          {
+            "source_file": "materials-4180042.pdf",
+            "page_number": 6,
+            "chunk_id": "f831e3b0bc234f0b:p0006:c0000",
+            "relevance_score": 0.010102
+          }
+        ]
+      }
+    ]
+  },
+  "B_complete_semantic_query": {
+    "query": "Compare the main design approaches of the entropy-based antiferroelectric polarization paper and the PZO antiferroelectric domain-modulation phase-field simulation paper.",
+    "top_k": 4,
+    "source_filter_enabled": false,
+    "source_filter": null,
+    "raw_results": [
+      {
+        "source_file": "1-s2.0-S2352847824001278-main.pdf",
+        "page_number": 1,
+        "chunk_id": "d99a382568c429f7:p0001:c0000",
+        "relevance_score": 0.514899,
+        "score_type": "chroma_relevance_1_minus_cosine_distance_higher_is_better",
+        "passes_threshold": true,
+        "text_excerpt": "Research paper Antiferroelectric domain modulation enhancing energy storage performance by phase- ﬁeld simulations Ke Xu a, b, Shiyu Tang a, b, Changqing Guo a, b, Yu Song a, b, Houbing Huang a, b, * a School of Materials Science and Engineering, Beijing Institute of Technology, Beijing, 100081, China b Advanced Research Institute of Multidisciplinary Science, Beijing Institute of Technology, Beijing, 100081, China article info Article history: Received 6 March 2024 Received in revised form 24 M"
+      },
+      {
+        "source_file": "materials-4180042.pdf",
+        "page_number": 10,
+        "chunk_id": "f831e3b0bc234f0b:p0010:c0002",
+        "relevance_score": 0.50575,
+        "score_type": "chroma_relevance_1_minus_cosine_distance_higher_is_better",
+        "passes_threshold": true,
+        "text_excerpt": "385: 204–209 [4] Yang B, Zhang Q, Huang H, et al. Engineering relaxors by entropy for high energy storage performance. Nature Energy, 2023, 8: 956–964 [5] Xu K, Shi X, Dong S, et al. Antiferroelectric phase diagram enhancing energy-storage performance by phase-ﬁeld simulations. ACS Applied Materials & Interfaces, 2022, 14: 25770–25780 [6] Xu K, Shi X, Shao C, et al. Design of polar boundaries enhancing negative electrocaloric performance by antiferroelectric phase- ﬁeld simulations. npj Computat"
+      },
+      {
+        "source_file": "1-s2.0-S2352847824001278-main.pdf",
+        "page_number": 2,
+        "chunk_id": "d99a382568c429f7:p0002:c0006",
+        "relevance_score": 0.502592,
+        "score_type": "chroma_relevance_1_minus_cosine_distance_higher_is_better",
+        "passes_threshold": true,
+        "text_excerpt": "To investigate the multivariate effects on the domain structure and energy storage performance of PZO-based antiferroelectric materials, two factors, namely defect dipole concentration and misﬁt strain, are prioritized in this section. Fig. 1 simulates the stable domain structures under 0, 0.5%, 1.0%, and 1.5% tensile strains applied to PZO-based antiferroelectric ﬁlms, respectively. The cor- responding phase- ﬁeld simulations are performed by varying different defect dipole doping concentration"
+      },
+      {
+        "source_file": "materials-4180042.pdf",
+        "page_number": 11,
+        "chunk_id": "f831e3b0bc234f0b:p0011:c0001",
+        "relevance_score": 0.491638,
+        "score_type": "chroma_relevance_1_minus_cosine_distance_higher_is_better",
+        "passes_threshold": true,
+        "text_excerpt": "[23] Yang T, Wang B, Hu J-M, et al. Domain dynamics under ultrafast electric- ﬁeld pulses. Physical review leĴers, 2020, 124: 107601 [24] Liu Z, Xu B-X. Insight into perovskite antiferroelectric phases: Landau theory and phase ﬁeld study. Scripta Materialia, 2020, 186: 136–141 Disclaimer/Publisher’s Note: The statements, opinions and data contained in all publications are solely those of the individual au- thor(s) and contributor(s) and not of MDPI and/or the editor(s). MDPI and/or the editor(s)"
+      }
+    ],
+    "results_passing_threshold": [
+      {
+        "source_file": "1-s2.0-S2352847824001278-main.pdf",
+        "page_number": 1,
+        "chunk_id": "d99a382568c429f7:p0001:c0000",
+        "relevance_score": 0.514899,
+        "score_type": "chroma_relevance_1_minus_cosine_distance_higher_is_better",
+        "passes_threshold": true,
+        "text_excerpt": "Research paper Antiferroelectric domain modulation enhancing energy storage performance by phase- ﬁeld simulations Ke Xu a, b, Shiyu Tang a, b, Changqing Guo a, b, Yu Song a, b, Houbing Huang a, b, * a School of Materials Science and Engineering, Beijing Institute of Technology, Beijing, 100081, China b Advanced Research Institute of Multidisciplinary Science, Beijing Institute of Technology, Beijing, 100081, China article info Article history: Received 6 March 2024 Received in revised form 24 M"
+      },
+      {
+        "source_file": "materials-4180042.pdf",
+        "page_number": 10,
+        "chunk_id": "f831e3b0bc234f0b:p0010:c0002",
+        "relevance_score": 0.50575,
+        "score_type": "chroma_relevance_1_minus_cosine_distance_higher_is_better",
+        "passes_threshold": true,
+        "text_excerpt": "385: 204–209 [4] Yang B, Zhang Q, Huang H, et al. Engineering relaxors by entropy for high energy storage performance. Nature Energy, 2023, 8: 956–964 [5] Xu K, Shi X, Dong S, et al. Antiferroelectric phase diagram enhancing energy-storage performance by phase-ﬁeld simulations. ACS Applied Materials & Interfaces, 2022, 14: 25770–25780 [6] Xu K, Shi X, Shao C, et al. Design of polar boundaries enhancing negative electrocaloric performance by antiferroelectric phase- ﬁeld simulations. npj Computat"
+      },
+      {
+        "source_file": "1-s2.0-S2352847824001278-main.pdf",
+        "page_number": 2,
+        "chunk_id": "d99a382568c429f7:p0002:c0006",
+        "relevance_score": 0.502592,
+        "score_type": "chroma_relevance_1_minus_cosine_distance_higher_is_better",
+        "passes_threshold": true,
+        "text_excerpt": "To investigate the multivariate effects on the domain structure and energy storage performance of PZO-based antiferroelectric materials, two factors, namely defect dipole concentration and misﬁt strain, are prioritized in this section. Fig. 1 simulates the stable domain structures under 0, 0.5%, 1.0%, and 1.5% tensile strains applied to PZO-based antiferroelectric ﬁlms, respectively. The cor- responding phase- ﬁeld simulations are performed by varying different defect dipole doping concentration"
+      },
+      {
+        "source_file": "materials-4180042.pdf",
+        "page_number": 11,
+        "chunk_id": "f831e3b0bc234f0b:p0011:c0001",
+        "relevance_score": 0.491638,
+        "score_type": "chroma_relevance_1_minus_cosine_distance_higher_is_better",
+        "passes_threshold": true,
+        "text_excerpt": "[23] Yang T, Wang B, Hu J-M, et al. Domain dynamics under ultrafast electric- ﬁeld pulses. Physical review leĴers, 2020, 124: 107601 [24] Liu Z, Xu B-X. Insight into perovskite antiferroelectric phases: Landau theory and phase ﬁeld study. Scripta Materialia, 2020, 186: 136–141 Disclaimer/Publisher’s Note: The statements, opinions and data contained in all publications are solely those of the individual au- thor(s) and contributor(s) and not of MDPI and/or the editor(s). MDPI and/or the editor(s)"
+      }
+    ],
+    "execution_seconds": 0.04091,
+    "coverage": {
+      "hit_source_files": [
+        "1-s2.0-S2352847824001278-main.pdf",
+        "materials-4180042.pdf"
+      ],
+      "target_papers_hit": [
+        "PZO domain-modulation paper"
+      ],
+      "targets_hit_count": 1,
+      "targets_expected_count": 2,
+      "target_coverage": "1/2"
+    }
+  },
+  "C_decomposed_global": {
+    "queries": [
+      {
+        "query": "How is increasing entropy used to design the antiferroelectric polarization configuration for capacitive energy storage?",
+        "top_k": 4,
+        "source_filter_enabled": false,
+        "source_filter": null,
+        "raw_results": [
+          {
+            "source_file": "s41467-025-56194-1.pdf",
+            "page_number": 1,
+            "chunk_id": "c01c9f511e2a100e:p0001:c0000",
+            "relevance_score": 0.774132,
+            "score_type": "chroma_relevance_1_minus_cosine_distance_higher_is_better",
+            "passes_threshold": true,
+            "text_excerpt": "Article https://doi.org/10.1038/s41467-025-56194-1 Design of antiferroelectric polarization conﬁguration for ultrahigh capacitive energy storage via increasing entropy Yongxiao Zhou1,2,6, Tianfu Zhang3,6,L i a n gC h e n1,6 ,H u i f e nY u1,R u i y uW a n g1,4, Hao Zhang1,J i eW u5, Shiqing Deng 1,H eQ i 1,5 , Chang Zhou 1,4 & Jun Chen 1,5 Electric ﬁeld induced antiferroelectric-ferroelectric phase transition is a double-edged sword for energy storage properties, which not only offers a congenit"
+          },
+          {
+            "source_file": "materials-4180042.pdf",
+            "page_number": 10,
+            "chunk_id": "f831e3b0bc234f0b:p0010:c0002",
+            "relevance_score": 0.622338,
+            "score_type": "chroma_relevance_1_minus_cosine_distance_higher_is_better",
+            "passes_threshold": true,
+            "text_excerpt": "385: 204–209 [4] Yang B, Zhang Q, Huang H, et al. Engineering relaxors by entropy for high energy storage performance. Nature Energy, 2023, 8: 956–964 [5] Xu K, Shi X, Dong S, et al. Antiferroelectric phase diagram enhancing energy-storage performance by phase-ﬁeld simulations. ACS Applied Materials & Interfaces, 2022, 14: 25770–25780 [6] Xu K, Shi X, Shao C, et al. Design of polar boundaries enhancing negative electrocaloric performance by antiferroelectric phase- ﬁeld simulations. npj Computat"
+          },
+          {
+            "source_file": "s41467-025-56194-1.pdf",
+            "page_number": 6,
+            "chunk_id": "c01c9f511e2a100e:p0006:c0005",
+            "relevance_score": 0.603266,
+            "score_type": "chroma_relevance_1_minus_cosine_distance_higher_is_better",
+            "passes_threshold": true,
+            "text_excerpt": "have meticulously crafted a locally heterogeneous AFE polarization landscape, where commensurate, incommensurate, and relaxor AFE polarization conﬁgurations intertwine harmoniously. This intricate arrangement facilitates the traversal of seamless polarization trajec- tories, characterized by minimal hysteresis, pronounced polarization ﬂuctuations, and delayed polarization saturation. Consequently, we have achieved groundbreaking overall energy storage properties, accompanied by an ultrahighWrec "
+          },
+          {
+            "source_file": "s41467-025-56194-1.pdf",
+            "page_number": 1,
+            "chunk_id": "c01c9f511e2a100e:p0001:c0002",
+            "relevance_score": 0.593182,
+            "score_type": "chroma_relevance_1_minus_cosine_distance_higher_is_better",
+            "passes_threshold": true,
+            "text_excerpt": "controlling local diverse antiferroelectric polarization conﬁgurations by increasing entropy is an effective avenue to develop high-performance energy storage antiferroelectrics, with implications that can be extended to other materials and functionalities. Dielectric capacitors have been commercialized for various applica- tions including hybrid electrical vehicles, medical devices, and microwave communications1–3. Compared to batteries, solid oxide fuel cells, and electrochemical capacitors, d"
+          }
+        ],
+        "results_passing_threshold": [
+          {
+            "source_file": "s41467-025-56194-1.pdf",
+            "page_number": 1,
+            "chunk_id": "c01c9f511e2a100e:p0001:c0000",
+            "relevance_score": 0.774132,
+            "score_type": "chroma_relevance_1_minus_cosine_distance_higher_is_better",
+            "passes_threshold": true,
+            "text_excerpt": "Article https://doi.org/10.1038/s41467-025-56194-1 Design of antiferroelectric polarization conﬁguration for ultrahigh capacitive energy storage via increasing entropy Yongxiao Zhou1,2,6, Tianfu Zhang3,6,L i a n gC h e n1,6 ,H u i f e nY u1,R u i y uW a n g1,4, Hao Zhang1,J i eW u5, Shiqing Deng 1,H eQ i 1,5 , Chang Zhou 1,4 & Jun Chen 1,5 Electric ﬁeld induced antiferroelectric-ferroelectric phase transition is a double-edged sword for energy storage properties, which not only offers a congenit"
+          },
+          {
+            "source_file": "materials-4180042.pdf",
+            "page_number": 10,
+            "chunk_id": "f831e3b0bc234f0b:p0010:c0002",
+            "relevance_score": 0.622338,
+            "score_type": "chroma_relevance_1_minus_cosine_distance_higher_is_better",
+            "passes_threshold": true,
+            "text_excerpt": "385: 204–209 [4] Yang B, Zhang Q, Huang H, et al. Engineering relaxors by entropy for high energy storage performance. Nature Energy, 2023, 8: 956–964 [5] Xu K, Shi X, Dong S, et al. Antiferroelectric phase diagram enhancing energy-storage performance by phase-ﬁeld simulations. ACS Applied Materials & Interfaces, 2022, 14: 25770–25780 [6] Xu K, Shi X, Shao C, et al. Design of polar boundaries enhancing negative electrocaloric performance by antiferroelectric phase- ﬁeld simulations. npj Computat"
+          },
+          {
+            "source_file": "s41467-025-56194-1.pdf",
+            "page_number": 6,
+            "chunk_id": "c01c9f511e2a100e:p0006:c0005",
+            "relevance_score": 0.603266,
+            "score_type": "chroma_relevance_1_minus_cosine_distance_higher_is_better",
+            "passes_threshold": true,
+            "text_excerpt": "have meticulously crafted a locally heterogeneous AFE polarization landscape, where commensurate, incommensurate, and relaxor AFE polarization conﬁgurations intertwine harmoniously. This intricate arrangement facilitates the traversal of seamless polarization trajec- tories, characterized by minimal hysteresis, pronounced polarization ﬂuctuations, and delayed polarization saturation. Consequently, we have achieved groundbreaking overall energy storage properties, accompanied by an ultrahighWrec "
+          },
+          {
+            "source_file": "s41467-025-56194-1.pdf",
+            "page_number": 1,
+            "chunk_id": "c01c9f511e2a100e:p0001:c0002",
+            "relevance_score": 0.593182,
+            "score_type": "chroma_relevance_1_minus_cosine_distance_higher_is_better",
+            "passes_threshold": true,
+            "text_excerpt": "controlling local diverse antiferroelectric polarization conﬁgurations by increasing entropy is an effective avenue to develop high-performance energy storage antiferroelectrics, with implications that can be extended to other materials and functionalities. Dielectric capacitors have been commercialized for various applica- tions including hybrid electrical vehicles, medical devices, and microwave communications1–3. Compared to batteries, solid oxide fuel cells, and electrochemical capacitors, d"
+          }
+        ],
+        "execution_seconds": 0.03578
+      },
+      {
+        "query": "How is antiferroelectric domain modulation studied with phase-field simulations to improve energy storage performance?",
+        "top_k": 4,
+        "source_filter_enabled": false,
+        "source_filter": null,
+        "raw_results": [
+          {
+            "source_file": "1-s2.0-S2352847824001278-main.pdf",
+            "page_number": 1,
+            "chunk_id": "d99a382568c429f7:p0001:c0000",
+            "relevance_score": 0.723243,
+            "score_type": "chroma_relevance_1_minus_cosine_distance_higher_is_better",
+            "passes_threshold": true,
+            "text_excerpt": "Research paper Antiferroelectric domain modulation enhancing energy storage performance by phase- ﬁeld simulations Ke Xu a, b, Shiyu Tang a, b, Changqing Guo a, b, Yu Song a, b, Houbing Huang a, b, * a School of Materials Science and Engineering, Beijing Institute of Technology, Beijing, 100081, China b Advanced Research Institute of Multidisciplinary Science, Beijing Institute of Technology, Beijing, 100081, China article info Article history: Received 6 March 2024 Received in revised form 24 M"
+          },
+          {
+            "source_file": "materials-4180042.pdf",
+            "page_number": 10,
+            "chunk_id": "f831e3b0bc234f0b:p0010:c0002",
+            "relevance_score": 0.585538,
+            "score_type": "chroma_relevance_1_minus_cosine_distance_higher_is_better",
+            "passes_threshold": true,
+            "text_excerpt": "385: 204–209 [4] Yang B, Zhang Q, Huang H, et al. Engineering relaxors by entropy for high energy storage performance. Nature Energy, 2023, 8: 956–964 [5] Xu K, Shi X, Dong S, et al. Antiferroelectric phase diagram enhancing energy-storage performance by phase-ﬁeld simulations. ACS Applied Materials & Interfaces, 2022, 14: 25770–25780 [6] Xu K, Shi X, Shao C, et al. Design of polar boundaries enhancing negative electrocaloric performance by antiferroelectric phase- ﬁeld simulations. npj Computat"
+          },
+          {
+            "source_file": "materials-4180042.pdf",
+            "page_number": 10,
+            "chunk_id": "f831e3b0bc234f0b:p0010:c0003",
+            "relevance_score": 0.581207,
+            "score_type": "chroma_relevance_1_minus_cosine_distance_higher_is_better",
+            "passes_threshold": true,
+            "text_excerpt": "Energy Storage Materials, 2022, 45: 541–567 [9] Yang B, Zhang Y, Pan H, et al. High-entropy enhanced capacitive energy storage. Nature Materials, 2022, 21: 1074–1080 [10] Yang B, Liu Y, Jiang R-J, et al. Enhanced energy storage in antiferroelectrics via antipolar frustration. Nature, 2025, 637: 1104– 1110 [11] Wang D, Ke X, Wang Y, et al. Phase diagram of polar states in doped ferroelectric systems. Physical Review B, 2012, 86: [12] Shi X, Wang J, Xu J, et al. Quantitative investigation of polar"
+          },
+          {
+            "source_file": "s41467-025-56194-1.pdf",
+            "page_number": 8,
+            "chunk_id": "c01c9f511e2a100e:p0008:c0000",
+            "relevance_score": 0.575808,
+            "score_type": "chroma_relevance_1_minus_cosine_distance_higher_is_better",
+            "passes_threshold": true,
+            "text_excerpt": "19. Wang, H., Liu, Y., Yang, T. & Zhang, S. Ultrahigh energy-storage density in antiferroelectric ceramics withﬁeld-induced multiphase transitions.Adv. Funct. Mater. 29, 1807321 (2019). 20. Ge, G. et al. Tunable domain switching features of incommensurate antiferroelectric ceramics realizing excellent energy storage prop- erties. Adv. Mater. 34, 2201333 (2022). 21. Chen, L. et al. Near-zero energy consumption capacitors by con- trolling inhomogeneous polarization conﬁguration.Adv. Mater. 36, 231"
+          }
+        ],
+        "results_passing_threshold": [
+          {
+            "source_file": "1-s2.0-S2352847824001278-main.pdf",
+            "page_number": 1,
+            "chunk_id": "d99a382568c429f7:p0001:c0000",
+            "relevance_score": 0.723243,
+            "score_type": "chroma_relevance_1_minus_cosine_distance_higher_is_better",
+            "passes_threshold": true,
+            "text_excerpt": "Research paper Antiferroelectric domain modulation enhancing energy storage performance by phase- ﬁeld simulations Ke Xu a, b, Shiyu Tang a, b, Changqing Guo a, b, Yu Song a, b, Houbing Huang a, b, * a School of Materials Science and Engineering, Beijing Institute of Technology, Beijing, 100081, China b Advanced Research Institute of Multidisciplinary Science, Beijing Institute of Technology, Beijing, 100081, China article info Article history: Received 6 March 2024 Received in revised form 24 M"
+          },
+          {
+            "source_file": "materials-4180042.pdf",
+            "page_number": 10,
+            "chunk_id": "f831e3b0bc234f0b:p0010:c0002",
+            "relevance_score": 0.585538,
+            "score_type": "chroma_relevance_1_minus_cosine_distance_higher_is_better",
+            "passes_threshold": true,
+            "text_excerpt": "385: 204–209 [4] Yang B, Zhang Q, Huang H, et al. Engineering relaxors by entropy for high energy storage performance. Nature Energy, 2023, 8: 956–964 [5] Xu K, Shi X, Dong S, et al. Antiferroelectric phase diagram enhancing energy-storage performance by phase-ﬁeld simulations. ACS Applied Materials & Interfaces, 2022, 14: 25770–25780 [6] Xu K, Shi X, Shao C, et al. Design of polar boundaries enhancing negative electrocaloric performance by antiferroelectric phase- ﬁeld simulations. npj Computat"
+          },
+          {
+            "source_file": "materials-4180042.pdf",
+            "page_number": 10,
+            "chunk_id": "f831e3b0bc234f0b:p0010:c0003",
+            "relevance_score": 0.581207,
+            "score_type": "chroma_relevance_1_minus_cosine_distance_higher_is_better",
+            "passes_threshold": true,
+            "text_excerpt": "Energy Storage Materials, 2022, 45: 541–567 [9] Yang B, Zhang Y, Pan H, et al. High-entropy enhanced capacitive energy storage. Nature Materials, 2022, 21: 1074–1080 [10] Yang B, Liu Y, Jiang R-J, et al. Enhanced energy storage in antiferroelectrics via antipolar frustration. Nature, 2025, 637: 1104– 1110 [11] Wang D, Ke X, Wang Y, et al. Phase diagram of polar states in doped ferroelectric systems. Physical Review B, 2012, 86: [12] Shi X, Wang J, Xu J, et al. Quantitative investigation of polar"
+          },
+          {
+            "source_file": "s41467-025-56194-1.pdf",
+            "page_number": 8,
+            "chunk_id": "c01c9f511e2a100e:p0008:c0000",
+            "relevance_score": 0.575808,
+            "score_type": "chroma_relevance_1_minus_cosine_distance_higher_is_better",
+            "passes_threshold": true,
+            "text_excerpt": "19. Wang, H., Liu, Y., Yang, T. & Zhang, S. Ultrahigh energy-storage density in antiferroelectric ceramics withﬁeld-induced multiphase transitions.Adv. Funct. Mater. 29, 1807321 (2019). 20. Ge, G. et al. Tunable domain switching features of incommensurate antiferroelectric ceramics realizing excellent energy storage prop- erties. Adv. Mater. 34, 2201333 (2022). 21. Chen, L. et al. Near-zero energy consumption capacitors by con- trolling inhomogeneous polarization conﬁguration.Adv. Mater. 36, 231"
+          }
+        ],
+        "execution_seconds": 0.035609
+      }
+    ],
+    "thresholded_unique_chunks": [
+      {
+        "source_file": "s41467-025-56194-1.pdf",
+        "page_number": 1,
+        "chunk_id": "c01c9f511e2a100e:p0001:c0000",
+        "relevance_score": 0.774132,
+        "score_type": "chroma_relevance_1_minus_cosine_distance_higher_is_better",
+        "passes_threshold": true,
+        "text_excerpt": "Article https://doi.org/10.1038/s41467-025-56194-1 Design of antiferroelectric polarization conﬁguration for ultrahigh capacitive energy storage via increasing entropy Yongxiao Zhou1,2,6, Tianfu Zhang3,6,L i a n gC h e n1,6 ,H u i f e nY u1,R u i y uW a n g1,4, Hao Zhang1,J i eW u5, Shiqing Deng 1,H eQ i 1,5 , Chang Zhou 1,4 & Jun Chen 1,5 Electric ﬁeld induced antiferroelectric-ferroelectric phase transition is a double-edged sword for energy storage properties, which not only offers a congenit"
+      },
+      {
+        "source_file": "materials-4180042.pdf",
+        "page_number": 10,
+        "chunk_id": "f831e3b0bc234f0b:p0010:c0002",
+        "relevance_score": 0.585538,
+        "score_type": "chroma_relevance_1_minus_cosine_distance_higher_is_better",
+        "passes_threshold": true,
+        "text_excerpt": "385: 204–209 [4] Yang B, Zhang Q, Huang H, et al. Engineering relaxors by entropy for high energy storage performance. Nature Energy, 2023, 8: 956–964 [5] Xu K, Shi X, Dong S, et al. Antiferroelectric phase diagram enhancing energy-storage performance by phase-ﬁeld simulations. ACS Applied Materials & Interfaces, 2022, 14: 25770–25780 [6] Xu K, Shi X, Shao C, et al. Design of polar boundaries enhancing negative electrocaloric performance by antiferroelectric phase- ﬁeld simulations. npj Computat"
+      },
+      {
+        "source_file": "s41467-025-56194-1.pdf",
+        "page_number": 6,
+        "chunk_id": "c01c9f511e2a100e:p0006:c0005",
+        "relevance_score": 0.603266,
+        "score_type": "chroma_relevance_1_minus_cosine_distance_higher_is_better",
+        "passes_threshold": true,
+        "text_excerpt": "have meticulously crafted a locally heterogeneous AFE polarization landscape, where commensurate, incommensurate, and relaxor AFE polarization conﬁgurations intertwine harmoniously. This intricate arrangement facilitates the traversal of seamless polarization trajec- tories, characterized by minimal hysteresis, pronounced polarization ﬂuctuations, and delayed polarization saturation. Consequently, we have achieved groundbreaking overall energy storage properties, accompanied by an ultrahighWrec "
+      },
+      {
+        "source_file": "s41467-025-56194-1.pdf",
+        "page_number": 1,
+        "chunk_id": "c01c9f511e2a100e:p0001:c0002",
+        "relevance_score": 0.593182,
+        "score_type": "chroma_relevance_1_minus_cosine_distance_higher_is_better",
+        "passes_threshold": true,
+        "text_excerpt": "controlling local diverse antiferroelectric polarization conﬁgurations by increasing entropy is an effective avenue to develop high-performance energy storage antiferroelectrics, with implications that can be extended to other materials and functionalities. Dielectric capacitors have been commercialized for various applica- tions including hybrid electrical vehicles, medical devices, and microwave communications1–3. Compared to batteries, solid oxide fuel cells, and electrochemical capacitors, d"
+      },
+      {
+        "source_file": "1-s2.0-S2352847824001278-main.pdf",
+        "page_number": 1,
+        "chunk_id": "d99a382568c429f7:p0001:c0000",
+        "relevance_score": 0.723243,
+        "score_type": "chroma_relevance_1_minus_cosine_distance_higher_is_better",
+        "passes_threshold": true,
+        "text_excerpt": "Research paper Antiferroelectric domain modulation enhancing energy storage performance by phase- ﬁeld simulations Ke Xu a, b, Shiyu Tang a, b, Changqing Guo a, b, Yu Song a, b, Houbing Huang a, b, * a School of Materials Science and Engineering, Beijing Institute of Technology, Beijing, 100081, China b Advanced Research Institute of Multidisciplinary Science, Beijing Institute of Technology, Beijing, 100081, China article info Article history: Received 6 March 2024 Received in revised form 24 M"
+      },
+      {
+        "source_file": "materials-4180042.pdf",
+        "page_number": 10,
+        "chunk_id": "f831e3b0bc234f0b:p0010:c0003",
+        "relevance_score": 0.581207,
+        "score_type": "chroma_relevance_1_minus_cosine_distance_higher_is_better",
+        "passes_threshold": true,
+        "text_excerpt": "Energy Storage Materials, 2022, 45: 541–567 [9] Yang B, Zhang Y, Pan H, et al. High-entropy enhanced capacitive energy storage. Nature Materials, 2022, 21: 1074–1080 [10] Yang B, Liu Y, Jiang R-J, et al. Enhanced energy storage in antiferroelectrics via antipolar frustration. Nature, 2025, 637: 1104– 1110 [11] Wang D, Ke X, Wang Y, et al. Phase diagram of polar states in doped ferroelectric systems. Physical Review B, 2012, 86: [12] Shi X, Wang J, Xu J, et al. Quantitative investigation of polar"
+      },
+      {
+        "source_file": "s41467-025-56194-1.pdf",
+        "page_number": 8,
+        "chunk_id": "c01c9f511e2a100e:p0008:c0000",
+        "relevance_score": 0.575808,
+        "score_type": "chroma_relevance_1_minus_cosine_distance_higher_is_better",
+        "passes_threshold": true,
+        "text_excerpt": "19. Wang, H., Liu, Y., Yang, T. & Zhang, S. Ultrahigh energy-storage density in antiferroelectric ceramics withﬁeld-induced multiphase transitions.Adv. Funct. Mater. 29, 1807321 (2019). 20. Ge, G. et al. Tunable domain switching features of incommensurate antiferroelectric ceramics realizing excellent energy storage prop- erties. Adv. Mater. 34, 2201333 (2022). 21. Chen, L. et al. Near-zero energy consumption capacitors by con- trolling inhomogeneous polarization conﬁguration.Adv. Mater. 36, 231"
+      }
+    ],
+    "execution_seconds": 0.071389,
+    "coverage": {
+      "hit_source_files": [
+        "1-s2.0-S2352847824001278-main.pdf",
+        "materials-4180042.pdf",
+        "s41467-025-56194-1.pdf"
+      ],
+      "target_papers_hit": [
+        "entropy paper",
+        "PZO domain-modulation paper"
+      ],
+      "targets_hit_count": 2,
+      "targets_expected_count": 2,
+      "target_coverage": "2/2"
+    }
+  },
+  "C_decomposed_source_filtered": {
+    "queries": [
+      {
+        "query": "How is increasing entropy used to design the antiferroelectric polarization configuration for capacitive energy storage?",
+        "top_k": 4,
+        "source_filter_enabled": true,
+        "source_filter": "s41467-025-56194-1.pdf",
+        "raw_results": [
+          {
+            "source_file": "s41467-025-56194-1.pdf",
+            "page_number": 1,
+            "chunk_id": "c01c9f511e2a100e:p0001:c0000",
+            "relevance_score": 0.774132,
+            "score_type": "chroma_relevance_1_minus_cosine_distance_higher_is_better",
+            "passes_threshold": true,
+            "text_excerpt": "Article https://doi.org/10.1038/s41467-025-56194-1 Design of antiferroelectric polarization conﬁguration for ultrahigh capacitive energy storage via increasing entropy Yongxiao Zhou1,2,6, Tianfu Zhang3,6,L i a n gC h e n1,6 ,H u i f e nY u1,R u i y uW a n g1,4, Hao Zhang1,J i eW u5, Shiqing Deng 1,H eQ i 1,5 , Chang Zhou 1,4 & Jun Chen 1,5 Electric ﬁeld induced antiferroelectric-ferroelectric phase transition is a double-edged sword for energy storage properties, which not only offers a congenit"
+          },
+          {
+            "source_file": "s41467-025-56194-1.pdf",
+            "page_number": 6,
+            "chunk_id": "c01c9f511e2a100e:p0006:c0005",
+            "relevance_score": 0.603266,
+            "score_type": "chroma_relevance_1_minus_cosine_distance_higher_is_better",
+            "passes_threshold": true,
+            "text_excerpt": "have meticulously crafted a locally heterogeneous AFE polarization landscape, where commensurate, incommensurate, and relaxor AFE polarization conﬁgurations intertwine harmoniously. This intricate arrangement facilitates the traversal of seamless polarization trajec- tories, characterized by minimal hysteresis, pronounced polarization ﬂuctuations, and delayed polarization saturation. Consequently, we have achieved groundbreaking overall energy storage properties, accompanied by an ultrahighWrec "
+          },
+          {
+            "source_file": "s41467-025-56194-1.pdf",
+            "page_number": 1,
+            "chunk_id": "c01c9f511e2a100e:p0001:c0002",
+            "relevance_score": 0.593182,
+            "score_type": "chroma_relevance_1_minus_cosine_distance_higher_is_better",
+            "passes_threshold": true,
+            "text_excerpt": "controlling local diverse antiferroelectric polarization conﬁgurations by increasing entropy is an effective avenue to develop high-performance energy storage antiferroelectrics, with implications that can be extended to other materials and functionalities. Dielectric capacitors have been commercialized for various applica- tions including hybrid electrical vehicles, medical devices, and microwave communications1–3. Compared to batteries, solid oxide fuel cells, and electrochemical capacitors, d"
+          },
+          {
+            "source_file": "s41467-025-56194-1.pdf",
+            "page_number": 8,
+            "chunk_id": "c01c9f511e2a100e:p0008:c0000",
+            "relevance_score": 0.579847,
+            "score_type": "chroma_relevance_1_minus_cosine_distance_higher_is_better",
+            "passes_threshold": true,
+            "text_excerpt": "19. Wang, H., Liu, Y., Yang, T. & Zhang, S. Ultrahigh energy-storage density in antiferroelectric ceramics withﬁeld-induced multiphase transitions.Adv. Funct. Mater. 29, 1807321 (2019). 20. Ge, G. et al. Tunable domain switching features of incommensurate antiferroelectric ceramics realizing excellent energy storage prop- erties. Adv. Mater. 34, 2201333 (2022). 21. Chen, L. et al. Near-zero energy consumption capacitors by con- trolling inhomogeneous polarization conﬁguration.Adv. Mater. 36, 231"
+          }
+        ],
+        "results_passing_threshold": [
+          {
+            "source_file": "s41467-025-56194-1.pdf",
+            "page_number": 1,
+            "chunk_id": "c01c9f511e2a100e:p0001:c0000",
+            "relevance_score": 0.774132,
+            "score_type": "chroma_relevance_1_minus_cosine_distance_higher_is_better",
+            "passes_threshold": true,
+            "text_excerpt": "Article https://doi.org/10.1038/s41467-025-56194-1 Design of antiferroelectric polarization conﬁguration for ultrahigh capacitive energy storage via increasing entropy Yongxiao Zhou1,2,6, Tianfu Zhang3,6,L i a n gC h e n1,6 ,H u i f e nY u1,R u i y uW a n g1,4, Hao Zhang1,J i eW u5, Shiqing Deng 1,H eQ i 1,5 , Chang Zhou 1,4 & Jun Chen 1,5 Electric ﬁeld induced antiferroelectric-ferroelectric phase transition is a double-edged sword for energy storage properties, which not only offers a congenit"
+          },
+          {
+            "source_file": "s41467-025-56194-1.pdf",
+            "page_number": 6,
+            "chunk_id": "c01c9f511e2a100e:p0006:c0005",
+            "relevance_score": 0.603266,
+            "score_type": "chroma_relevance_1_minus_cosine_distance_higher_is_better",
+            "passes_threshold": true,
+            "text_excerpt": "have meticulously crafted a locally heterogeneous AFE polarization landscape, where commensurate, incommensurate, and relaxor AFE polarization conﬁgurations intertwine harmoniously. This intricate arrangement facilitates the traversal of seamless polarization trajec- tories, characterized by minimal hysteresis, pronounced polarization ﬂuctuations, and delayed polarization saturation. Consequently, we have achieved groundbreaking overall energy storage properties, accompanied by an ultrahighWrec "
+          },
+          {
+            "source_file": "s41467-025-56194-1.pdf",
+            "page_number": 1,
+            "chunk_id": "c01c9f511e2a100e:p0001:c0002",
+            "relevance_score": 0.593182,
+            "score_type": "chroma_relevance_1_minus_cosine_distance_higher_is_better",
+            "passes_threshold": true,
+            "text_excerpt": "controlling local diverse antiferroelectric polarization conﬁgurations by increasing entropy is an effective avenue to develop high-performance energy storage antiferroelectrics, with implications that can be extended to other materials and functionalities. Dielectric capacitors have been commercialized for various applica- tions including hybrid electrical vehicles, medical devices, and microwave communications1–3. Compared to batteries, solid oxide fuel cells, and electrochemical capacitors, d"
+          },
+          {
+            "source_file": "s41467-025-56194-1.pdf",
+            "page_number": 8,
+            "chunk_id": "c01c9f511e2a100e:p0008:c0000",
+            "relevance_score": 0.579847,
+            "score_type": "chroma_relevance_1_minus_cosine_distance_higher_is_better",
+            "passes_threshold": true,
+            "text_excerpt": "19. Wang, H., Liu, Y., Yang, T. & Zhang, S. Ultrahigh energy-storage density in antiferroelectric ceramics withﬁeld-induced multiphase transitions.Adv. Funct. Mater. 29, 1807321 (2019). 20. Ge, G. et al. Tunable domain switching features of incommensurate antiferroelectric ceramics realizing excellent energy storage prop- erties. Adv. Mater. 34, 2201333 (2022). 21. Chen, L. et al. Near-zero energy consumption capacitors by con- trolling inhomogeneous polarization conﬁguration.Adv. Mater. 36, 231"
+          }
+        ],
+        "execution_seconds": 0.036012
+      },
+      {
+        "query": "How is antiferroelectric domain modulation studied with phase-field simulations to improve energy storage performance?",
+        "top_k": 4,
+        "source_filter_enabled": true,
+        "source_filter": "1-s2.0-S2352847824001278-main.pdf",
+        "raw_results": [
+          {
+            "source_file": "1-s2.0-S2352847824001278-main.pdf",
+            "page_number": 1,
+            "chunk_id": "d99a382568c429f7:p0001:c0000",
+            "relevance_score": 0.723243,
+            "score_type": "chroma_relevance_1_minus_cosine_distance_higher_is_better",
+            "passes_threshold": true,
+            "text_excerpt": "Research paper Antiferroelectric domain modulation enhancing energy storage performance by phase- ﬁeld simulations Ke Xu a, b, Shiyu Tang a, b, Changqing Guo a, b, Yu Song a, b, Houbing Huang a, b, * a School of Materials Science and Engineering, Beijing Institute of Technology, Beijing, 100081, China b Advanced Research Institute of Multidisciplinary Science, Beijing Institute of Technology, Beijing, 100081, China article info Article history: Received 6 March 2024 Received in revised form 24 M"
+          },
+          {
+            "source_file": "1-s2.0-S2352847824001278-main.pdf",
+            "page_number": 7,
+            "chunk_id": "d99a382568c429f7:p0007:c0005",
+            "relevance_score": 0.560626,
+            "score_type": "chroma_relevance_1_minus_cosine_distance_higher_is_better",
+            "passes_threshold": true,
+            "text_excerpt": "(0e1.5%), defect dipole concentration (0 e10%), and ﬁlm thickness (4e24 layers) on the domain structure and energy storage perfor- mance using the phase- ﬁeld method in the case of PZO-based AFE thin ﬁlm system. It is found that applying tensile strain to the thin ﬁlm substrate can increase the AFE domain periodicity and size, and improve the energy storage performance by boosting the AFE phase transition electric ﬁeld. The introduction of defect dipoles can break the long-range ordering of anti"
+          },
+          {
+            "source_file": "1-s2.0-S2352847824001278-main.pdf",
+            "page_number": 1,
+            "chunk_id": "d99a382568c429f7:p0001:c0001",
+            "relevance_score": 0.552223,
+            "score_type": "chroma_relevance_1_minus_cosine_distance_higher_is_better",
+            "passes_threshold": true,
+            "text_excerpt": "are expected to be candidates for dielectric capacitors. It remains a challenge to further enhance the effective energy storage density and ef ﬁciency of PZO-based antiferroelectric ﬁlms through domain engineering. In this work, the effects of three variables, mis ﬁt strain between the thin ﬁlm and substrate, defect dipoles doping, and ﬁlm thickness, on the domain structure and energy storage performance of PZO-based antiferroelectric materials are comprehensively investigated via phase-ﬁeld sim"
+          },
+          {
+            "source_file": "1-s2.0-S2352847824001278-main.pdf",
+            "page_number": 1,
+            "chunk_id": "d99a382568c429f7:p0001:c0004",
+            "relevance_score": 0.527383,
+            "score_type": "chroma_relevance_1_minus_cosine_distance_higher_is_better",
+            "passes_threshold": true,
+            "text_excerpt": "energy storage density. The antiferroelectric (AFE) materials represented by PbZrO 3 have low residual polarization due to its antiparallel polarization conﬁguration under zero electric ﬁeld, and can undergo AFE / FE phase transition under an electric ﬁeld with double electric hysteresis loop, which can effectively improve the energy storage density and energy storage ef ﬁciency [9e16]. AFE ceramics are constrained by the preparation process prob- lems, which may prevent the achievement of high "
+          }
+        ],
+        "results_passing_threshold": [
+          {
+            "source_file": "1-s2.0-S2352847824001278-main.pdf",
+            "page_number": 1,
+            "chunk_id": "d99a382568c429f7:p0001:c0000",
+            "relevance_score": 0.723243,
+            "score_type": "chroma_relevance_1_minus_cosine_distance_higher_is_better",
+            "passes_threshold": true,
+            "text_excerpt": "Research paper Antiferroelectric domain modulation enhancing energy storage performance by phase- ﬁeld simulations Ke Xu a, b, Shiyu Tang a, b, Changqing Guo a, b, Yu Song a, b, Houbing Huang a, b, * a School of Materials Science and Engineering, Beijing Institute of Technology, Beijing, 100081, China b Advanced Research Institute of Multidisciplinary Science, Beijing Institute of Technology, Beijing, 100081, China article info Article history: Received 6 March 2024 Received in revised form 24 M"
+          },
+          {
+            "source_file": "1-s2.0-S2352847824001278-main.pdf",
+            "page_number": 7,
+            "chunk_id": "d99a382568c429f7:p0007:c0005",
+            "relevance_score": 0.560626,
+            "score_type": "chroma_relevance_1_minus_cosine_distance_higher_is_better",
+            "passes_threshold": true,
+            "text_excerpt": "(0e1.5%), defect dipole concentration (0 e10%), and ﬁlm thickness (4e24 layers) on the domain structure and energy storage perfor- mance using the phase- ﬁeld method in the case of PZO-based AFE thin ﬁlm system. It is found that applying tensile strain to the thin ﬁlm substrate can increase the AFE domain periodicity and size, and improve the energy storage performance by boosting the AFE phase transition electric ﬁeld. The introduction of defect dipoles can break the long-range ordering of anti"
+          },
+          {
+            "source_file": "1-s2.0-S2352847824001278-main.pdf",
+            "page_number": 1,
+            "chunk_id": "d99a382568c429f7:p0001:c0001",
+            "relevance_score": 0.552223,
+            "score_type": "chroma_relevance_1_minus_cosine_distance_higher_is_better",
+            "passes_threshold": true,
+            "text_excerpt": "are expected to be candidates for dielectric capacitors. It remains a challenge to further enhance the effective energy storage density and ef ﬁciency of PZO-based antiferroelectric ﬁlms through domain engineering. In this work, the effects of three variables, mis ﬁt strain between the thin ﬁlm and substrate, defect dipoles doping, and ﬁlm thickness, on the domain structure and energy storage performance of PZO-based antiferroelectric materials are comprehensively investigated via phase-ﬁeld sim"
+          },
+          {
+            "source_file": "1-s2.0-S2352847824001278-main.pdf",
+            "page_number": 1,
+            "chunk_id": "d99a382568c429f7:p0001:c0004",
+            "relevance_score": 0.527383,
+            "score_type": "chroma_relevance_1_minus_cosine_distance_higher_is_better",
+            "passes_threshold": true,
+            "text_excerpt": "energy storage density. The antiferroelectric (AFE) materials represented by PbZrO 3 have low residual polarization due to its antiparallel polarization conﬁguration under zero electric ﬁeld, and can undergo AFE / FE phase transition under an electric ﬁeld with double electric hysteresis loop, which can effectively improve the energy storage density and energy storage ef ﬁciency [9e16]. AFE ceramics are constrained by the preparation process prob- lems, which may prevent the achievement of high "
+          }
+        ],
+        "execution_seconds": 0.035245
+      }
+    ],
+    "thresholded_unique_chunks": [
+      {
+        "source_file": "s41467-025-56194-1.pdf",
+        "page_number": 1,
+        "chunk_id": "c01c9f511e2a100e:p0001:c0000",
+        "relevance_score": 0.774132,
+        "score_type": "chroma_relevance_1_minus_cosine_distance_higher_is_better",
+        "passes_threshold": true,
+        "text_excerpt": "Article https://doi.org/10.1038/s41467-025-56194-1 Design of antiferroelectric polarization conﬁguration for ultrahigh capacitive energy storage via increasing entropy Yongxiao Zhou1,2,6, Tianfu Zhang3,6,L i a n gC h e n1,6 ,H u i f e nY u1,R u i y uW a n g1,4, Hao Zhang1,J i eW u5, Shiqing Deng 1,H eQ i 1,5 , Chang Zhou 1,4 & Jun Chen 1,5 Electric ﬁeld induced antiferroelectric-ferroelectric phase transition is a double-edged sword for energy storage properties, which not only offers a congenit"
+      },
+      {
+        "source_file": "s41467-025-56194-1.pdf",
+        "page_number": 6,
+        "chunk_id": "c01c9f511e2a100e:p0006:c0005",
+        "relevance_score": 0.603266,
+        "score_type": "chroma_relevance_1_minus_cosine_distance_higher_is_better",
+        "passes_threshold": true,
+        "text_excerpt": "have meticulously crafted a locally heterogeneous AFE polarization landscape, where commensurate, incommensurate, and relaxor AFE polarization conﬁgurations intertwine harmoniously. This intricate arrangement facilitates the traversal of seamless polarization trajec- tories, characterized by minimal hysteresis, pronounced polarization ﬂuctuations, and delayed polarization saturation. Consequently, we have achieved groundbreaking overall energy storage properties, accompanied by an ultrahighWrec "
+      },
+      {
+        "source_file": "s41467-025-56194-1.pdf",
+        "page_number": 1,
+        "chunk_id": "c01c9f511e2a100e:p0001:c0002",
+        "relevance_score": 0.593182,
+        "score_type": "chroma_relevance_1_minus_cosine_distance_higher_is_better",
+        "passes_threshold": true,
+        "text_excerpt": "controlling local diverse antiferroelectric polarization conﬁgurations by increasing entropy is an effective avenue to develop high-performance energy storage antiferroelectrics, with implications that can be extended to other materials and functionalities. Dielectric capacitors have been commercialized for various applica- tions including hybrid electrical vehicles, medical devices, and microwave communications1–3. Compared to batteries, solid oxide fuel cells, and electrochemical capacitors, d"
+      },
+      {
+        "source_file": "s41467-025-56194-1.pdf",
+        "page_number": 8,
+        "chunk_id": "c01c9f511e2a100e:p0008:c0000",
+        "relevance_score": 0.579847,
+        "score_type": "chroma_relevance_1_minus_cosine_distance_higher_is_better",
+        "passes_threshold": true,
+        "text_excerpt": "19. Wang, H., Liu, Y., Yang, T. & Zhang, S. Ultrahigh energy-storage density in antiferroelectric ceramics withﬁeld-induced multiphase transitions.Adv. Funct. Mater. 29, 1807321 (2019). 20. Ge, G. et al. Tunable domain switching features of incommensurate antiferroelectric ceramics realizing excellent energy storage prop- erties. Adv. Mater. 34, 2201333 (2022). 21. Chen, L. et al. Near-zero energy consumption capacitors by con- trolling inhomogeneous polarization conﬁguration.Adv. Mater. 36, 231"
+      },
+      {
+        "source_file": "1-s2.0-S2352847824001278-main.pdf",
+        "page_number": 1,
+        "chunk_id": "d99a382568c429f7:p0001:c0000",
+        "relevance_score": 0.723243,
+        "score_type": "chroma_relevance_1_minus_cosine_distance_higher_is_better",
+        "passes_threshold": true,
+        "text_excerpt": "Research paper Antiferroelectric domain modulation enhancing energy storage performance by phase- ﬁeld simulations Ke Xu a, b, Shiyu Tang a, b, Changqing Guo a, b, Yu Song a, b, Houbing Huang a, b, * a School of Materials Science and Engineering, Beijing Institute of Technology, Beijing, 100081, China b Advanced Research Institute of Multidisciplinary Science, Beijing Institute of Technology, Beijing, 100081, China article info Article history: Received 6 March 2024 Received in revised form 24 M"
+      },
+      {
+        "source_file": "1-s2.0-S2352847824001278-main.pdf",
+        "page_number": 7,
+        "chunk_id": "d99a382568c429f7:p0007:c0005",
+        "relevance_score": 0.560626,
+        "score_type": "chroma_relevance_1_minus_cosine_distance_higher_is_better",
+        "passes_threshold": true,
+        "text_excerpt": "(0e1.5%), defect dipole concentration (0 e10%), and ﬁlm thickness (4e24 layers) on the domain structure and energy storage perfor- mance using the phase- ﬁeld method in the case of PZO-based AFE thin ﬁlm system. It is found that applying tensile strain to the thin ﬁlm substrate can increase the AFE domain periodicity and size, and improve the energy storage performance by boosting the AFE phase transition electric ﬁeld. The introduction of defect dipoles can break the long-range ordering of anti"
+      },
+      {
+        "source_file": "1-s2.0-S2352847824001278-main.pdf",
+        "page_number": 1,
+        "chunk_id": "d99a382568c429f7:p0001:c0001",
+        "relevance_score": 0.552223,
+        "score_type": "chroma_relevance_1_minus_cosine_distance_higher_is_better",
+        "passes_threshold": true,
+        "text_excerpt": "are expected to be candidates for dielectric capacitors. It remains a challenge to further enhance the effective energy storage density and ef ﬁciency of PZO-based antiferroelectric ﬁlms through domain engineering. In this work, the effects of three variables, mis ﬁt strain between the thin ﬁlm and substrate, defect dipoles doping, and ﬁlm thickness, on the domain structure and energy storage performance of PZO-based antiferroelectric materials are comprehensively investigated via phase-ﬁeld sim"
+      },
+      {
+        "source_file": "1-s2.0-S2352847824001278-main.pdf",
+        "page_number": 1,
+        "chunk_id": "d99a382568c429f7:p0001:c0004",
+        "relevance_score": 0.527383,
+        "score_type": "chroma_relevance_1_minus_cosine_distance_higher_is_better",
+        "passes_threshold": true,
+        "text_excerpt": "energy storage density. The antiferroelectric (AFE) materials represented by PbZrO 3 have low residual polarization due to its antiparallel polarization conﬁguration under zero electric ﬁeld, and can undergo AFE / FE phase transition under an electric ﬁeld with double electric hysteresis loop, which can effectively improve the energy storage density and energy storage ef ﬁciency [9e16]. AFE ceramics are constrained by the preparation process prob- lems, which may prevent the achievement of high "
+      }
+    ],
+    "execution_seconds": 0.071257,
+    "coverage": {
+      "hit_source_files": [
+        "1-s2.0-S2352847824001278-main.pdf",
+        "s41467-025-56194-1.pdf"
+      ],
+      "target_papers_hit": [
+        "entropy paper",
+        "PZO domain-modulation paper"
+      ],
+      "targets_hit_count": 2,
+      "targets_expected_count": 2,
+      "target_coverage": "2/2"
+    }
+  },
+  "comparison_note": "C_source_filtered uses source_file filters and must not be treated as the same retrieval condition as global search."
+}

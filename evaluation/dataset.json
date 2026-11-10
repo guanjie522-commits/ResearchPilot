@@ -29,7 +29,8 @@
       "q16",
       "q10"
     ],
-    "pending_execution_question_ids": [
+    "pending_execution_question_ids": [],
+    "executed_diagnostic_question_ids": [
       "q09_local_pdf"
     ]
   },
@@ -236,7 +237,8 @@
       ],
       "derived_from": "q09",
       "variant_reason": "明确限定本地 PDF 来源，用于消除原始题干的指代歧义。",
-      "execution_status": "not_run",
+      "execution_status": "completed_pending_human_review",
+      "latest_result_file": "evaluation/results/benchmark_20261110T063228Z.json",
       "verification_status": "pending_human_review",
       "excerpt_match": true
     },

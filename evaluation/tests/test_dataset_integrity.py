@@ -19,6 +19,7 @@ Q16_DIAGNOSIS_PATH = (
     / "q16_retrieval_diagnosis_20261110.json"
 )
 HUMAN_REVIEW_PATH = ROOT / "evaluation" / "human_review.md"
+HUMAN_REVIEW_SUMMARY_PATH = ROOT / "evaluation" / "human_review_summary.md"
 EXPECTED_PILOT_SHA256 = (
     "0d02a575a9ef5cbf845c84179c0ec76e18b56ba74fe6d7ab3900f1e7b69eae54"
 )
@@ -53,7 +54,14 @@ class DatasetIntegrityTests(unittest.TestCase):
         self.assertIn("ambiguity_notes", original)
         self.assertTrue(variant["source_scope_is_explicit"])
         self.assertEqual(variant["derived_from"], "q09")
-        self.assertEqual(variant["execution_status"], "not_run")
+        self.assertEqual(
+            variant["execution_status"],
+            "completed_pending_human_review",
+        )
+        self.assertEqual(
+            variant["latest_result_file"],
+            "evaluation/results/benchmark_20261110T063228Z.json",
+        )
         self.assertIn("本地 PDF", variant["question"])
 
     def test_original_pilot_result_was_not_overwritten(self):
@@ -111,6 +119,14 @@ class DatasetIntegrityTests(unittest.TestCase):
         self.assertIn("q09_local_pdf", text)
         self.assertIn("pending_human_review", text)
         self.assertIn("q16 诊断", text)
+
+    def test_human_review_summary_has_five_questions_and_q09_variant(self):
+        text = HUMAN_REVIEW_SUMMARY_PATH.read_text(encoding="utf-8")
+        for question_id in ("q01", "q04", "q09", "q16", "q10"):
+            self.assertIn(f"## {question_id}", text)
+        self.assertIn("## 附录：q09_local_pdf", text)
+        self.assertIn("pending_human_review", text)
+        self.assertIn("retrieve_paper_evidence", text)
 
 
 if __name__ == "__main__":

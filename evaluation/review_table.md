@@ -1,8 +1,8 @@
 # ResearchPilot Benchmark 人工审核表
 
 - Dataset version: `0.3`
-- Questions: `20` core questions; q09 local-source variant is listed in
-  `evaluation/human_review.md`
+- Questions: `20` core questions; the q09 local-source variant was run
+  separately and is covered by `evaluation/human_review_summary.md`
 - 参考答案均为候选，等待人工审核。
 
 | ID | Type | Answerable | Source / Page | Review |
