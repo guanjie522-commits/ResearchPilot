@@ -297,10 +297,16 @@ def cross_paper_tab(pdfs: tuple[str, ...]) -> None:
             if result.get("status") == "completed_pending_human_review":
                 st.subheader("最终比较")
                 st.markdown(result.get("final_answer", ""))
-                st.caption(
-                    f"检索次数：{len(result.get('retrieval_runs', []))}；"
-                    f"来源数：{result.get('source_count', 0)}；"
-                    f"耗时：{float(result.get('elapsed_seconds', 0)):.2f}s"
+                columns = st.columns(4)
+                columns[0].metric(
+                    "检索次数",
+                    len(result.get("retrieval_runs", [])),
+                )
+                columns[1].metric("来源数", result.get("source_count", 0))
+                columns[2].metric("LLM 调用", result.get("llm_call_count", 0))
+                columns[3].metric(
+                    "耗时",
+                    f"{float(result.get('elapsed_seconds', 0)):.2f}s",
                 )
                 st.dataframe(
                     [
