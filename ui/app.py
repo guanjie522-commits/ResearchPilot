@@ -155,6 +155,9 @@ def pdf_qa_tab(pdfs: tuple[str, ...]) -> None:
     st.caption("Fast Mode：Chroma 检索 → Qwen3 → Evidence Registry → 引用校验")
     if not pdfs:
         st.error("当前没有已导入 PDF。请先构建本地 Chroma 索引。")
+        result = st.session_state.get("pdf_qa_result")
+        if result:
+            show_pdf_result(result)
         return
 
     with st.form("pdf_qa_form"):
@@ -287,6 +290,31 @@ def cross_paper_tab(pdfs: tuple[str, ...]) -> None:
     )
     if len(pdfs) < 2:
         st.error("跨论文比较至少需要索引中有两篇 PDF。")
+        result = st.session_state.get("cross_paper_result")
+        if result:
+            if result.get("historical_demo"):
+                st.info("历史演示数据：不是本次实时运行。")
+            if result.get("status") == "completed_pending_human_review":
+                st.subheader("最终比较")
+                st.markdown(result.get("final_answer", ""))
+                st.caption(
+                    f"检索次数：{len(result.get('retrieval_runs', []))}；"
+                    f"来源数：{result.get('source_count', 0)}；"
+                    f"耗时：{float(result.get('elapsed_seconds', 0)):.2f}s"
+                )
+                st.dataframe(
+                    [
+                        {
+                            "Evidence": item["evidence_id"],
+                            "PDF": item["source_file"],
+                            "页码": item["page_number"],
+                            "Chunk ID": item["chunk_id"],
+                        }
+                        for item in result.get("evidence", [])
+                    ],
+                    width="stretch",
+                    hide_index=True,
+                )
         return
 
     with st.form("cross_paper_form"):
