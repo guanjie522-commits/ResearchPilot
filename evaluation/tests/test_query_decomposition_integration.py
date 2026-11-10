@@ -6,6 +6,7 @@ from langchain_core.tools import StructuredTool
 
 from query_decomposition import (
     QueryDecompositionRetriever,
+    remove_ungrounded_domain_terms,
     validate_decomposition_plan,
 )
 from researchpilot_rag import build_research_graph
@@ -68,6 +69,23 @@ class QueryDecompositionIntegrationTests(unittest.IsolatedAsyncioTestCase):
                 ],
             )[0]
         )
+
+    def test_ungrounded_domain_terms_are_removed_without_dropping_valid_query(self):
+        query = (
+            "How does the PZO domain-modulation paper implement magnetic "
+            "domain engineering for energy storage applications?"
+        )
+        cleaned = remove_ungrounded_domain_terms(
+            query,
+            (
+                "Compare the entropy paper and the PZO domain-modulation "
+                "paper."
+            ),
+            "Local papers cover materials and energy storage.",
+        )
+        self.assertNotIn("magnetic", cleaned.casefold())
+        self.assertIn("PZO", cleaned)
+        self.assertIn("domain engineering", cleaned)
 
     async def test_each_query_calls_existing_tool_and_results_are_combined(self):
         calls = []

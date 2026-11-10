@@ -392,6 +392,7 @@
         "cross_paper_synthesis"
       ],
       "source_scope": "imported_local_pdfs",
+      "latest_lightweight_result": "evaluation/results/cross_paper_qa_20261110T095522Z.json",
       "expected_tools": [
         "retrieve_paper_evidence"
       ],

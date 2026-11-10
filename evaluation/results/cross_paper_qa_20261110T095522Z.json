@@ -1,0 +1,232 @@
+{
+  "status": "completed_pending_human_review",
+  "task": "Using only the imported local PDFs, compare the main design approaches of the entropy paper and the PZO domain-modulation paper.",
+  "queries": [
+    "How does the entropy paper describe the primary design methodology for optimizing energy storage in ferroelectric materials?",
+    "What is the main design approach for the PZO domain-modulation paper in enhancing storage performance through domain engineering?"
+  ],
+  "retrieval_runs": [
+    {
+      "query": "How does the entropy paper describe the primary design methodology for optimizing energy storage in ferroelectric materials?",
+      "top_k": 4,
+      "source_filter_enabled": false,
+      "returned_chunks": 4,
+      "sources": [
+        "materials-4180042.pdf",
+        "s41467-025-56194-1.pdf"
+      ],
+      "elapsed_seconds": 3.191399
+    },
+    {
+      "query": "What is the main design approach for the PZO domain-modulation paper in enhancing storage performance through domain engineering?",
+      "top_k": 4,
+      "source_filter_enabled": false,
+      "returned_chunks": 4,
+      "sources": [
+        "1-s2.0-S2352847824001278-main.pdf"
+      ],
+      "elapsed_seconds": 0.091389
+    }
+  ],
+  "excluded_reference_chunks": [
+    {
+      "source_file": "materials-4180042.pdf",
+      "page_number": 10,
+      "chunk_id": "f831e3b0bc234f0b:p0010:c0002",
+      "reason": "reference_list_like"
+    },
+    {
+      "source_file": "materials-4180042.pdf",
+      "page_number": 10,
+      "chunk_id": "f831e3b0bc234f0b:p0010:c0003",
+      "reason": "reference_list_like"
+    },
+    {
+      "source_file": "materials-4180042.pdf",
+      "page_number": 10,
+      "chunk_id": "f831e3b0bc234f0b:p0010:c0001",
+      "reason": "reference_list_like"
+    }
+  ],
+  "evidence": [
+    {
+      "evidence_id": "S1",
+      "source_type": "local_pdf",
+      "source_file": "s41467-025-56194-1.pdf",
+      "page_number": 1,
+      "chunk_id": "c01c9f511e2a100e:p0001:c0000",
+      "retrieval_score": 0.5660960029442235,
+      "score_type": "chroma_relevance_1_minus_cosine_distance_higher_is_better",
+      "supporting_text": "Article https://doi.org/10.1038/s41467-025-56194-1\nDesign of antiferroelectric polarization\nconﬁguration for ultrahigh capacitive energy\nstorage via increasing entropy\nYongxiao Zhou1,2,6, Tianfu Zhang3,6,L i a n gC h e n1,6 ,H u i f e nY u1,R u i y uW a n g1,4,\nHao Zhang1,J i eW u5, Shiqing Deng 1,H eQ i 1,5 , Chang Zhou 1,4 &\nJun Chen 1,5\nElectric ﬁeld induced antiferroelectric-ferroelectric phase transition is a\ndouble-edged sword for energy storage properties, which not only offers a\ncongenital superiority with substantial energy storage density but also poses\nsigniﬁcant challenges such as large polarization hysteresis and poor efﬁciency,\ndeteriorating the operation and service life of capacitors. Here, entropy\nincrease effect is utilized to simultaneously break the long-range antiferro-\nelectric order and locally adjust the fourfold commensurate modulated"
+    },
+    {
+      "evidence_id": "S2",
+      "source_type": "local_pdf",
+      "source_file": "1-s2.0-S2352847824001278-main.pdf",
+      "page_number": 7,
+      "chunk_id": "d99a382568c429f7:p0007:c0005",
+      "retrieval_score": 0.5090430785204815,
+      "score_type": "chroma_relevance_1_minus_cosine_distance_higher_is_better",
+      "supporting_text": "(0e1.5%), defect dipole concentration (0 e10%), and ﬁlm thickness\n(4e24 layers) on the domain structure and energy storage perfor-\nmance using the phase- ﬁeld method in the case of PZO-based AFE\nthin ﬁlm system. It is found that applying tensile strain to the thin\nﬁlm substrate can increase the AFE domain periodicity and size, and\nimprove the energy storage performance by boosting the AFE phase\ntransition electric ﬁeld. The introduction of defect dipoles can break\nthe long-range ordering of antiparallel domains to achieve the\nreduction of domain size and reduce the P-E loop hysteresis. The\nincrease of ﬁlm thickness can effectively improve the Ps, and then\nenhance the energy storage performance. Through the modulation\nof ﬁlm domain engineering, the AFE PbZrO 3-based system can\nachieve an effective energy storage density of 38.3 J/cm 3 with an"
+    },
+    {
+      "evidence_id": "S3",
+      "source_type": "local_pdf",
+      "source_file": "1-s2.0-S2352847824001278-main.pdf",
+      "page_number": 2,
+      "chunk_id": "d99a382568c429f7:p0002:c0001",
+      "retrieval_score": 0.4848560558312922,
+      "score_type": "chroma_relevance_1_minus_cosine_distance_higher_is_better",
+      "supporting_text": "tionship between domain microstructure and energy storage per-\nformance is an urgent need to advance the design of new materials\nin the ﬁeld of dielectric energy storage and achieve high energy\nstorage performance [ 42].\nThis work is based on the PbZrO 3-based AFE thin ﬁlm system,\nand the effects of substrate mis ﬁt strain (0 e1.5%), defect dipole\nconcentration (0 e10%), and ﬁlm thickness (4 e24 layers) on the\ndomain structure and energy storage performance have been\ninvestigated via phase-ﬁeld method. It is found that the PZO-based\nﬁlms can achieve an effective energy storage density of 38.3 J/cm 3\nand an energy storage ef ﬁciency of 89.4% under an electric ﬁeld of\nabout 2000 kV/cm at substrate tensile strain of 1.5%, defect dipole\nconcentration of 2%, and ﬁlm thickness of 24 layers. The simulation\nresults show that the enhancement of the energy storage perfor-"
+    },
+    {
+      "evidence_id": "S4",
+      "source_type": "local_pdf",
+      "source_file": "1-s2.0-S2352847824001278-main.pdf",
+      "page_number": 7,
+      "chunk_id": "d99a382568c429f7:p0007:c0006",
+      "retrieval_score": 0.476175701646231,
+      "score_type": "chroma_relevance_1_minus_cosine_distance_higher_is_better",
+      "supporting_text": "of ﬁlm domain engineering, the AFE PbZrO 3-based system can\nachieve an effective energy storage density of 38.3 J/cm 3 with an\nenergy storage efﬁciency of about 89.4% at an electric ﬁeld of about\n2000 kV/cm. This work systematically reveals the mechanism of\nthe in ﬂuence of three factors, mis ﬁt strain between thin ﬁlm and\nsubstrate, defect dipole concentration, and ﬁlm thickness, on the\nenergy storage performance from the AFE domain structure. It is\nexpected to promote the domain engineering regulation to achieve\nthe design of AFE materials with high energy storage performance.\nCRediT authorship contribution statement\nKe Xu: Conceptualization, Data curation, Formal analysis,\nInvestigation, Validation, Visualization, Writing e original draft,\nWriting e review & editing. Shiyu Tang: Formal analysis,\nFig. 8. Phase diagram of energy storage performance of PZO-based AFE thin ﬁlm"
+    },
+    {
+      "evidence_id": "S5",
+      "source_type": "local_pdf",
+      "source_file": "1-s2.0-S2352847824001278-main.pdf",
+      "page_number": 1,
+      "chunk_id": "d99a382568c429f7:p0001:c0000",
+      "retrieval_score": 0.4686639109829829,
+      "score_type": "chroma_relevance_1_minus_cosine_distance_higher_is_better",
+      "supporting_text": "Research paper\nAntiferroelectric domain modulation enhancing energy storage\nperformance by phase- ﬁeld simulations\nKe Xu a, b, Shiyu Tang a, b, Changqing Guo a, b, Yu Song a, b, Houbing Huang a, b, *\na School of Materials Science and Engineering, Beijing Institute of Technology, Beijing, 100081, China\nb Advanced Research Institute of Multidisciplinary Science, Beijing Institute of Technology, Beijing, 100081, China\narticle info\nArticle history:\nReceived 6 March 2024\nReceived in revised form\n24 March 2024\nAccepted 22 April 2024\nAvailable online 13 June 2024\nKeywords:\nAntiferroelectric materials\nPhase-ﬁeld simulations\nStrain effect\nDefect dipoles\nEnergy storage property\nabstract\nAntiferroelectric materials represented by PbZrO 3(PZO) have excellent energy storage performance and\nare expected to be candidates for dielectric capacitors. It remains a challenge to further enhance the"
+    }
+  ],
+  "source_to_paper": {
+    "1-s2.0-S2352847824001278-main.pdf": "P1",
+    "s41467-025-56194-1.pdf": "P2"
+  },
+  "source_count": 2,
+  "source_coverage": "2+",
+  "paper_claims": {
+    "paper_claims": [
+      {
+        "paper_code": "P2",
+        "design_approach": "通过熵增加效应同时打破长程反铁电序并局部调整四重调制结构",
+        "methodological_details": "熵增加效应作为核心机制，用于实现反铁电材料的域结构调控",
+        "evidence_ids": [
+          "S1"
+        ]
+      },
+      {
+        "paper_code": "P1",
+        "design_approach": "通过薄膜域工程调控基底应变、缺陷偶极子浓度及薄膜厚度",
+        "methodological_details": "具体参数包括：基底应变（0-1.5%）、缺陷偶极子浓度（0-10%）和薄膜厚度（4-24层），以优化能量存储性能",
+        "evidence_ids": [
+          "S2",
+          "S3",
+          "S4"
+        ]
+      }
+    ],
+    "comparison_points": [
+      {
+        "dimension": "机制焦点",
+        "summary": "熵论文（P2）侧重于熵增加驱动的域调制机制，而PZO域调制论文（P1）侧重于工程参数的精确调控",
+        "paper_codes": [
+          "P2",
+          "P1"
+        ],
+        "evidence_ids": [
+          "S1",
+          "S2",
+          "S3",
+          "S4"
+        ]
+      },
+      {
+        "dimension": "实现路径",
+        "summary": "熵论文通过熵增加效应直接调控域结构，PZO域调制论文则通过多参数协同优化域工程",
+        "paper_codes": [
+          "P2",
+          "P1"
+        ],
+        "evidence_ids": [
+          "S1",
+          "S2",
+          "S3",
+          "S4"
+        ]
+      }
+    ],
+    "limitations": [
+      "仅基于给定Evidence，未涉及外部知识或未明确提及的参数细节",
+      "未对两篇论文的实验验证或实际应用进行补充说明"
+    ]
+  },
+  "evidence_ownership_validation": {
+    "passed": true,
+    "errors": [],
+    "used_evidence_ids": [
+      "S1",
+      "S2",
+      "S3",
+      "S4"
+    ]
+  },
+  "citation_validation": {
+    "passed": true,
+    "known_evidence_ids": [
+      "S1",
+      "S2",
+      "S3",
+      "S4",
+      "S5"
+    ],
+    "used_citation_ids": [
+      "S1",
+      "S2",
+      "S3",
+      "S4"
+    ],
+    "unknown_citation_ids": [],
+    "valid_source_files": [
+      "1-s2.0-S2352847824001278-main.pdf",
+      "s41467-025-56194-1.pdf"
+    ],
+    "mentioned_source_files": [
+      "1-s2.0-S2352847824001278-main.pdf",
+      "s41467-025-56194-1.pdf"
+    ],
+    "invalid_source_files": [],
+    "valid_dois": [],
+    "mentioned_dois": [],
+    "invalid_dois": [],
+    "page_checks": [],
+    "page_mismatches": [],
+    "insufficient_evidence_stated": false,
+    "scope": "Checks citation-ID existence, source-file membership, and structured page references; scientific correctness is not auto-verified"
+  },
+  "final_answer": "### P2\n\n来源文件（程序生成）：s41467-025-56194-1.pdf\n\n设计方法：通过熵增加效应同时打破长程反铁电序并局部调整四重调制结构 [S1]\n\n技术细节：熵增加效应作为核心机制，用于实现反铁电材料的域结构调控 [S1]\n\n### P1\n\n来源文件（程序生成）：1-s2.0-S2352847824001278-main.pdf\n\n设计方法：通过薄膜域工程调控基底应变、缺陷偶极子浓度及薄膜厚度 [S2] [S3] [S4]\n\n技术细节：具体参数包括：基底应变（0-1.5%）、缺陷偶极子浓度（0-10%）和薄膜厚度（4-24层），以优化能量存储性能 [S2] [S3] [S4]\n\n## 比较\n\n- **机制焦点**：熵论文（P2）侧重于熵增加驱动的域调制机制，而PZO域调制论文（P1）侧重于工程参数的精确调控 [S1] [S2] [S3] [S4]\n- **实现路径**：熵论文通过熵增加效应直接调控域结构，PZO域调制论文则通过多参数协同优化域工程 [S1] [S2] [S3] [S4]\n\n## 限制\n\n- 仅基于给定Evidence，未涉及外部知识或未明确提及的参数细节\n- 未对两篇论文的实验验证或实际应用进行补充说明\n\n引用索引：\n- [S1] s41467-025-56194-1.pdf 第 1 页\n- [S2] 1-s2.0-S2352847824001278-main.pdf 第 7 页\n- [S3] 1-s2.0-S2352847824001278-main.pdf 第 2 页\n- [S4] 1-s2.0-S2352847824001278-main.pdf 第 7 页",
+  "llm_calls": [
+    {
+      "role": "query_decomposer",
+      "elapsed_seconds": 6.517111,
+      "usage": {
+        "input_tokens": 387,
+        "output_tokens": 103,
+        "total_tokens": 490
+      }
+    },
+    {
+      "role": "final_generator",
+      "elapsed_seconds": 347.786669,
+      "usage": {
+        "input_tokens": 1702,
+        "output_tokens": 3301,
+        "total_tokens": 5003
+      }
+    }
+  ],
+  "llm_call_count": 2,
+  "total_tokens": 5493,
+  "elapsed_seconds": 357.629994
+}

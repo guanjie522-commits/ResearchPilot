@@ -11,6 +11,7 @@ if str(ROOT) not in sys.path:
 
 from query_decomposition import (  # noqa: E402
     query_decomposition_messages,
+    remove_ungrounded_domain_terms,
     repair_query_decomposition_messages,
     validate_decomposition_plan,
 )
@@ -47,7 +48,16 @@ async def main() -> None:
             question["question"],
             (ROOT / "researchpilot_context.md").read_text(encoding="utf-8"),
             result.eligible,
-            result.queries,
+            [
+                remove_ungrounded_domain_terms(
+                    query,
+                    question["question"],
+                    (ROOT / "researchpilot_context.md").read_text(
+                        encoding="utf-8"
+                    ),
+                )
+                for query in result.queries
+            ],
         )
         raw_queries = list(result.queries)
         if error:
@@ -66,7 +76,16 @@ async def main() -> None:
                 question["question"],
                 (ROOT / "researchpilot_context.md").read_text(encoding="utf-8"),
                 repaired.eligible,
-                repaired.queries,
+                [
+                    remove_ungrounded_domain_terms(
+                        query,
+                        question["question"],
+                        (ROOT / "researchpilot_context.md").read_text(
+                            encoding="utf-8"
+                        ),
+                    )
+                    for query in repaired.queries
+                ],
             )
             if repaired.queries:
                 raw_queries = list(repaired.queries)

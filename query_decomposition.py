@@ -340,3 +340,21 @@ def validate_decomposition_plan(
                 + ", ".join(sorted(introduced)),
             )
     return True, cleaned, None
+
+
+def remove_ungrounded_domain_terms(
+    query: str,
+    original_task: str,
+    project_context: str,
+) -> str:
+    allowed_context = {
+        *re.findall(r"\b[a-z0-9]+\b", original_task.casefold()),
+        *re.findall(r"\b[a-z0-9]+\b", project_context.casefold()),
+    }
+    blocked = _UNGROUNDED_DOMAIN_TERMS - allowed_context
+
+    def replace(match: re.Match) -> str:
+        return "" if match.group(0).casefold() in blocked else match.group(0)
+
+    cleaned = re.sub(r"\b[a-zA-Z0-9]+\b", replace, query)
+    return re.sub(r"\s+", " ", cleaned).strip()

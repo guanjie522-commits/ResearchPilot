@@ -20,6 +20,7 @@ from query_decomposition import (
     QueryDecompositionPlan,
     QueryDecompositionRetriever,
     query_decomposition_messages,
+    remove_ungrounded_domain_terms,
     repair_query_decomposition_messages,
     validate_decomposition_plan,
 )
@@ -628,7 +629,14 @@ def build_research_graph(
                         state["original_task"],
                         state["project_context"],
                         decomposition_result.eligible,
-                        decomposition_result.queries,
+                        [
+                            remove_ungrounded_domain_terms(
+                                query,
+                                state["original_task"],
+                                state["project_context"],
+                            )
+                            for query in decomposition_result.queries
+                        ],
                     )
                 )
                 raw_queries = list(decomposition_result.queries)
@@ -658,7 +666,14 @@ def build_research_graph(
                             state["original_task"],
                             state["project_context"],
                             repaired_result.eligible,
-                            repaired_result.queries,
+                            [
+                                remove_ungrounded_domain_terms(
+                                    query,
+                                    state["original_task"],
+                                    state["project_context"],
+                                )
+                                for query in repaired_result.queries
+                            ],
                         )
                     )
                     if repaired_result.queries:

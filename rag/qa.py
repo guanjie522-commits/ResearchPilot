@@ -63,6 +63,7 @@ def retrieve(
     top_k: int = DEFAULT_TOP_K,
     chroma_dir: Path = DEFAULT_CHROMA_DIR,
     manifest_path: Path = DEFAULT_INDEX_MANIFEST,
+    source_file: str | None = None,
 ) -> list[RetrievedChunk]:
     if not question.strip():
         raise ValueError("Question must not be empty.")
@@ -79,9 +80,12 @@ def retrieve(
     if store._collection.count() == 0:
         raise ValueError("The Chroma index is empty. Run PDF ingestion first.")
 
+    search_kwargs: dict[str, Any] = {"k": top_k}
+    if source_file:
+        search_kwargs["filter"] = {"source_file": source_file}
     matches = store.similarity_search_with_relevance_scores(
         question,
-        k=top_k,
+        **search_kwargs,
     )
     chunks = []
     remaining_chars = MAX_CONTEXT_CHARS
