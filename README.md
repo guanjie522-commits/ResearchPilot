@@ -515,5 +515,6 @@ q16 检索实验：
 
 - [演示流程](docs/DEMO_GUIDE.md)
 - [已知问题](docs/KNOWN_ISSUES.md)
+- [GitHub 发布准备报告](docs/RELEASE_READINESS.md)
 - [截图规范](docs/screenshots/README.md)
 - [第三方依赖说明](THIRD_PARTY_NOTICES.md)
