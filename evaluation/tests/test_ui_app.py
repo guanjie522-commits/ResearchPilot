@@ -76,6 +76,32 @@ class ResearchPilotUITests(unittest.TestCase):
         )
         self.assertEqual(len(app.dataframe), 0)
 
+    def test_historical_demo_query_parameters_do_not_run_tasks(self):
+        for kind, expected in (
+            ("pdf", "历史演示数据"),
+            ("paper", "Crossref 返回"),
+            ("cross", "最终比较"),
+        ):
+            with self.subTest(kind=kind):
+                app = AppTest.from_file(
+                    str(ROOT / "ui" / "app.py"),
+                    default_timeout=20,
+                )
+                app.query_params["demo"] = kind
+                app.run()
+                self.assertEqual(len(app.exception), 0)
+                self.assertTrue(
+                    any(
+                        expected in item.value
+                        for item in [
+                            *app.markdown,
+                            *app.caption,
+                            *app.info,
+                            *app.subheader,
+                        ]
+                    )
+                )
+
 
 if __name__ == "__main__":
     unittest.main()

@@ -28,6 +28,14 @@ streamlit run ui/app.py \
 
 ## 1. PDF 问答
 
+历史演示预览：
+
+```text
+http://127.0.0.1:8501/?demo=pdf
+```
+
+![PDF 问答历史演示](screenshots/pdf-qa.png)
+
 ### 可回答示例
 
 选择一篇已经导入的论文，输入：
@@ -61,6 +69,14 @@ in the phase-field study of PZO-based antiferroelectric films?
 
 ## 2. 真实论文检索
 
+历史演示预览：
+
+```text
+http://127.0.0.1:8501/?demo=paper
+```
+
+![Crossref 历史演示](screenshots/paper-search.png)
+
 输入：
 
 ```text
@@ -78,6 +94,14 @@ Crossref 返回项会随 API 状态变化。不要把本仓库中的历史 DOI �
 运行的固定结果。
 
 ## 3. 跨论文比较
+
+历史演示预览：
+
+```text
+http://127.0.0.1:8501/?demo=cross
+```
+
+![跨论文比较历史演示](screenshots/cross-paper.png)
 
 这是实验性功能，不会自动运行。
 

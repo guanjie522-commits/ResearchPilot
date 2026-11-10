@@ -94,6 +94,16 @@ class DocumentationTests(unittest.TestCase):
                 continue
             self.assertTrue((ROOT / target).exists(), msg=target)
 
+    def test_real_ui_screenshots_exist(self):
+        for name in (
+            "pdf-qa.png",
+            "paper-search.png",
+            "cross-paper.png",
+        ):
+            path = ROOT / "docs" / "screenshots" / name
+            self.assertTrue(path.is_file(), msg=str(path))
+            self.assertGreater(path.stat().st_size, 10_000)
+
 
 if __name__ == "__main__":
     unittest.main()

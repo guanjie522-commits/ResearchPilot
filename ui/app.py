@@ -29,6 +29,19 @@ def indexed_pdfs() -> tuple[str, ...]:
     return tuple(sorted((manifest.get("files") or {}).keys()))
 
 
+@st.cache_data(ttl=60)
+def load_demo_result(kind: str) -> dict[str, Any] | list[dict[str, Any]]:
+    paths = {
+        "pdf": ROOT / "evaluation" / "results" / "ui_smoke_fast_20261110.json",
+        "paper": ROOT / "evaluation" / "results" / "ui_crossref_smoke_20261110.json",
+        "cross": ROOT / "evaluation" / "results" / "cross_paper_qa_20261110T095522Z.json",
+    }
+    path = paths.get(kind)
+    if path is None:
+        raise ValueError(f"Unsupported demo kind: {kind}")
+    return json.loads(path.read_text(encoding="utf-8"))
+
+
 def run_async(coroutine):
     return asyncio.run(coroutine)
 
@@ -52,6 +65,8 @@ def show_metrics(result: dict[str, Any]) -> None:
 
 
 def show_pdf_result(result: dict[str, Any]) -> None:
+    if result.get("historical_demo"):
+        st.info("历史演示数据：不是本次实时运行。")
     status = result.get("status", "success")
     if status == "timeout":
         st.error(f"运行超时：{result.get('error', '超过任务预算')}")
@@ -241,6 +256,8 @@ def paper_search_tab() -> None:
     if state["status"] != "success":
         st.error(state.get("error", "检索失败"))
         return
+    if state.get("historical_demo"):
+        st.info("历史演示数据：不是本次实时运行。")
     st.caption(
         f"Crossref 返回 {state.get('returned', len(state['papers']))} 篇；"
         f"请求耗时 {state.get('request_seconds', 'unavailable')} 秒。"
@@ -333,6 +350,8 @@ def cross_paper_tab(pdfs: tuple[str, ...]) -> None:
     result = st.session_state.get("cross_paper_result")
     if not result:
         return
+    if result.get("historical_demo"):
+        st.info("历史演示数据：不是本次实时运行。")
     if result.get("status") != "completed_pending_human_review":
         st.error(
             result.get(
@@ -401,6 +420,27 @@ def main() -> None:
     st.caption(
         f"当前索引 PDF：{len(pdfs)} 篇。页面仅在本机运行，不包含公开分享功能。"
     )
+
+    demo_kind = st.query_params.get("demo")
+    if demo_kind:
+        if demo_kind == "pdf":
+            result = load_demo_result("pdf")[0]
+            result["historical_demo"] = True
+            st.session_state["pdf_qa_result"] = result
+            pdf_qa_tab(pdfs)
+        elif demo_kind == "paper":
+            state = load_demo_result("paper")
+            state["historical_demo"] = True
+            st.session_state["paper_search_result"] = state
+            paper_search_tab()
+        elif demo_kind == "cross":
+            result = load_demo_result("cross")
+            result["historical_demo"] = True
+            st.session_state["cross_paper_result"] = result
+            cross_paper_tab(pdfs)
+        else:
+            st.error("未知演示类型。")
+        return
 
     pdf_tab, paper_tab, cross_tab = st.tabs(
         ["PDF 问答", "真实论文检索", "跨论文比较"]

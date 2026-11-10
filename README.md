@@ -65,6 +65,22 @@ Executor 通过 MCP Tool Calling 自主选择：
 Retriever，合并并去重 Evidence，随后只调用一次 Qwen 生成结构化比较。
 该功能不包含 Planner/Replanner，仍属于实验功能。
 
+## UI 预览
+
+以下截图来自真实本地运行，并标记为历史演示数据：
+
+### PDF 问答
+
+![PDF 问答](docs/screenshots/pdf-qa.png)
+
+### 真实论文检索
+
+![Crossref 论文检索](docs/screenshots/paper-search.png)
+
+### 跨论文比较
+
+![跨论文比较](docs/screenshots/cross-paper.png)
+
 ## 3. 技术栈
 
 | 组件 | 用途 |
@@ -381,8 +397,8 @@ python researchpilot_modes.py \
 python -m unittest discover -s evaluation/tests -q
 ```
 
-任务13-B 验收时为 `44` 项；本次新增 6 项文档/仓库一致性检查后，
-当前共 `50` 项测试通过。
+任务13-B 验收时为 `44` 项；本次新增 8 项文档/仓库一致性检查后，
+当前共 `52` 项测试通过。
 
 ### UI 实测
 
