@@ -1,0 +1,2360 @@
+{
+  "run_id": "formal_benchmark_pilot_20261110",
+  "created_at": "2026-11-10T04:23:04.815783+00:00",
+  "status": "completed_with_quality_gate_failure",
+  "dataset_version": "0.2",
+  "candidate_question_count": 20,
+  "evaluated_question_count": 5,
+  "not_run_question_ids": [
+    "q02",
+    "q03",
+    "q05",
+    "q06",
+    "q07",
+    "q08",
+    "q11",
+    "q12",
+    "q13",
+    "q14",
+    "q15",
+    "q17",
+    "q18",
+    "q19",
+    "q20"
+  ],
+  "manual_review": {
+    "reviewed_question_count": 0,
+    "pending_question_count": 20,
+    "ground_truth_status": "pending_review"
+  },
+  "not_applicable": [
+    {
+      "question_id": "q01",
+      "variant": "A_baseline",
+      "reason": "baseline has no PDF retrieval access"
+    },
+    {
+      "question_id": "q04",
+      "variant": "A_baseline",
+      "reason": "baseline has no PDF retrieval access"
+    },
+    {
+      "question_id": "q09",
+      "variant": "A_baseline",
+      "reason": "baseline has no PDF retrieval access"
+    },
+    {
+      "question_id": "q16",
+      "variant": "A_baseline",
+      "reason": "baseline has no PDF retrieval access"
+    }
+  ],
+  "runs": [
+    {
+      "question_id": "q01",
+      "question": "Using only the imported local PDFs, what design strategy is used to improve antiferroelectric polarization configuration for capacitive energy storage?",
+      "question_type": "fact_extraction",
+      "answerable": true,
+      "reference_answer": "The paper uses an entropy-increase strategy to design the antiferroelectric polarization configuration.",
+      "reference_verification_status": "pending_human_review",
+      "model": "qwen3:4b",
+      "system_variant": "A_baseline",
+      "temperature": 0,
+      "top_k": 4,
+      "final_answer": "证据不足",
+      "elapsed_seconds": 27.482731,
+      "cited_sources": [],
+      "retrieved_chunks": [],
+      "tool_calls": [],
+      "error_message": null,
+      "run_status": "success",
+      "citation_validation": {
+        "passed": null,
+        "mode": "not_applicable_no_retrieval"
+      },
+      "performance": {
+        "total_seconds": 27.482731,
+        "planner_seconds": 0.0,
+        "executor_seconds": 0.0,
+        "replanner_seconds": 0.0,
+        "writer_seconds": 0.0,
+        "context_loader_seconds": 0.0,
+        "node_wall_seconds": {
+          "context_loader": 0.0,
+          "executor": 0.0,
+          "planner": 0.0,
+          "replanner": 0.0,
+          "writer": 0.0
+        },
+        "mcp_tool_seconds": {},
+        "mcp_tool_total_seconds": 0,
+        "chroma_retrieval_seconds": 0.0,
+        "crossref_api_seconds": 0.0,
+        "llm_call_count": 1,
+        "llm_error_count": 0,
+        "llm_wall_seconds": 27.479907,
+        "llm_generation_seconds": 27.469833,
+        "prompt_tokens": 97,
+        "completion_tokens": 994,
+        "total_tokens": 1091,
+        "llm_calls": [
+          {
+            "call_index": 1,
+            "node": "baseline",
+            "configured_thinking_setting": "default",
+            "prompt_tokens": 97,
+            "completion_tokens": 994,
+            "total_tokens": 1091,
+            "generation_duration_seconds": 27.469833,
+            "wall_seconds": 27.479911,
+            "thinking_tokens": null,
+            "thinking_tokens_status": "unavailable",
+            "thinking_chars": 0,
+            "final_answer_chars": 4,
+            "has_tool_calls": false,
+            "error": null
+          }
+        ],
+        "thinking_tokens_status": "unavailable",
+        "token_metadata_status": "available",
+        "tool_call_count": 0,
+        "tool_calls_by_name": {},
+        "executed_steps": 0,
+        "replanning_count": 0,
+        "generation_model_loaded_before_run": false,
+        "cold_start": true,
+        "node_call_counts": {
+          "executor": 0
+        }
+      },
+      "review_status": "pending_human_review",
+      "automated_quality_signal": {
+        "status": "not_applicable",
+        "reason": "baseline has no PDF retrieval access",
+        "signal": "not_applicable_for_pdf_evidence"
+      }
+    },
+    {
+      "question_id": "q01",
+      "question": "Using only the imported local PDFs, what design strategy is used to improve antiferroelectric polarization configuration for capacitive energy storage?",
+      "question_type": "fact_extraction",
+      "answerable": true,
+      "reference_answer": "The paper uses an entropy-increase strategy to design the antiferroelectric polarization configuration.",
+      "reference_verification_status": "pending_human_review",
+      "model": "qwen3:4b",
+      "system_variant": "B_direct_rag",
+      "temperature": 0,
+      "top_k": 4,
+      "final_answer": "Based strictly on the provided retrieval evidence, the design strategy used to improve antiferroelectric polarization configuration for capacitive energy storage is described as follows:\n\nThe strategy involves **utilizing entropy increase effect to simultaneously break the long-range antiferroelectric order and locally adjust the fourfold commensurate modulated structure**. This is explicitly stated in the first page of the source PDF.\n\n**Source attribution**:  \n- Source file: `s41467-025-56194-1.pdf`  \n- Page number: 1  \n- Chunk ID: `c01c9f511e2a100e:p0001:c0000`  \n\n**Rationale for evidence use**:  \n- Evidence 1 (source file: `s41467-025-56194-1.pdf`, page 1) directly describes the design strategy in the context of the paper's title and opening paragraph. It specifies that the entropy increase effect is employed to achieve the dual objectives of breaking long-range antiferroelectric order and locally adjusting the fourfold commensurate modulated structure, which improves capacitive energy storage performance.  \n- No other evidence provides a more specific or direct description of the design strategy for this query. Evidence 2, 3, and 4 contain references or related concepts (e.g., domain modulation, phase-field simulations) but do not explicitly define the strategy for improving antiferroelectric polarization configuration as the query requires. The evidence strictly adheres to the provided PDF fragments without supplementation.  \n\n**Note**: The response is derived solely from the given evidence and does not include any external knowledge, assumptions, or inferences. The strategy is quoted verbatim from the evidence where applicable.\n\n检索来源：\n- s41467-025-56194-1.pdf 第 1 页 (chunk c01c9f511e2a100e:p0001:c0000)\n- s41467-025-56194-1.pdf 第 8 页 (chunk c01c9f511e2a100e:p0008:c0000)\n- materials-4180042.pdf 第 10 页 (chunk f831e3b0bc234f0b:p0010:c0002)\n- 1-s2.0-S2352847824001278-main.pdf 第 1 页 (chunk d99a382568c429f7:p0001:c0000)",
+      "elapsed_seconds": 63.914198,
+      "cited_sources": [
+        {
+          "source_file": "s41467-025-56194-1.pdf",
+          "page_number": 1,
+          "chunk_id": "c01c9f511e2a100e:p0001:c0000"
+        },
+        {
+          "source_file": "s41467-025-56194-1.pdf",
+          "page_number": 8,
+          "chunk_id": "c01c9f511e2a100e:p0008:c0000"
+        },
+        {
+          "source_file": "materials-4180042.pdf",
+          "page_number": 10,
+          "chunk_id": "f831e3b0bc234f0b:p0010:c0002"
+        },
+        {
+          "source_file": "1-s2.0-S2352847824001278-main.pdf",
+          "page_number": 1,
+          "chunk_id": "d99a382568c429f7:p0001:c0000"
+        }
+      ],
+      "retrieved_chunks": [
+        {
+          "source_file": "s41467-025-56194-1.pdf",
+          "page_number": 1,
+          "chunk_id": "c01c9f511e2a100e:p0001:c0000",
+          "score": 0.6469502431730072,
+          "score_type": "chroma_relevance_1_minus_cosine_distance_higher_is_better",
+          "text": "Article https://doi.org/10.1038/s41467-025-56194-1\nDesign of antiferroelectric polarization\nconﬁguration for ultrahigh capacitive energy\nstorage via increasing entropy\nYongxiao Zhou1,2,6, Tianfu Zhang3,6,L i a n gC h e n1,6 ,H u i f e nY u1,R u i y uW a n g1,4,\nHao Zhang1,J i eW u5, Shiqing Deng 1,H eQ i 1,5 , Chang Zhou 1,4 &\nJun Chen 1,5\nElectric ﬁeld induced antiferroelectric-ferroelectric phase transition is a\ndouble-edged sword for energy storage properties, which not only offers a\ncongenital superiority with substantial energy storage density but also poses\nsigniﬁcant challenges such as large polarization hysteresis and poor efﬁciency,\ndeteriorating the operation and service life of capacitors. Here, entropy\nincrease effect is utilized to simultaneously break the long-range antiferro-\nelectric order and locally adjust the fourfold commensurate modulated"
+        },
+        {
+          "source_file": "s41467-025-56194-1.pdf",
+          "page_number": 8,
+          "chunk_id": "c01c9f511e2a100e:p0008:c0000",
+          "score": 0.5875297827544386,
+          "score_type": "chroma_relevance_1_minus_cosine_distance_higher_is_better",
+          "text": "19. Wang, H., Liu, Y., Yang, T. & Zhang, S. Ultrahigh energy-storage\ndensity in antiferroelectric ceramics withﬁeld-induced multiphase\ntransitions.Adv. Funct. Mater. 29, 1807321 (2019).\n20. Ge, G. et al. Tunable domain switching features of incommensurate\nantiferroelectric ceramics realizing excellent energy storage prop-\nerties. Adv. Mater. 34, 2201333 (2022).\n21. Chen, L. et al. Near-zero energy consumption capacitors by con-\ntrolling inhomogeneous polarization conﬁguration.Adv. Mater. 36,\n2313285 (2024).\n22. Chen, L. et al. Local diverse polarization optimized comprehensive\nenergy-storage performance in lead-free superparaelectrics.Adv.\nMater. 34, 2205787 (2022).\n23. Xie, A. et al. Supercritical relaxor nanograined ferroelectrics for\nultrahigh-energy-storage capacitors.Adv. Mater. 34, 2204356\n(2022).\n24. Zhuo, F. et al. Perspective on antiferroelectrics for energy storage"
+        },
+        {
+          "source_file": "materials-4180042.pdf",
+          "page_number": 10,
+          "chunk_id": "f831e3b0bc234f0b:p0010:c0002",
+          "score": 0.5781096249374656,
+          "score_type": "chroma_relevance_1_minus_cosine_distance_higher_is_better",
+          "text": "385: 204–209 \n[4] Yang B, Zhang Q, Huang H, et al. Engineering relaxors by entropy for high energy storage performance. Nature Energy, 2023, \n8: 956–964 \n[5] Xu K, Shi X, Dong S, et al. Antiferroelectric phase diagram enhancing energy-storage performance by phase-ﬁeld simulations. \nACS Applied Materials & Interfaces, 2022, 14: 25770–25780 \n[6] Xu K, Shi X, Shao C, et al. Design of polar boundaries enhancing negative electrocaloric performance by antiferroelectric phase-\nﬁeld simulations. npj Computational Materials, 2024, 10: 150 \n[7] Li F, Zhang S, Yang T, et al. The origin of ultrahigh piezoelectricity in relaxor-ferroelectric solid solution crystals. Nature \ncommunications, 2016, 7: 13807 \n[8] Qi H, Xie A, Zuo R. Local structure engineered lead-free ferroic dielectrics for superior energy-storage capacitors: A review. \nEnergy Storage Materials, 2022, 45: 541–567"
+        },
+        {
+          "source_file": "1-s2.0-S2352847824001278-main.pdf",
+          "page_number": 1,
+          "chunk_id": "d99a382568c429f7:p0001:c0000",
+          "score": 0.5743048603349932,
+          "score_type": "chroma_relevance_1_minus_cosine_distance_higher_is_better",
+          "text": "Research paper\nAntiferroelectric domain modulation enhancing energy storage\nperformance by phase- ﬁeld simulations\nKe Xu a, b, Shiyu Tang a, b, Changqing Guo a, b, Yu Song a, b, Houbing Huang a, b, *\na School of Materials Science and Engineering, Beijing Institute of Technology, Beijing, 100081, China\nb Advanced Research Institute of Multidisciplinary Science, Beijing Institute of Technology, Beijing, 100081, China\narticle info\nArticle history:\nReceived 6 March 2024\nReceived in revised form\n24 March 2024\nAccepted 22 April 2024\nAvailable online 13 June 2024\nKeywords:\nAntiferroelectric materials\nPhase-ﬁeld simulations\nStrain effect\nDefect dipoles\nEnergy storage property\nabstract\nAntiferroelectric materials represented by PbZrO 3(PZO) have excellent energy storage performance and\nare expected to be candidates for dielectric capacitors. It remains a challenge to further enhance the"
+        }
+      ],
+      "tool_calls": [],
+      "error_message": null,
+      "run_status": "success",
+      "citation_validation": {
+        "passed": true,
+        "mode": "program_appended_retrieved_sources",
+        "retrieved_source_count": 4,
+        "unknown_citation_ids": []
+      },
+      "performance": {
+        "total_seconds": 63.914198,
+        "llm_call_count": 1,
+        "prompt_tokens": 1504,
+        "completion_tokens": 2277,
+        "total_tokens": 3781,
+        "chroma_retrieval_seconds": 1.7011333330301568,
+        "tool_call_count": 0
+      },
+      "review_status": "pending_human_review",
+      "automated_quality_signal": {
+        "status": "pending_human_review",
+        "signal": "keyword_signal_pass",
+        "keyword_check_passed": true
+      }
+    },
+    {
+      "question_id": "q01",
+      "question": "Using only the imported local PDFs, what design strategy is used to improve antiferroelectric polarization configuration for capacitive energy storage?",
+      "question_type": "fact_extraction",
+      "answerable": true,
+      "reference_answer": "The paper uses an entropy-increase strategy to design the antiferroelectric polarization configuration.",
+      "reference_verification_status": "pending_human_review",
+      "model": "qwen3:4b",
+      "system_variant": "C_fast",
+      "temperature": 0,
+      "top_k": 4,
+      "final_answer": "The design strategy used to improve antiferroelectric polarization configuration for capacitive energy storage is increasing entropy, as evidenced by [S1]. This strategy utilizes the entropy increase effect to simultaneously break the long-range antiferroelectric order and locally adjust the fourfold commensurate modulated polarization configuration, thereby enhancing ultrahigh capacitive energy storage performance.\n\n引用索引：\n- [S1] s41467-025-56194-1.pdf 第 1 页",
+      "elapsed_seconds": 83.921772,
+      "cited_sources": [
+        {
+          "evidence_id": "S1",
+          "source_file": "s41467-025-56194-1.pdf",
+          "page_number": 1,
+          "chunk_id": "c01c9f511e2a100e:p0001:c0000"
+        }
+      ],
+      "retrieved_chunks": [
+        {
+          "evidence_id": "S1",
+          "source_file": "s41467-025-56194-1.pdf",
+          "page_number": 1,
+          "chunk_id": "c01c9f511e2a100e:p0001:c0000",
+          "score": 0.6469502431730072,
+          "score_type": "chroma_relevance_1_minus_cosine_distance_higher_is_better",
+          "text": "Article https://doi.org/10.1038/s41467-025-56194-1\nDesign of antiferroelectric polarization\nconﬁguration for ultrahigh capacitive energy\nstorage via increasing entropy\nYongxiao Zhou1,2,6, Tianfu Zhang3,6,L i a n gC h e n1,6 ,H u i f e nY u1,R u i y uW a n g1,4,\nHao Zhang1,J i eW u5, Shiqing Deng 1,H eQ i 1,5 , Chang Zhou 1,4 &\nJun Chen 1,5\nElectric ﬁeld induced antiferroelectric-ferroelectric phase transition is a\ndouble-edged sword for energy storage properties, which not only offers a\ncongenital superiority with substantial energy storage density but also poses\nsigniﬁcant challenges such as large polarization hysteresis and poor efﬁciency,\ndeteriorating the operation and service life of capacitors. Here, entropy\nincrease effect is utilized to simultaneously break the long-range antiferro-\nelectric order and locally adjust the fourfold commensurate modulated"
+        },
+        {
+          "evidence_id": "S2",
+          "source_file": "s41467-025-56194-1.pdf",
+          "page_number": 8,
+          "chunk_id": "c01c9f511e2a100e:p0008:c0000",
+          "score": 0.5875297827544386,
+          "score_type": "chroma_relevance_1_minus_cosine_distance_higher_is_better",
+          "text": "19. Wang, H., Liu, Y., Yang, T. & Zhang, S. Ultrahigh energy-storage\ndensity in antiferroelectric ceramics withﬁeld-induced multiphase\ntransitions.Adv. Funct. Mater. 29, 1807321 (2019).\n20. Ge, G. et al. Tunable domain switching features of incommensurate\nantiferroelectric ceramics realizing excellent energy storage prop-\nerties. Adv. Mater. 34, 2201333 (2022).\n21. Chen, L. et al. Near-zero energy consumption capacitors by con-\ntrolling inhomogeneous polarization conﬁguration.Adv. Mater. 36,\n2313285 (2024).\n22. Chen, L. et al. Local diverse polarization optimized comprehensive\nenergy-storage performance in lead-free superparaelectrics.Adv.\nMater. 34, 2205787 (2022).\n23. Xie, A. et al. Supercritical relaxor nanograined ferroelectrics for\nultrahigh-energy-storage capacitors.Adv. Mater. 34, 2204356\n(2022).\n24. Zhuo, F. et al. Perspective on antiferroelectrics for energy storage"
+        },
+        {
+          "evidence_id": "S3",
+          "source_file": "materials-4180042.pdf",
+          "page_number": 10,
+          "chunk_id": "f831e3b0bc234f0b:p0010:c0002",
+          "score": 0.5781096249374656,
+          "score_type": "chroma_relevance_1_minus_cosine_distance_higher_is_better",
+          "text": "385: 204–209 \n[4] Yang B, Zhang Q, Huang H, et al. Engineering relaxors by entropy for high energy storage performance. Nature Energy, 2023, \n8: 956–964 \n[5] Xu K, Shi X, Dong S, et al. Antiferroelectric phase diagram enhancing energy-storage performance by phase-ﬁeld simulations. \nACS Applied Materials & Interfaces, 2022, 14: 25770–25780 \n[6] Xu K, Shi X, Shao C, et al. Design of polar boundaries enhancing negative electrocaloric performance by antiferroelectric phase-\nﬁeld simulations. npj Computational Materials, 2024, 10: 150 \n[7] Li F, Zhang S, Yang T, et al. The origin of ultrahigh piezoelectricity in relaxor-ferroelectric solid solution crystals. Nature \ncommunications, 2016, 7: 13807 \n[8] Qi H, Xie A, Zuo R. Local structure engineered lead-free ferroic dielectrics for superior energy-storage capacitors: A review. \nEnergy Storage Materials, 2022, 45: 541–567"
+        },
+        {
+          "evidence_id": "S4",
+          "source_file": "1-s2.0-S2352847824001278-main.pdf",
+          "page_number": 1,
+          "chunk_id": "d99a382568c429f7:p0001:c0000",
+          "score": 0.5743048603349932,
+          "score_type": "chroma_relevance_1_minus_cosine_distance_higher_is_better",
+          "text": "Research paper\nAntiferroelectric domain modulation enhancing energy storage\nperformance by phase- ﬁeld simulations\nKe Xu a, b, Shiyu Tang a, b, Changqing Guo a, b, Yu Song a, b, Houbing Huang a, b, *\na School of Materials Science and Engineering, Beijing Institute of Technology, Beijing, 100081, China\nb Advanced Research Institute of Multidisciplinary Science, Beijing Institute of Technology, Beijing, 100081, China\narticle info\nArticle history:\nReceived 6 March 2024\nReceived in revised form\n24 March 2024\nAccepted 22 April 2024\nAvailable online 13 June 2024\nKeywords:\nAntiferroelectric materials\nPhase-ﬁeld simulations\nStrain effect\nDefect dipoles\nEnergy storage property\nabstract\nAntiferroelectric materials represented by PbZrO 3(PZO) have excellent energy storage performance and\nare expected to be candidates for dielectric capacitors. It remains a challenge to further enhance the"
+        }
+      ],
+      "tool_calls": [],
+      "error_message": null,
+      "run_status": "success",
+      "citation_validation": {
+        "passed": true,
+        "known_evidence_ids": [
+          "S1",
+          "S2",
+          "S3",
+          "S4"
+        ],
+        "used_citation_ids": [
+          "S1"
+        ],
+        "unknown_citation_ids": [],
+        "valid_source_files": [
+          "1-s2.0-S2352847824001278-main.pdf",
+          "materials-4180042.pdf",
+          "s41467-025-56194-1.pdf"
+        ],
+        "mentioned_source_files": [],
+        "invalid_source_files": [],
+        "valid_dois": [],
+        "mentioned_dois": [],
+        "invalid_dois": [],
+        "page_checks": [],
+        "page_mismatches": [],
+        "insufficient_evidence_stated": false,
+        "scope": "Checks citation-ID existence, source-file membership, and structured page references; scientific correctness is not auto-verified"
+      },
+      "performance": {
+        "total_seconds": 83.891441,
+        "planner_seconds": 0.0,
+        "executor_seconds": 0.0,
+        "replanner_seconds": 0.0,
+        "writer_seconds": 0.0,
+        "context_loader_seconds": 0.0,
+        "node_wall_seconds": {
+          "context_loader": 0.0,
+          "executor": 0.0,
+          "fast_retrieval": 0.125695,
+          "fast_writer": 83.75857,
+          "planner": 0.0,
+          "replanner": 0.0,
+          "writer": 0.0
+        },
+        "mcp_tool_seconds": {},
+        "mcp_tool_total_seconds": 0,
+        "chroma_retrieval_seconds": 0.125695,
+        "crossref_api_seconds": 0.0,
+        "llm_call_count": 1,
+        "llm_error_count": 0,
+        "llm_wall_seconds": 83.75361,
+        "llm_generation_seconds": 83.732224,
+        "prompt_tokens": 1533,
+        "completion_tokens": 2553,
+        "total_tokens": 4086,
+        "llm_calls": [
+          {
+            "call_index": 1,
+            "node": "fast_writer",
+            "configured_thinking_setting": "default",
+            "prompt_tokens": 1533,
+            "completion_tokens": 2553,
+            "total_tokens": 4086,
+            "generation_duration_seconds": 83.732224,
+            "wall_seconds": 83.753614,
+            "thinking_tokens": null,
+            "thinking_tokens_status": "unavailable",
+            "thinking_chars": 0,
+            "final_answer_chars": 419,
+            "has_tool_calls": false,
+            "error": null
+          }
+        ],
+        "thinking_tokens_status": "unavailable",
+        "token_metadata_status": "available",
+        "tool_call_count": 0,
+        "tool_calls_by_name": {},
+        "executed_steps": 0,
+        "replanning_count": 0,
+        "generation_model_loaded_before_run": true,
+        "cold_start": false,
+        "node_call_counts": {
+          "executor": 0,
+          "fast_retrieval": 1,
+          "fast_writer": 1
+        }
+      },
+      "review_status": "pending_human_review",
+      "automated_quality_signal": {
+        "status": "pending_human_review",
+        "signal": "keyword_signal_pass",
+        "keyword_check_passed": true
+      }
+    },
+    {
+      "question_id": "q01",
+      "question": "Using only the imported local PDFs, what design strategy is used to improve antiferroelectric polarization configuration for capacitive energy storage?",
+      "question_type": "fact_extraction",
+      "answerable": true,
+      "reference_answer": "The paper uses an entropy-increase strategy to design the antiferroelectric polarization configuration.",
+      "reference_verification_status": "pending_human_review",
+      "model": "qwen3:4b",
+      "system_variant": "D_deep",
+      "temperature": 0,
+      "top_k": 4,
+      "final_answer": "根据导入的本地PDF证据，用于改善抗铁电极化配置以实现电容器能量存储的设计策略为：**通过增加熵（entropy increase）打破长程反铁电序并局部调整四重调制极化结构**（证据 [S1]）。  \n\n该结论直接来源于证据 [S1] 的原文描述（相关度 0.629），其核心机制为：熵增效应被用于同时抑制长程反铁电序并优化四重调制极化结构，从而实现超高效电容器能量存储。其他证据（[S2]、[S3]、[S4]）仅提供相关参考文献列表，未直接描述该设计策略的具体实现细节，因此不作为策略结论的依据。  \n\n（注：所有结论严格基于证据文本，未添加任何外部信息或假设；程序将自动追加唯一可信的来源索引。）\n\n引用索引：\n- [S1] s41467-025-56194-1.pdf 第 1 页\n- [S2] s41467-025-56194-1.pdf 第 8 页\n- [S3] materials-4180042.pdf 第 10 页\n- [S4] materials-4180042.pdf 第 10 页",
+      "elapsed_seconds": 526.108006,
+      "cited_sources": [
+        {
+          "evidence_id": "S1",
+          "source_type": "local_pdf",
+          "source_file": "s41467-025-56194-1.pdf",
+          "page_number": 1,
+          "chunk_id": "c01c9f511e2a100e:p0001:c0000"
+        },
+        {
+          "evidence_id": "S2",
+          "source_type": "local_pdf",
+          "source_file": "s41467-025-56194-1.pdf",
+          "page_number": 8,
+          "chunk_id": "c01c9f511e2a100e:p0008:c0000"
+        },
+        {
+          "evidence_id": "S3",
+          "source_type": "local_pdf",
+          "source_file": "materials-4180042.pdf",
+          "page_number": 10,
+          "chunk_id": "f831e3b0bc234f0b:p0010:c0003"
+        },
+        {
+          "evidence_id": "S4",
+          "source_type": "local_pdf",
+          "source_file": "materials-4180042.pdf",
+          "page_number": 10,
+          "chunk_id": "f831e3b0bc234f0b:p0010:c0002"
+        }
+      ],
+      "retrieved_chunks": [
+        {
+          "evidence_id": "S1",
+          "source_type": "local_pdf",
+          "source_file": "s41467-025-56194-1.pdf",
+          "page_number": 1,
+          "chunk_id": "c01c9f511e2a100e:p0001:c0000",
+          "doi": null,
+          "retrieval_score": 0.629363,
+          "score_type": "chroma_relevance_1_minus_cosine_distance_higher_is_better",
+          "text": "Article https://doi.org/10.1038/s41467-025-56194-1\nDesign of antiferroelectric polarization\nconﬁguration for ultrahigh capacitive energy\nstorage via increasing entropy\nYongxiao Zhou1,2,6, Tianfu Zhang3,6,L i a n gC h e n1,6 ,H u i f e nY u1,R u i y uW a n g1,4,\nHao Zhang1,J i eW u5, Shiqing Deng 1,H eQ i 1,5 , Chang Zhou 1,4 &\nJun Chen 1,5\nElectric ﬁeld induced antiferroelectric-ferroelectric phase transition is a\ndouble-edged sword for energy storage properties, which not only offers a\ncongenital superiority with substantial energy storage density but also poses\nsigniﬁcant challenges such as large polarization hysteresis and poor efﬁciency,\ndeteriorating the operation and service life of capacitors. Here, entropy\nincrease effect is utilized to simultaneously break the long-range antiferro-\nelectric order and locally adjust the fourfold commensurate modulated"
+        },
+        {
+          "evidence_id": "S2",
+          "source_type": "local_pdf",
+          "source_file": "s41467-025-56194-1.pdf",
+          "page_number": 8,
+          "chunk_id": "c01c9f511e2a100e:p0008:c0000",
+          "doi": null,
+          "retrieval_score": 0.578997,
+          "score_type": "chroma_relevance_1_minus_cosine_distance_higher_is_better",
+          "text": "19. Wang, H., Liu, Y., Yang, T. & Zhang, S. Ultrahigh energy-storage\ndensity in antiferroelectric ceramics withﬁeld-induced multiphase\ntransitions.Adv. Funct. Mater. 29, 1807321 (2019).\n20. Ge, G. et al. Tunable domain switching features of incommensurate\nantiferroelectric ceramics realizing excellent energy storage prop-\nerties. Adv. Mater. 34, 2201333 (2022).\n21. Chen, L. et al. Near-zero energy consumption capacitors by con-\ntrolling inhomogeneous polarization conﬁguration.Adv. Mater. 36,\n2313285 (2024).\n22. Chen, L. et al. Local diverse polarization optimized comprehensive\nenergy-storage performance in lead-free superparaelectrics.Adv.\nMater. 34, 2205787 (2022).\n23. Xie, A. et al. Supercritical relaxor nanograined ferroelectrics for\nultrahigh-energy-storage capacitors.Adv. Mater. 34, 2204356\n(2022).\n24. Zhuo, F. et al. Perspective on antiferroelectrics for energy storage"
+        },
+        {
+          "evidence_id": "S3",
+          "source_type": "local_pdf",
+          "source_file": "materials-4180042.pdf",
+          "page_number": 10,
+          "chunk_id": "f831e3b0bc234f0b:p0010:c0003",
+          "doi": null,
+          "retrieval_score": 0.560434,
+          "score_type": "chroma_relevance_1_minus_cosine_distance_higher_is_better",
+          "text": "Energy Storage Materials, 2022, 45: 541–567 \n[9] Yang B, Zhang Y, Pan H, et al. High-entropy enhanced capacitive energy storage. Nature Materials, 2022, 21: 1074–1080 \n[10] Yang B, Liu Y, Jiang R-J, et al. Enhanced energy storage in antiferroelectrics via antipolar frustration. Nature, 2025, 637: 1104–\n1110 \n[11] Wang D, Ke X, Wang Y, et al. Phase diagram of polar states in doped ferroelectric systems. Physical Review B, 2012, 86: \n[12] Shi X, Wang J, Xu J, et al. Quantitative investigation of polar nanoregion size eﬀects in relaxor ferroelectrics. Acta Materialia, \n2022, 237: 118147 \n[13] Wang S, Yi M, Xu B-X. A phase-ﬁeld model of relaxor ferroelectrics based on random ﬁeld theory. International Journal of Solids \nand Structures, 2016, 83: 142–153 \n[14] Filho MAM, Farmer W, Hsiao C-L, et al. Density functional theory-fed phase ﬁeld model for semiconductor nanostructures:"
+        },
+        {
+          "evidence_id": "S4",
+          "source_type": "local_pdf",
+          "source_file": "materials-4180042.pdf",
+          "page_number": 10,
+          "chunk_id": "f831e3b0bc234f0b:p0010:c0002",
+          "doi": null,
+          "retrieval_score": 0.555866,
+          "score_type": "chroma_relevance_1_minus_cosine_distance_higher_is_better",
+          "text": "385: 204–209 \n[4] Yang B, Zhang Q, Huang H, et al. Engineering relaxors by entropy for high energy storage performance. Nature Energy, 2023, \n8: 956–964 \n[5] Xu K, Shi X, Dong S, et al. Antiferroelectric phase diagram enhancing energy-storage performance by phase-ﬁeld simulations. \nACS Applied Materials & Interfaces, 2022, 14: 25770–25780 \n[6] Xu K, Shi X, Shao C, et al. Design of polar boundaries enhancing negative electrocaloric performance by antiferroelectric phase-\nﬁeld simulations. npj Computational Materials, 2024, 10: 150 \n[7] Li F, Zhang S, Yang T, et al. The origin of ultrahigh piezoelectricity in relaxor-ferroelectric solid solution crystals. Nature \ncommunications, 2016, 7: 13807 \n[8] Qi H, Xie A, Zuo R. Local structure engineered lead-free ferroic dielectrics for superior energy-storage capacitors: A review. \nEnergy Storage Materials, 2022, 45: 541–567"
+        }
+      ],
+      "tool_calls": [
+        {
+          "step_number": 1,
+          "name": "retrieve_paper_evidence",
+          "args": {
+            "top_k": 4,
+            "query": "antiferroelectric polarization configuration optimization capacitive energy storage design strategies"
+          },
+          "evidence_ids": [
+            "S1",
+            "S2",
+            "S3",
+            "S4"
+          ]
+        }
+      ],
+      "error_message": null,
+      "run_status": "success",
+      "citation_validation": {
+        "passed": true,
+        "known_evidence_ids": [
+          "S1",
+          "S2",
+          "S3",
+          "S4"
+        ],
+        "used_citation_ids": [
+          "S1",
+          "S2",
+          "S3",
+          "S4"
+        ],
+        "unknown_citation_ids": [],
+        "valid_source_files": [
+          "materials-4180042.pdf",
+          "s41467-025-56194-1.pdf"
+        ],
+        "mentioned_source_files": [],
+        "invalid_source_files": [],
+        "valid_dois": [],
+        "mentioned_dois": [],
+        "invalid_dois": [],
+        "page_checks": [],
+        "page_mismatches": [],
+        "insufficient_evidence_stated": false,
+        "scope": "Checks citation-ID existence, source-file membership, and structured page references; scientific correctness is not auto-verified",
+        "source_matches_retrieved_evidence": true
+      },
+      "performance": {
+        "total_seconds": 526.106963,
+        "planner_seconds": 77.131696,
+        "executor_seconds": 144.536515,
+        "replanner_seconds": 135.142131,
+        "writer_seconds": 169.269817,
+        "context_loader_seconds": 0.002705,
+        "node_wall_seconds": {
+          "context_loader": 0.002705,
+          "executor": 144.536515,
+          "planner": 77.131696,
+          "replanner": 135.142131,
+          "writer": 169.269817
+        },
+        "mcp_tool_seconds": {},
+        "mcp_tool_total_seconds": 0,
+        "chroma_retrieval_seconds": 1.722523,
+        "crossref_api_seconds": 0.0,
+        "llm_call_count": 5,
+        "llm_error_count": 0,
+        "llm_wall_seconds": 524.237665,
+        "llm_generation_seconds": 524.165554,
+        "prompt_tokens": 6771,
+        "completion_tokens": 12178,
+        "total_tokens": 18949,
+        "llm_calls": [
+          {
+            "call_index": 1,
+            "node": "planner",
+            "configured_thinking_setting": "default",
+            "prompt_tokens": 267,
+            "completion_tokens": 2220,
+            "total_tokens": 2487,
+            "generation_duration_seconds": 77.117272,
+            "wall_seconds": 77.126173,
+            "thinking_tokens": null,
+            "thinking_tokens_status": "unavailable",
+            "thinking_chars": 0,
+            "final_answer_chars": 171,
+            "has_tool_calls": false,
+            "error": null
+          },
+          {
+            "call_index": 2,
+            "node": "executor",
+            "configured_thinking_setting": "default",
+            "prompt_tokens": 715,
+            "completion_tokens": 1783,
+            "total_tokens": 2498,
+            "generation_duration_seconds": 73.924085,
+            "wall_seconds": 73.934777,
+            "thinking_tokens": null,
+            "thinking_tokens_status": "unavailable",
+            "thinking_chars": 0,
+            "final_answer_chars": 0,
+            "has_tool_calls": true,
+            "error": null
+          },
+          {
+            "call_index": 3,
+            "node": "executor",
+            "configured_thinking_setting": "default",
+            "prompt_tokens": 2434,
+            "completion_tokens": 1484,
+            "total_tokens": 3918,
+            "generation_duration_seconds": 68.783836,
+            "wall_seconds": 68.794419,
+            "thinking_tokens": null,
+            "thinking_tokens_status": "unavailable",
+            "thinking_chars": 0,
+            "final_answer_chars": 277,
+            "has_tool_calls": false,
+            "error": null
+          },
+          {
+            "call_index": 4,
+            "node": "replanner",
+            "configured_thinking_setting": "default",
+            "prompt_tokens": 1452,
+            "completion_tokens": 2898,
+            "total_tokens": 4350,
+            "generation_duration_seconds": 135.103262,
+            "wall_seconds": 135.12048,
+            "thinking_tokens": null,
+            "thinking_tokens_status": "unavailable",
+            "thinking_chars": 0,
+            "final_answer_chars": 281,
+            "has_tool_calls": false,
+            "error": null
+          },
+          {
+            "call_index": 5,
+            "node": "writer",
+            "configured_thinking_setting": "default",
+            "prompt_tokens": 1903,
+            "completion_tokens": 3793,
+            "total_tokens": 5696,
+            "generation_duration_seconds": 169.237099,
+            "wall_seconds": 169.261874,
+            "thinking_tokens": null,
+            "thinking_tokens_status": "unavailable",
+            "thinking_chars": 0,
+            "final_answer_chars": 301,
+            "has_tool_calls": false,
+            "error": null
+          }
+        ],
+        "thinking_tokens_status": "unavailable",
+        "token_metadata_status": "available",
+        "tool_call_count": 0,
+        "tool_calls_by_name": {},
+        "executed_steps": 1,
+        "replanning_count": 1,
+        "generation_model_loaded_before_run": true,
+        "cold_start": false,
+        "node_call_counts": {
+          "context_loader": 1,
+          "executor": 1,
+          "planner": 1,
+          "replanner": 1,
+          "writer": 1
+        }
+      },
+      "review_status": "pending_human_review",
+      "automated_quality_signal": {
+        "status": "pending_human_review",
+        "signal": "keyword_signal_pass",
+        "keyword_check_passed": true
+      }
+    },
+    {
+      "question_id": "q04",
+      "question": "Using only the imported local PDFs, which three variables are investigated in the phase-field study of PZO-based antiferroelectric films?",
+      "question_type": "mechanism_explanation",
+      "answerable": true,
+      "reference_answer": "The variables are misfit strain between film and substrate, defect-dipole doping, and film thickness.",
+      "reference_verification_status": "pending_human_review",
+      "model": "qwen3:4b",
+      "system_variant": "A_baseline",
+      "temperature": 0,
+      "top_k": 4,
+      "final_answer": "证据不足",
+      "elapsed_seconds": 36.897134,
+      "cited_sources": [],
+      "retrieved_chunks": [],
+      "tool_calls": [],
+      "error_message": null,
+      "run_status": "success",
+      "citation_validation": {
+        "passed": null,
+        "mode": "not_applicable_no_retrieval"
+      },
+      "performance": {
+        "total_seconds": 36.897134,
+        "planner_seconds": 0.0,
+        "executor_seconds": 0.0,
+        "replanner_seconds": 0.0,
+        "writer_seconds": 0.0,
+        "context_loader_seconds": 0.0,
+        "node_wall_seconds": {
+          "context_loader": 0.0,
+          "executor": 0.0,
+          "planner": 0.0,
+          "replanner": 0.0,
+          "writer": 0.0
+        },
+        "mcp_tool_seconds": {},
+        "mcp_tool_total_seconds": 0,
+        "chroma_retrieval_seconds": 0.0,
+        "crossref_api_seconds": 0.0,
+        "llm_call_count": 1,
+        "llm_error_count": 0,
+        "llm_wall_seconds": 36.881194,
+        "llm_generation_seconds": 36.863445,
+        "prompt_tokens": 98,
+        "completion_tokens": 1016,
+        "total_tokens": 1114,
+        "llm_calls": [
+          {
+            "call_index": 1,
+            "node": "baseline",
+            "configured_thinking_setting": "default",
+            "prompt_tokens": 98,
+            "completion_tokens": 1016,
+            "total_tokens": 1114,
+            "generation_duration_seconds": 36.863445,
+            "wall_seconds": 36.881198,
+            "thinking_tokens": null,
+            "thinking_tokens_status": "unavailable",
+            "thinking_chars": 0,
+            "final_answer_chars": 4,
+            "has_tool_calls": false,
+            "error": null
+          }
+        ],
+        "thinking_tokens_status": "unavailable",
+        "token_metadata_status": "available",
+        "tool_call_count": 0,
+        "tool_calls_by_name": {},
+        "executed_steps": 0,
+        "replanning_count": 0,
+        "generation_model_loaded_before_run": true,
+        "cold_start": false,
+        "node_call_counts": {
+          "executor": 0
+        }
+      },
+      "review_status": "pending_human_review",
+      "automated_quality_signal": {
+        "status": "not_applicable",
+        "reason": "baseline has no PDF retrieval access",
+        "signal": "not_applicable_for_pdf_evidence"
+      }
+    },
+    {
+      "question_id": "q04",
+      "question": "Using only the imported local PDFs, which three variables are investigated in the phase-field study of PZO-based antiferroelectric films?",
+      "question_type": "mechanism_explanation",
+      "answerable": true,
+      "reference_answer": "The variables are misfit strain between film and substrate, defect-dipole doping, and film thickness.",
+      "reference_verification_status": "pending_human_review",
+      "model": "qwen3:4b",
+      "system_variant": "B_direct_rag",
+      "temperature": 0,
+      "top_k": 4,
+      "final_answer": "Based solely on the provided retrieval evidence, the three variables investigated in the phase-field study of PZO-based antiferroelectric films are:  \n(1) mis fit strain between the thin film and substrate,  \n(2) defect dipoles doping, and  \n(3) film thickness.  \n\nSource: 1-s2.0-S2352847824001278-main.pdf, page 1.  \n\n*Note: The conclusion is derived exclusively from Evidence 4 (page 1 of the source PDF), which explicitly states: \"the effects of three variables, mis fit strain between the thin film and substrate, defect dipoles doping, and film thickness, on the domain structure and energy storage performance of PZO-based antiferroelectric materials are comprehensively investigated via phase-ﬁeld simulations.\" No additional variables or details are inferred from other evidence, as they do not specify the three variables in question.*\n\n检索来源：\n- 1-s2.0-S2352847824001278-main.pdf 第 5 页 (chunk d99a382568c429f7:p0005:c0000)\n- 1-s2.0-S2352847824001278-main.pdf 第 2 页 (chunk d99a382568c429f7:p0002:c0005)\n- 1-s2.0-S2352847824001278-main.pdf 第 8 页 (chunk d99a382568c429f7:p0008:c0012)\n- 1-s2.0-S2352847824001278-main.pdf 第 1 页 (chunk d99a382568c429f7:p0001:c0001)",
+      "elapsed_seconds": 62.93424,
+      "cited_sources": [
+        {
+          "source_file": "1-s2.0-S2352847824001278-main.pdf",
+          "page_number": 5,
+          "chunk_id": "d99a382568c429f7:p0005:c0000"
+        },
+        {
+          "source_file": "1-s2.0-S2352847824001278-main.pdf",
+          "page_number": 2,
+          "chunk_id": "d99a382568c429f7:p0002:c0005"
+        },
+        {
+          "source_file": "1-s2.0-S2352847824001278-main.pdf",
+          "page_number": 8,
+          "chunk_id": "d99a382568c429f7:p0008:c0012"
+        },
+        {
+          "source_file": "1-s2.0-S2352847824001278-main.pdf",
+          "page_number": 1,
+          "chunk_id": "d99a382568c429f7:p0001:c0001"
+        }
+      ],
+      "retrieved_chunks": [
+        {
+          "source_file": "1-s2.0-S2352847824001278-main.pdf",
+          "page_number": 5,
+          "chunk_id": "d99a382568c429f7:p0005:c0000",
+          "score": 0.6189222728118988,
+          "score_type": "chroma_relevance_1_minus_cosine_distance_higher_is_better",
+          "text": "Fig. 4. PZO-based antiferroelectric thin ﬁlm substrate tensile strain versus defect dipole concentration on (a) AFE / FE transition electric ﬁeld (b) loss energy density (c) effective\nenergy storage density (d) energy storage ef ﬁciency.\nFig. 5. PZO-based AFE thin ﬁlm: three-dimensional domain structure of (a ec) 4-layers (def) 8-layers (gei) 16-layers (jel) 24-layers, top view of the domain structure and magni ﬁed\nview of the local polarization.\nK. Xu, S. Tang, C. Guo et al. Journal of Materiomics 1 1 (2025) 100901\n5"
+        },
+        {
+          "source_file": "1-s2.0-S2352847824001278-main.pdf",
+          "page_number": 2,
+          "chunk_id": "d99a382568c429f7:p0002:c0005",
+          "score": 0.6086271042729913,
+          "score_type": "chroma_relevance_1_minus_cosine_distance_higher_is_better",
+          "text": "of Dz for the substrate) For mechanical boundary conditions of PZO-\nbased thin ﬁlm, the top ﬁlm surface is assumed to be traction-free.\nIn contrast, the interface between the thin ﬁlm and the substrate is\nmechanically coherent. We use Landau coef ﬁcients of the\nPb(Zr1exTix)O3 (x /C20 0.1) system modiﬁed for the calculation [44,45].\na1 ¼/C0 5.54 /C2 107 J,m/C2, a11 ¼ 5.60 /C2 108 J,m5/C4,\na12 ¼ 2.89 /C2 108 J,m5/C4, a111 ¼ 1.65 /C2 109 J,m9/C6,\na112 ¼/C0 8.66 /C2 108 J,m9/C6, a123 ¼ 3.19 /C2 1010 J,m9/C6,\nC11 ¼ 15.6 /C2 1010 N/m2, C12 ¼ 9.6 /C2 1010 N/m2, C44 ¼ 12.7 /C2 1010 N/\nm2, Q11 ¼ 0.048 m 4/C2, Q12 ¼/C0 0.015 m4/C2, Q44 ¼ 0.047 m4/C2.\n3. Results and discussion\n3.1. Effect of defect dipoles and substrate mis ﬁt strain\nTo investigate the multivariate effects on the domain structure\nand energy storage performance of PZO-based antiferroelectric"
+        },
+        {
+          "source_file": "1-s2.0-S2352847824001278-main.pdf",
+          "page_number": 8,
+          "chunk_id": "d99a382568c429f7:p0008:c0012",
+          "score": 0.5984693766070777,
+          "score_type": "chroma_relevance_1_minus_cosine_distance_higher_is_better",
+          "text": "[45] Liu Z, Xu B. Insight into perovskite antiferroelectric phases: Landau theory and\nphase ﬁeld study. Scripta Mater 2020;186:136 e41.\nK. Xu, S. Tang, C. Guo et al. Journal of Materiomics 1 1 (2025) 100901\n8"
+        },
+        {
+          "source_file": "1-s2.0-S2352847824001278-main.pdf",
+          "page_number": 1,
+          "chunk_id": "d99a382568c429f7:p0001:c0001",
+          "score": 0.5931420149553007,
+          "score_type": "chroma_relevance_1_minus_cosine_distance_higher_is_better",
+          "text": "are expected to be candidates for dielectric capacitors. It remains a challenge to further enhance the\neffective energy storage density and ef ﬁciency of PZO-based antiferroelectric ﬁlms through domain\nengineering. In this work, the effects of three variables, mis ﬁt strain between the thin ﬁlm and substrate,\ndefect dipoles doping, and ﬁlm thickness, on the domain structure and energy storage performance of\nPZO-based antiferroelectric materials are comprehensively investigated via phase-ﬁeld simulations. The\nresults show that applying tensile strain to the ﬁlms can effectively increase the transition electric ﬁeld\nfrom antiferroelectric to ferroelectric. In addition, the introduction of defect dipoles while applying\ntensile strain can signi ﬁcantly reduce the hysteresis and improve energy storage ef ﬁciency. Ultimately, a"
+        }
+      ],
+      "tool_calls": [],
+      "error_message": null,
+      "run_status": "success",
+      "citation_validation": {
+        "passed": true,
+        "mode": "program_appended_retrieved_sources",
+        "retrieved_source_count": 4,
+        "unknown_citation_ids": []
+      },
+      "performance": {
+        "total_seconds": 62.93424,
+        "llm_call_count": 1,
+        "prompt_tokens": 1305,
+        "completion_tokens": 1495,
+        "total_tokens": 2800,
+        "chroma_retrieval_seconds": 0.16853295802138746,
+        "tool_call_count": 0
+      },
+      "review_status": "pending_human_review",
+      "automated_quality_signal": {
+        "status": "pending_human_review",
+        "signal": "probable_content_mismatch",
+        "keyword_check_passed": false
+      }
+    },
+    {
+      "question_id": "q04",
+      "question": "Using only the imported local PDFs, which three variables are investigated in the phase-field study of PZO-based antiferroelectric films?",
+      "question_type": "mechanism_explanation",
+      "answerable": true,
+      "reference_answer": "The variables are misfit strain between film and substrate, defect-dipole doping, and film thickness.",
+      "reference_verification_status": "pending_human_review",
+      "model": "qwen3:4b",
+      "system_variant": "C_fast",
+      "temperature": 0,
+      "top_k": 4,
+      "final_answer": "The three variables investigated in the phase-field study of PZO-based antiferroelectric films are:  \n(1) misfit strain between the thin film and substrate [S4],  \n(2) defect dipoles doping [S4],  \n(3) film thickness [S4].\n\n引用索引：\n- [S4] 1-s2.0-S2352847824001278-main.pdf 第 1 页",
+      "elapsed_seconds": 108.266626,
+      "cited_sources": [
+        {
+          "evidence_id": "S4",
+          "source_file": "1-s2.0-S2352847824001278-main.pdf",
+          "page_number": 1,
+          "chunk_id": "d99a382568c429f7:p0001:c0001"
+        }
+      ],
+      "retrieved_chunks": [
+        {
+          "evidence_id": "S1",
+          "source_file": "1-s2.0-S2352847824001278-main.pdf",
+          "page_number": 5,
+          "chunk_id": "d99a382568c429f7:p0005:c0000",
+          "score": 0.6189222728118988,
+          "score_type": "chroma_relevance_1_minus_cosine_distance_higher_is_better",
+          "text": "Fig. 4. PZO-based antiferroelectric thin ﬁlm substrate tensile strain versus defect dipole concentration on (a) AFE / FE transition electric ﬁeld (b) loss energy density (c) effective\nenergy storage density (d) energy storage ef ﬁciency.\nFig. 5. PZO-based AFE thin ﬁlm: three-dimensional domain structure of (a ec) 4-layers (def) 8-layers (gei) 16-layers (jel) 24-layers, top view of the domain structure and magni ﬁed\nview of the local polarization.\nK. Xu, S. Tang, C. Guo et al. Journal of Materiomics 1 1 (2025) 100901\n5"
+        },
+        {
+          "evidence_id": "S2",
+          "source_file": "1-s2.0-S2352847824001278-main.pdf",
+          "page_number": 2,
+          "chunk_id": "d99a382568c429f7:p0002:c0005",
+          "score": 0.6086271042729913,
+          "score_type": "chroma_relevance_1_minus_cosine_distance_higher_is_better",
+          "text": "of Dz for the substrate) For mechanical boundary conditions of PZO-\nbased thin ﬁlm, the top ﬁlm surface is assumed to be traction-free.\nIn contrast, the interface between the thin ﬁlm and the substrate is\nmechanically coherent. We use Landau coef ﬁcients of the\nPb(Zr1exTix)O3 (x /C20 0.1) system modiﬁed for the calculation [44,45].\na1 ¼/C0 5.54 /C2 107 J,m/C2, a11 ¼ 5.60 /C2 108 J,m5/C4,\na12 ¼ 2.89 /C2 108 J,m5/C4, a111 ¼ 1.65 /C2 109 J,m9/C6,\na112 ¼/C0 8.66 /C2 108 J,m9/C6, a123 ¼ 3.19 /C2 1010 J,m9/C6,\nC11 ¼ 15.6 /C2 1010 N/m2, C12 ¼ 9.6 /C2 1010 N/m2, C44 ¼ 12.7 /C2 1010 N/\nm2, Q11 ¼ 0.048 m 4/C2, Q12 ¼/C0 0.015 m4/C2, Q44 ¼ 0.047 m4/C2.\n3. Results and discussion\n3.1. Effect of defect dipoles and substrate mis ﬁt strain\nTo investigate the multivariate effects on the domain structure\nand energy storage performance of PZO-based antiferroelectric"
+        },
+        {
+          "evidence_id": "S3",
+          "source_file": "1-s2.0-S2352847824001278-main.pdf",
+          "page_number": 8,
+          "chunk_id": "d99a382568c429f7:p0008:c0012",
+          "score": 0.5984693766070777,
+          "score_type": "chroma_relevance_1_minus_cosine_distance_higher_is_better",
+          "text": "[45] Liu Z, Xu B. Insight into perovskite antiferroelectric phases: Landau theory and\nphase ﬁeld study. Scripta Mater 2020;186:136 e41.\nK. Xu, S. Tang, C. Guo et al. Journal of Materiomics 1 1 (2025) 100901\n8"
+        },
+        {
+          "evidence_id": "S4",
+          "source_file": "1-s2.0-S2352847824001278-main.pdf",
+          "page_number": 1,
+          "chunk_id": "d99a382568c429f7:p0001:c0001",
+          "score": 0.5931420149553007,
+          "score_type": "chroma_relevance_1_minus_cosine_distance_higher_is_better",
+          "text": "are expected to be candidates for dielectric capacitors. It remains a challenge to further enhance the\neffective energy storage density and ef ﬁciency of PZO-based antiferroelectric ﬁlms through domain\nengineering. In this work, the effects of three variables, mis ﬁt strain between the thin ﬁlm and substrate,\ndefect dipoles doping, and ﬁlm thickness, on the domain structure and energy storage performance of\nPZO-based antiferroelectric materials are comprehensively investigated via phase-ﬁeld simulations. The\nresults show that applying tensile strain to the ﬁlms can effectively increase the transition electric ﬁeld\nfrom antiferroelectric to ferroelectric. In addition, the introduction of defect dipoles while applying\ntensile strain can signi ﬁcantly reduce the hysteresis and improve energy storage ef ﬁciency. Ultimately, a"
+        }
+      ],
+      "tool_calls": [],
+      "error_message": null,
+      "run_status": "success",
+      "citation_validation": {
+        "passed": true,
+        "known_evidence_ids": [
+          "S1",
+          "S2",
+          "S3",
+          "S4"
+        ],
+        "used_citation_ids": [
+          "S4"
+        ],
+        "unknown_citation_ids": [],
+        "valid_source_files": [
+          "1-s2.0-S2352847824001278-main.pdf"
+        ],
+        "mentioned_source_files": [],
+        "invalid_source_files": [],
+        "valid_dois": [],
+        "mentioned_dois": [],
+        "invalid_dois": [],
+        "page_checks": [],
+        "page_mismatches": [],
+        "insufficient_evidence_stated": false,
+        "scope": "Checks citation-ID existence, source-file membership, and structured page references; scientific correctness is not auto-verified"
+      },
+      "performance": {
+        "total_seconds": 108.23255,
+        "planner_seconds": 0.0,
+        "executor_seconds": 0.0,
+        "replanner_seconds": 0.0,
+        "writer_seconds": 0.0,
+        "context_loader_seconds": 0.0,
+        "node_wall_seconds": {
+          "context_loader": 0.0,
+          "executor": 0.0,
+          "fast_retrieval": 0.143891,
+          "fast_writer": 108.086558,
+          "planner": 0.0,
+          "replanner": 0.0,
+          "writer": 0.0
+        },
+        "mcp_tool_seconds": {},
+        "mcp_tool_total_seconds": 0,
+        "chroma_retrieval_seconds": 0.143891,
+        "crossref_api_seconds": 0.0,
+        "llm_call_count": 1,
+        "llm_error_count": 0,
+        "llm_wall_seconds": 108.082775,
+        "llm_generation_seconds": 108.066032,
+        "prompt_tokens": 1357,
+        "completion_tokens": 2445,
+        "total_tokens": 3802,
+        "llm_calls": [
+          {
+            "call_index": 1,
+            "node": "fast_writer",
+            "configured_thinking_setting": "default",
+            "prompt_tokens": 1357,
+            "completion_tokens": 2445,
+            "total_tokens": 3802,
+            "generation_duration_seconds": 108.066032,
+            "wall_seconds": 108.082779,
+            "thinking_tokens": null,
+            "thinking_tokens_status": "unavailable",
+            "thinking_chars": 0,
+            "final_answer_chars": 222,
+            "has_tool_calls": false,
+            "error": null
+          }
+        ],
+        "thinking_tokens_status": "unavailable",
+        "token_metadata_status": "available",
+        "tool_call_count": 0,
+        "tool_calls_by_name": {},
+        "executed_steps": 0,
+        "replanning_count": 0,
+        "generation_model_loaded_before_run": true,
+        "cold_start": false,
+        "node_call_counts": {
+          "executor": 0,
+          "fast_retrieval": 1,
+          "fast_writer": 1
+        }
+      },
+      "review_status": "pending_human_review",
+      "automated_quality_signal": {
+        "status": "pending_human_review",
+        "signal": "keyword_signal_pass",
+        "keyword_check_passed": true
+      }
+    },
+    {
+      "question_id": "q04",
+      "question": "Using only the imported local PDFs, which three variables are investigated in the phase-field study of PZO-based antiferroelectric films?",
+      "question_type": "mechanism_explanation",
+      "answerable": true,
+      "reference_answer": "The variables are misfit strain between film and substrate, defect-dipole doping, and film thickness.",
+      "reference_verification_status": "pending_human_review",
+      "model": "qwen3:4b",
+      "system_variant": "D_deep",
+      "temperature": 0,
+      "top_k": 4,
+      "final_answer": "Based on the provided evidence, the three variables investigated in the phase-field study of PZO-based antiferroelectric films are:  \n1. Misfit strain between the thin film and substrate  \n2. Defect dipoles doping  \n3. Film thickness  \n\nThese are explicitly stated in evidence [S4].\n\n引用索引：\n- [S4] 1-s2.0-S2352847824001278-main.pdf 第 1 页",
+      "elapsed_seconds": 548.943545,
+      "cited_sources": [
+        {
+          "evidence_id": "S4",
+          "source_type": "local_pdf",
+          "source_file": "1-s2.0-S2352847824001278-main.pdf",
+          "page_number": 1,
+          "chunk_id": "d99a382568c429f7:p0001:c0001"
+        }
+      ],
+      "retrieved_chunks": [],
+      "tool_calls": [
+        {
+          "name": "retrieve_paper_evidence",
+          "args": {
+            "query": "PZO-based antiferroelectric films phase-field study",
+            "top_k": 4
+          },
+          "evidence_ids": [
+            "S1",
+            "S2",
+            "S3",
+            "S4"
+          ]
+        }
+      ],
+      "error_message": null,
+      "run_status": "success",
+      "citation_validation": {
+        "passed": true,
+        "known_evidence_ids": [
+          "S1",
+          "S2",
+          "S3",
+          "S4"
+        ],
+        "used_citation_ids": [
+          "S4"
+        ],
+        "unknown_citation_ids": [],
+        "valid_source_files": [
+          "1-s2.0-S2352847824001278-main.pdf"
+        ],
+        "mentioned_source_files": [],
+        "invalid_source_files": [],
+        "valid_dois": [],
+        "mentioned_dois": [],
+        "invalid_dois": [],
+        "page_checks": [],
+        "page_mismatches": [],
+        "insufficient_evidence_stated": false,
+        "scope": "Checks citation-ID existence, source-file membership, and structured page references; scientific correctness is not auto-verified"
+      },
+      "review_status": "pending_human_review",
+      "performance": {
+        "total_seconds": 548.943545,
+        "planner_seconds": 158.076098,
+        "executor_seconds": 110.394228,
+        "replanner_seconds": 151.38946,
+        "writer_seconds": 128.871403,
+        "context_loader_seconds": 0.003327,
+        "mcp_tool_seconds": {
+          "retrieve_paper_evidence": 3.950235
+        },
+        "mcp_tool_total_seconds": 3.950235,
+        "chroma_retrieval_seconds": 3.702065,
+        "crossref_api_seconds": 0.0,
+        "llm_call_count": 5,
+        "llm_error_count": 0,
+        "llm_wall_seconds": 543.715403,
+        "llm_generation_seconds": 542.527708,
+        "prompt_tokens": 5888,
+        "completion_tokens": 8223,
+        "total_tokens": 14111,
+        "llm_calls": [
+          {
+            "call_index": 1,
+            "node": "planner",
+            "configured_thinking_setting": "default",
+            "prompt_tokens": 268,
+            "completion_tokens": 2523,
+            "total_tokens": 2791,
+            "generation_duration_seconds": 158.003382,
+            "wall_seconds": 158.041697,
+            "thinking_tokens": null,
+            "thinking_tokens_status": "unavailable",
+            "thinking_chars": 0,
+            "final_answer_chars": 203,
+            "has_tool_calls": false,
+            "error": null
+          },
+          {
+            "call_index": 2,
+            "node": "executor",
+            "configured_thinking_setting": "default",
+            "prompt_tokens": 718,
+            "completion_tokens": 801,
+            "total_tokens": 1519,
+            "generation_duration_seconds": 46.473758,
+            "wall_seconds": 46.527332,
+            "thinking_tokens": null,
+            "thinking_tokens_status": "unavailable",
+            "thinking_chars": 0,
+            "final_answer_chars": 0,
+            "has_tool_calls": true,
+            "error": null
+          },
+          {
+            "call_index": 3,
+            "node": "executor",
+            "configured_thinking_setting": "default",
+            "prompt_tokens": 2154,
+            "completion_tokens": 789,
+            "total_tokens": 2943,
+            "generation_duration_seconds": 59.688935,
+            "wall_seconds": 59.712802,
+            "thinking_tokens": null,
+            "thinking_tokens_status": "unavailable",
+            "thinking_chars": 0,
+            "final_answer_chars": 273,
+            "has_tool_calls": false,
+            "error": null
+          },
+          {
+            "call_index": 4,
+            "node": "replanner",
+            "configured_thinking_setting": "default",
+            "prompt_tokens": 1229,
+            "completion_tokens": 1913,
+            "total_tokens": 3142,
+            "generation_duration_seconds": 150.037398,
+            "wall_seconds": 150.710917,
+            "thinking_tokens": null,
+            "thinking_tokens_status": "unavailable",
+            "thinking_chars": 0,
+            "final_answer_chars": 208,
+            "has_tool_calls": false,
+            "error": null
+          },
+          {
+            "call_index": 5,
+            "node": "writer",
+            "configured_thinking_setting": "default",
+            "prompt_tokens": 1519,
+            "completion_tokens": 2197,
+            "total_tokens": 3716,
+            "generation_duration_seconds": 128.324235,
+            "wall_seconds": 128.72273,
+            "thinking_tokens": null,
+            "thinking_tokens_status": "unavailable",
+            "thinking_chars": 0,
+            "final_answer_chars": 282,
+            "has_tool_calls": false,
+            "error": null
+          }
+        ],
+        "thinking_tokens_status": "unavailable",
+        "token_metadata_status": "available",
+        "tool_call_count": 1,
+        "tool_calls_by_name": {
+          "retrieve_paper_evidence": 1
+        },
+        "executed_steps": 1,
+        "replanning_count": 1,
+        "generation_model_loaded_before_run": false,
+        "cold_start": true,
+        "node_call_counts": {
+          "context_loader": 1,
+          "executor": 1,
+          "planner": 1,
+          "replanner": 1,
+          "writer": 1
+        }
+      },
+      "automated_quality_signal": {
+        "status": "pending_human_review",
+        "signal": "keyword_signal_pass",
+        "keyword_check_passed": true
+      }
+    },
+    {
+      "question_id": "q09",
+      "question": "请用中文说明这个扰动模型为何能处理以前常系数或各向同性近似难以处理的问题。",
+      "question_type": "cross_language",
+      "answerable": true,
+      "reference_answer": "它通过傅里叶空间扰动方案处理具有空间变化的完整各向异性梯度能量张量。",
+      "reference_verification_status": "pending_human_review",
+      "model": "qwen3:4b",
+      "system_variant": "A_baseline",
+      "temperature": 0,
+      "top_k": 4,
+      "final_answer": "证据不足",
+      "elapsed_seconds": 54.513515,
+      "cited_sources": [],
+      "retrieved_chunks": [],
+      "tool_calls": [],
+      "error_message": null,
+      "run_status": "success",
+      "citation_validation": {
+        "passed": null,
+        "mode": "not_applicable_no_retrieval"
+      },
+      "performance": {
+        "total_seconds": 54.513515,
+        "planner_seconds": 0.0,
+        "executor_seconds": 0.0,
+        "replanner_seconds": 0.0,
+        "writer_seconds": 0.0,
+        "context_loader_seconds": 0.0,
+        "node_wall_seconds": {
+          "context_loader": 0.0,
+          "executor": 0.0,
+          "planner": 0.0,
+          "replanner": 0.0,
+          "writer": 0.0
+        },
+        "mcp_tool_seconds": {},
+        "mcp_tool_total_seconds": 0,
+        "chroma_retrieval_seconds": 0.0,
+        "crossref_api_seconds": 0.0,
+        "llm_call_count": 1,
+        "llm_error_count": 0,
+        "llm_wall_seconds": 54.504968,
+        "llm_generation_seconds": 54.465036,
+        "prompt_tokens": 95,
+        "completion_tokens": 1107,
+        "total_tokens": 1202,
+        "llm_calls": [
+          {
+            "call_index": 1,
+            "node": "baseline",
+            "configured_thinking_setting": "default",
+            "prompt_tokens": 95,
+            "completion_tokens": 1107,
+            "total_tokens": 1202,
+            "generation_duration_seconds": 54.465036,
+            "wall_seconds": 54.504973,
+            "thinking_tokens": null,
+            "thinking_tokens_status": "unavailable",
+            "thinking_chars": 0,
+            "final_answer_chars": 4,
+            "has_tool_calls": false,
+            "error": null
+          }
+        ],
+        "thinking_tokens_status": "unavailable",
+        "token_metadata_status": "available",
+        "tool_call_count": 0,
+        "tool_calls_by_name": {},
+        "executed_steps": 0,
+        "replanning_count": 0,
+        "generation_model_loaded_before_run": true,
+        "cold_start": false,
+        "node_call_counts": {
+          "executor": 0
+        }
+      },
+      "review_status": "pending_human_review",
+      "automated_quality_signal": {
+        "status": "not_applicable",
+        "reason": "baseline has no PDF retrieval access",
+        "signal": "not_applicable_for_pdf_evidence"
+      }
+    },
+    {
+      "question_id": "q09",
+      "question": "请用中文说明这个扰动模型为何能处理以前常系数或各向同性近似难以处理的问题。",
+      "question_type": "cross_language",
+      "answerable": true,
+      "reference_answer": "它通过傅里叶空间扰动方案处理具有空间变化的完整各向异性梯度能量张量。",
+      "reference_verification_status": "pending_human_review",
+      "model": "qwen3:4b",
+      "system_variant": "B_direct_rag",
+      "temperature": 0,
+      "top_k": 4,
+      "final_answer": "根据用户提供的检索证据，我将严格基于证据内容用中文说明该扰动模型为何能处理以前常系数或各向同性近似难以处理的问题。每条事实性结论均标注来源文件名和页码（所有证据均来自 `materials-4180042.pdf`）。证据内容仅限于提供的片段，未添加任何自身知识或常识性补充。\n\n### 说明：\n该扰动模型（即文中所述的“rate perturbation framework”）能处理以前常系数或各向同性近似难以处理的问题，原因如下：\n\n1. **以前方法的局限性**：  \n   以前的傅里叶谱扰动方法（previous Fourier-spectral perturbation methods）要么假设梯度系数为常数（constant gradient coefficients），要么将各向异性和空间异质性（spatial heterogeneity）分别处理，导致无法同时有效处理具有各向异性梯度能量和空间变化的复杂系统。  \n   *来源：materials-4180042.pdf, 页码9*（Evidence 3）\n\n2. **本模型的处理机制**：  \n   本模型通过分解梯度能量张量（gradient energy tensor）为均匀部分（homogeneous part，隐式处理）和波动部分（fluctuating part，显式处理），提供了一个统一的框架（unified framework），能够同时处理全各向异性梯度能量张量及其任意空间变化。这种分解机制允许在倒空间（reciprocal space）中高效迭代求解，从而克服了传统方法的局限性。  \n   *来源：materials-4180042.pdf, 页码9*（Evidence 3）\n\n3. **具体应用场景**：  \n   该模型能处理的问题包括铁电/反铁电复合材料（ferroelectric/antiferroelectric composites）中的组分梯度（composition gradients）或结构调制（structural modulations），这些问题在以前的常系数或各向同性近似下难以被有效建模。  \n   *来源：materials-4180042.pdf, 页码9*（Evidence 3）\n\n### 为什么能处理？核心结论\n该扰动模型能处理以前常系数或各向同性近似难以处理的问题，**直接原因**是它避免了以前方法的两个关键缺陷：  \n- 以前方法假设梯度系数为常数（导致无法处理空间变化）；  \n- 以前方法将各向异性和空间异质性分开处理（导致无法同时建模复杂系统）。  \n本模型通过统一框架实现对全各向异性梯度能量张量的显式-隐式分解，从而在倒空间中高效求解，解决了这些难以处理的问题。\n\n**证据总结**：所有结论均严格基于提供的检索证据（Evidence 3 为核心证据），未引入任何外部知识或推测。该模型的处理能力已通过数值实验验证（Evidence 3 提及），但具体实验细节未在证据中展开，故不额外说明。\n\n检索来源：\n- materials-4180042.pdf 第 8 页 (chunk f831e3b0bc234f0b:p0008:c0002)\n- materials-4180042.pdf 第 5 页 (chunk f831e3b0bc234f0b:p0005:c0002)\n- materials-4180042.pdf 第 9 页 (chunk f831e3b0bc234f0b:p0009:c0001)\n- materials-4180042.pdf 第 4 页 (chunk f831e3b0bc234f0b:p0004:c0002)",
+      "elapsed_seconds": 114.799213,
+      "cited_sources": [
+        {
+          "source_file": "materials-4180042.pdf",
+          "page_number": 8,
+          "chunk_id": "f831e3b0bc234f0b:p0008:c0002"
+        },
+        {
+          "source_file": "materials-4180042.pdf",
+          "page_number": 5,
+          "chunk_id": "f831e3b0bc234f0b:p0005:c0002"
+        },
+        {
+          "source_file": "materials-4180042.pdf",
+          "page_number": 9,
+          "chunk_id": "f831e3b0bc234f0b:p0009:c0001"
+        },
+        {
+          "source_file": "materials-4180042.pdf",
+          "page_number": 4,
+          "chunk_id": "f831e3b0bc234f0b:p0004:c0002"
+        }
+      ],
+      "retrieved_chunks": [
+        {
+          "source_file": "materials-4180042.pdf",
+          "page_number": 8,
+          "chunk_id": "f831e3b0bc234f0b:p0008:c0002",
+          "score": 0.35649197027942137,
+          "score_type": "chroma_relevance_1_minus_cosine_distance_higher_is_better",
+          "text": "walls remain coherent across the z-direction. The excellent agreement between 2D and 3D \nresults conﬁrms that our Fourier-space perturbation method maintains numerical stability, \naccuracy, and computational eﬃciency in three dimensions, overcoming a major limita-\ntion of conventional real-space solvers."
+        },
+        {
+          "source_file": "materials-4180042.pdf",
+          "page_number": 5,
+          "chunk_id": "f831e3b0bc234f0b:p0005:c0002",
+          "score": 0.30949777057444094,
+          "score_type": "chroma_relevance_1_minus_cosine_distance_higher_is_better",
+          "text": "Further expansion yields \n𝛿𝐹୥୰ୟୢ (ଶ)\n𝛿𝑃௜\n= 𝐻(𝐫)∇ସ𝑃௜ + 2∇𝐻(𝐫) ⋅ ∇(∇ଶ𝑃௜)\n+∇ଶ𝐻(𝐫)∇ଶ𝑃௜\n (20)\nIf solved in Fourier space, we obtain the following form, \nℱ[𝐻∇ସ𝑃] = 𝐻෡(𝐤) ∗ ൫|𝐤|ସ𝑃෠(𝐤)൯\nℱ[∇𝐻 ⋅ ∇(∇ଶ𝑃)] = (𝑖𝐤𝐻෡(𝐤)) ∗ ൫−𝑖𝐤|𝐤|ଶ𝑃෠(𝐤)൯\nℱ[(∇ଶ𝐻)∇ଶ𝑃] = ൫−|𝐤|ଶ𝐻෡(𝐤)൯ ∗ ൫−|𝐤|ଶ𝑃෠(𝐤)൯\n (21)\nwhich clearly involves a convolution. Therefore, a perturbation method can be em-\nployed for improvement. \n𝑃෠௜ (௡ାଵ) − 𝑃෠௜ (௡)\nΔ𝑡 = −𝐿ቀ𝑁෡(௡) + 𝐻ഥ|𝐤|ସ𝑃෠௜ (௡ାଵ) + 𝑅෠(௡)ቁ (22)\nwhere 𝐻ഥ is the homogeneous part and 𝑅෠ is the perbutaion part, thus we obtain, \n𝑃෠௜ (௡ାଵ) = 𝑃෠௜ (௡) − 𝐿Δ𝑡൫𝑁෡(௡) + 𝑅෠(௡)൯ 1 + 𝐿Δ𝑡𝐻ഥ|𝐤|ସ (23)"
+        },
+        {
+          "source_file": "materials-4180042.pdf",
+          "page_number": 9,
+          "chunk_id": "f831e3b0bc234f0b:p0009:c0001",
+          "score": 0.27100349439604654,
+          "score_type": "chroma_relevance_1_minus_cosine_distance_higher_is_better",
+          "text": "rate perturbation framework for anisotropic gradient energy. Unlike previous Fou-\nrier-spectral perturbation methods that either assume constant gradient coeﬃcients or \ntreat anisotropy and spatial heterogeneity separately, our formulation provides a uniﬁed \nframework that simultaneously accounts for a full anisotropic gradient energy tensor with \narbitrary spatial variations. This capability is achieved by decomposing the tensor into a \nhomogeneous part (handled implicitly) and a ﬂuctuating part (handled explicitly), allow-\ning eﬃcient iterative solution in reciprocal space. The method therefore ﬁlls a critical gap \nin the phase-ﬁeld modeling of systems where the gradient energy is both anisotropic and \nlocally heterogeneous—such as ferroelectric/antiferroelectric composites with composi-\ntion gradients or structural modulations.. Numerical experiments conﬁrm its robustness,"
+        },
+        {
+          "source_file": "materials-4180042.pdf",
+          "page_number": 4,
+          "chunk_id": "f831e3b0bc234f0b:p0004:c0002",
+          "score": 0.264563961705764,
+          "score_type": "chroma_relevance_1_minus_cosine_distance_higher_is_better",
+          "text": "However, due to the anisotropy of the gradient energy, it cannot be directly represented \nby multiplying the polarization in Fourier space by the wave vector. To address this, we \npropose a perturbation method in Fourier space for the solution. According to the convo-\nlution theorem ℱ[𝑓(𝐱)𝑔(𝐱)] = 𝑓መ(𝐤) ∗ 𝑔ො(𝐤) we can obtain: \nℱ[𝐺(𝐫)∇ଶ𝑃(𝐫)] = 𝐺෠(𝐤) ∗ ൫−|𝐤|ଶ𝑃෠(𝐤)൯\nℱ[∇𝐺(𝐫) ⋅ ∇𝑃(𝐫)] = (𝑖𝐤𝐺෠(𝐤)) ∗ (𝑖𝐤𝑃෠(𝐤)) (13)"
+        }
+      ],
+      "tool_calls": [],
+      "error_message": null,
+      "run_status": "success",
+      "citation_validation": {
+        "passed": true,
+        "mode": "program_appended_retrieved_sources",
+        "retrieved_source_count": 4,
+        "unknown_citation_ids": []
+      },
+      "performance": {
+        "total_seconds": 114.799213,
+        "llm_call_count": 1,
+        "prompt_tokens": 1218,
+        "completion_tokens": 2555,
+        "total_tokens": 3773,
+        "chroma_retrieval_seconds": 0.3464184580370784,
+        "tool_call_count": 0
+      },
+      "review_status": "pending_human_review",
+      "automated_quality_signal": {
+        "status": "pending_human_review",
+        "signal": "keyword_signal_pass",
+        "keyword_check_passed": true
+      }
+    },
+    {
+      "question_id": "q09",
+      "question": "请用中文说明这个扰动模型为何能处理以前常系数或各向同性近似难以处理的问题。",
+      "question_type": "cross_language",
+      "answerable": true,
+      "reference_answer": "它通过傅里叶空间扰动方案处理具有空间变化的完整各向异性梯度能量张量。",
+      "reference_verification_status": "pending_human_review",
+      "model": "qwen3:4b",
+      "system_variant": "C_fast",
+      "temperature": 0,
+      "top_k": 4,
+      "final_answer": "根据提供的证据，这个扰动模型能处理以前常系数（即梯度系数为常数）或各向同性近似难以处理的问题，原因如下（每条事实性结论均严格引用真实证据ID）：\n\n1. **以前的方法存在局限性**：以前的傅里叶-谱扰动方法要么假设梯度系数为常数（即各向同性），要么将各向异性和空间异质性分开处理，导致无法有效处理同时具有各向异性和局部异质性的系统（[S3]）。  \n2. **本模型的核心机制**：本扰动模型通过将梯度能量张量分解为均匀部分（隐式处理）和波动部分（显式处理），在傅里叶空间中提供统一的求解框架，从而能同时处理全各向异性梯度能量张量及其任意空间变化（[S3]）。  \n3. **实际应用优势**：该方法在相场建模中特别适用于铁电/反铁电复合材料等系统（其中梯度能量既各向异性又局部异质），解决了以往方法无法处理的复杂场景（[S3]）。\n\n综上，本扰动模型通过上述机制，直接克服了以前常系数或各向同性近似难以处理的问题，其核心依据均来自证据[S3]（该证据的文本明确描述了该框架如何同时应对各向异性和空间异质性）。其他证据（如[S1]）虽提及扰动方法的数值稳定性优势，但未直接解释“为何能处理问题”的根本原因，因此本回答仅聚焦[S3]以确保结论的精确性和证据可追溯性。\n\n引用索引：\n- [S1] materials-4180042.pdf 第 8 页\n- [S3] materials-4180042.pdf 第 9 页",
+      "elapsed_seconds": 122.442749,
+      "cited_sources": [
+        {
+          "evidence_id": "S1",
+          "source_file": "materials-4180042.pdf",
+          "page_number": 8,
+          "chunk_id": "f831e3b0bc234f0b:p0008:c0002"
+        },
+        {
+          "evidence_id": "S3",
+          "source_file": "materials-4180042.pdf",
+          "page_number": 9,
+          "chunk_id": "f831e3b0bc234f0b:p0009:c0001"
+        }
+      ],
+      "retrieved_chunks": [
+        {
+          "evidence_id": "S1",
+          "source_file": "materials-4180042.pdf",
+          "page_number": 8,
+          "chunk_id": "f831e3b0bc234f0b:p0008:c0002",
+          "score": 0.35649197027942137,
+          "score_type": "chroma_relevance_1_minus_cosine_distance_higher_is_better",
+          "text": "walls remain coherent across the z-direction. The excellent agreement between 2D and 3D \nresults conﬁrms that our Fourier-space perturbation method maintains numerical stability, \naccuracy, and computational eﬃciency in three dimensions, overcoming a major limita-\ntion of conventional real-space solvers."
+        },
+        {
+          "evidence_id": "S2",
+          "source_file": "materials-4180042.pdf",
+          "page_number": 5,
+          "chunk_id": "f831e3b0bc234f0b:p0005:c0002",
+          "score": 0.30949777057444094,
+          "score_type": "chroma_relevance_1_minus_cosine_distance_higher_is_better",
+          "text": "Further expansion yields \n𝛿𝐹୥୰ୟୢ (ଶ)\n𝛿𝑃௜\n= 𝐻(𝐫)∇ସ𝑃௜ + 2∇𝐻(𝐫) ⋅ ∇(∇ଶ𝑃௜)\n+∇ଶ𝐻(𝐫)∇ଶ𝑃௜\n (20)\nIf solved in Fourier space, we obtain the following form, \nℱ[𝐻∇ସ𝑃] = 𝐻෡(𝐤) ∗ ൫|𝐤|ସ𝑃෠(𝐤)൯\nℱ[∇𝐻 ⋅ ∇(∇ଶ𝑃)] = (𝑖𝐤𝐻෡(𝐤)) ∗ ൫−𝑖𝐤|𝐤|ଶ𝑃෠(𝐤)൯\nℱ[(∇ଶ𝐻)∇ଶ𝑃] = ൫−|𝐤|ଶ𝐻෡(𝐤)൯ ∗ ൫−|𝐤|ଶ𝑃෠(𝐤)൯\n (21)\nwhich clearly involves a convolution. Therefore, a perturbation method can be em-\nployed for improvement. \n𝑃෠௜ (௡ାଵ) − 𝑃෠௜ (௡)\nΔ𝑡 = −𝐿ቀ𝑁෡(௡) + 𝐻ഥ|𝐤|ସ𝑃෠௜ (௡ାଵ) + 𝑅෠(௡)ቁ (22)\nwhere 𝐻ഥ is the homogeneous part and 𝑅෠ is the perbutaion part, thus we obtain, \n𝑃෠௜ (௡ାଵ) = 𝑃෠௜ (௡) − 𝐿Δ𝑡൫𝑁෡(௡) + 𝑅෠(௡)൯ 1 + 𝐿Δ𝑡𝐻ഥ|𝐤|ସ (23)"
+        },
+        {
+          "evidence_id": "S3",
+          "source_file": "materials-4180042.pdf",
+          "page_number": 9,
+          "chunk_id": "f831e3b0bc234f0b:p0009:c0001",
+          "score": 0.27100349439604654,
+          "score_type": "chroma_relevance_1_minus_cosine_distance_higher_is_better",
+          "text": "rate perturbation framework for anisotropic gradient energy. Unlike previous Fou-\nrier-spectral perturbation methods that either assume constant gradient coeﬃcients or \ntreat anisotropy and spatial heterogeneity separately, our formulation provides a uniﬁed \nframework that simultaneously accounts for a full anisotropic gradient energy tensor with \narbitrary spatial variations. This capability is achieved by decomposing the tensor into a \nhomogeneous part (handled implicitly) and a ﬂuctuating part (handled explicitly), allow-\ning eﬃcient iterative solution in reciprocal space. The method therefore ﬁlls a critical gap \nin the phase-ﬁeld modeling of systems where the gradient energy is both anisotropic and \nlocally heterogeneous—such as ferroelectric/antiferroelectric composites with composi-\ntion gradients or structural modulations.. Numerical experiments conﬁrm its robustness,"
+        },
+        {
+          "evidence_id": "S4",
+          "source_file": "materials-4180042.pdf",
+          "page_number": 4,
+          "chunk_id": "f831e3b0bc234f0b:p0004:c0002",
+          "score": 0.264563961705764,
+          "score_type": "chroma_relevance_1_minus_cosine_distance_higher_is_better",
+          "text": "However, due to the anisotropy of the gradient energy, it cannot be directly represented \nby multiplying the polarization in Fourier space by the wave vector. To address this, we \npropose a perturbation method in Fourier space for the solution. According to the convo-\nlution theorem ℱ[𝑓(𝐱)𝑔(𝐱)] = 𝑓መ(𝐤) ∗ 𝑔ො(𝐤) we can obtain: \nℱ[𝐺(𝐫)∇ଶ𝑃(𝐫)] = 𝐺෠(𝐤) ∗ ൫−|𝐤|ଶ𝑃෠(𝐤)൯\nℱ[∇𝐺(𝐫) ⋅ ∇𝑃(𝐫)] = (𝑖𝐤𝐺෠(𝐤)) ∗ (𝑖𝐤𝑃෠(𝐤)) (13)"
+        }
+      ],
+      "tool_calls": [],
+      "error_message": null,
+      "run_status": "success",
+      "citation_validation": {
+        "passed": true,
+        "known_evidence_ids": [
+          "S1",
+          "S2",
+          "S3",
+          "S4"
+        ],
+        "used_citation_ids": [
+          "S1",
+          "S3"
+        ],
+        "unknown_citation_ids": [],
+        "valid_source_files": [
+          "materials-4180042.pdf"
+        ],
+        "mentioned_source_files": [],
+        "invalid_source_files": [],
+        "valid_dois": [],
+        "mentioned_dois": [],
+        "invalid_dois": [],
+        "page_checks": [],
+        "page_mismatches": [],
+        "insufficient_evidence_stated": false,
+        "scope": "Checks citation-ID existence, source-file membership, and structured page references; scientific correctness is not auto-verified"
+      },
+      "performance": {
+        "total_seconds": 122.414263,
+        "planner_seconds": 0.0,
+        "executor_seconds": 0.0,
+        "replanner_seconds": 0.0,
+        "writer_seconds": 0.0,
+        "context_loader_seconds": 0.0,
+        "node_wall_seconds": {
+          "context_loader": 0.0,
+          "executor": 0.0,
+          "fast_retrieval": 0.152205,
+          "fast_writer": 122.258671,
+          "planner": 0.0,
+          "replanner": 0.0,
+          "writer": 0.0
+        },
+        "mcp_tool_seconds": {},
+        "mcp_tool_total_seconds": 0,
+        "chroma_retrieval_seconds": 0.152205,
+        "crossref_api_seconds": 0.0,
+        "llm_call_count": 1,
+        "llm_error_count": 0,
+        "llm_wall_seconds": 122.252688,
+        "llm_generation_seconds": 122.230802,
+        "prompt_tokens": 1282,
+        "completion_tokens": 3281,
+        "total_tokens": 4563,
+        "llm_calls": [
+          {
+            "call_index": 1,
+            "node": "fast_writer",
+            "configured_thinking_setting": "default",
+            "prompt_tokens": 1282,
+            "completion_tokens": 3281,
+            "total_tokens": 4563,
+            "generation_duration_seconds": 122.230802,
+            "wall_seconds": 122.252691,
+            "thinking_tokens": null,
+            "thinking_tokens_status": "unavailable",
+            "thinking_chars": 0,
+            "final_answer_chars": 533,
+            "has_tool_calls": false,
+            "error": null
+          }
+        ],
+        "thinking_tokens_status": "unavailable",
+        "token_metadata_status": "available",
+        "tool_call_count": 0,
+        "tool_calls_by_name": {},
+        "executed_steps": 0,
+        "replanning_count": 0,
+        "generation_model_loaded_before_run": true,
+        "cold_start": false,
+        "node_call_counts": {
+          "executor": 0,
+          "fast_retrieval": 1,
+          "fast_writer": 1
+        }
+      },
+      "review_status": "pending_human_review",
+      "automated_quality_signal": {
+        "status": "pending_human_review",
+        "signal": "keyword_signal_pass",
+        "keyword_check_passed": true
+      }
+    },
+    {
+      "question_id": "q09",
+      "question": "请用中文说明这个扰动模型为何能处理以前常系数或各向同性近似难以处理的问题。",
+      "question_type": "cross_language",
+      "answerable": true,
+      "reference_answer": "它通过傅里叶空间扰动方案处理具有空间变化的完整各向异性梯度能量张量。",
+      "reference_verification_status": "pending_human_review",
+      "model": "qwen3:4b",
+      "system_variant": "D_deep",
+      "temperature": 0,
+      "top_k": 4,
+      "final_answer": "扰动模型能够有效处理以往常系数或各向同性近似难以应对的问题，其核心原因基于以下三点事实性结论（证据来源均严格对应提供的证据ID）：\n\n1. **物理模型适应性**：传统常系数模型假设介质为均匀且各向同性（如各向同性弹性介质），但实际地质结构常存在横各向异性（如垂直对称轴的弹性介质）。扰动模型通过引入小扰动项，直接建模介质从各向同性到各向异性的渐变过程（[S5]）。  \n   *（注：此结论源自[S5]中对横各向异性介质扰动建模的描述，明确区分了传统模型的局限性与扰动模型的适应性。）*\n\n2. **误差敏感性优化**：在计算P波和S波旅行时差时，扰动模型能更精确地捕捉深度、垂直速度比及各向异性参数（如anellipticity参数）的微小变化。传统方法（如通用移动出近似GMA）在参数变化时误差显著增大，而扰动模型通过局部线性化近似，将误差敏感性控制在可接受范围内（[S5]）。  \n   *（注：此结论源自[S5]中对扰动系数从隐式参数偏移-旅行时方程导出的机制分析，避免了对传统方法误差的过度推断。）*\n\n3. **实际应用价值**：在地震数据处理中，扰动模型可直接应用于高精度成像（如时间迁移），从而避免传统方法因假设不成立导致的结构模糊问题（[S5]）。  \n   *（注：此结论源自[S5]的实证场景，聚焦于扰动模型在实际地质应用中的优势，未引入额外数据或假设。）*\n\n以上结论均严格基于证据[S5]（2022年Geophysics期刊论文），未添加任何未验证的DOI、页码、公式或实验数据。程序将自动追加唯一可信的来源索引，确保响应的精确性与可追溯性。\n\n引用索引：\n- [S5] Crossref DOI: 10.1190/geo2021-0695.1",
+      "elapsed_seconds": 548.324437,
+      "cited_sources": [
+        {
+          "evidence_id": "S5",
+          "source_type": "crossref_metadata",
+          "doi": "10.1190/geo2021-0695.1"
+        }
+      ],
+      "retrieved_chunks": [],
+      "tool_calls": [
+        {
+          "step_number": 1,
+          "name": "search_papers",
+          "args": {
+            "query": "perturbation model constant coefficients isotropic approximation",
+            "max_results": 5
+          },
+          "evidence_ids": [
+            "S1",
+            "S2",
+            "S3",
+            "S4",
+            "S5"
+          ]
+        }
+      ],
+      "error_message": null,
+      "run_status": "success",
+      "citation_validation": {
+        "passed": true,
+        "known_evidence_ids": [
+          "S1",
+          "S2",
+          "S3",
+          "S4",
+          "S5"
+        ],
+        "used_citation_ids": [
+          "S5"
+        ],
+        "unknown_citation_ids": [],
+        "valid_source_files": [],
+        "mentioned_source_files": [],
+        "invalid_source_files": [],
+        "valid_dois": [
+          "10.1111/j.1365-246x.1991.tb04597.x",
+          "10.1190/geo2021-0695.1",
+          "10.1201/9781420039641.axb",
+          "10.3997/2214-4609-pdb.15.p192",
+          "10.4135/9781412985420.n3"
+        ],
+        "mentioned_dois": [],
+        "invalid_dois": [],
+        "page_checks": [],
+        "page_mismatches": [],
+        "insufficient_evidence_stated": false,
+        "scope": "Checks citation-ID existence, source-file membership, and structured page references; scientific correctness is not auto-verified",
+        "source_matches_retrieved_evidence": true
+      },
+      "performance": {},
+      "review_status": "pending_human_review",
+      "automated_quality_signal": {
+        "status": "pending_human_review",
+        "signal": "probable_content_mismatch",
+        "keyword_check_passed": false
+      }
+    },
+    {
+      "question_id": "q16",
+      "question": "Using only the imported local PDFs, compare the main design approaches of the entropy paper and the PZO domain-modulation paper.",
+      "question_type": "cross_paragraph_or_paper",
+      "answerable": true,
+      "reference_answer": "The first paper uses increasing entropy to design the polarization configuration; the second studies domain modulation with phase-field simulations.",
+      "reference_verification_status": "pending_human_review",
+      "model": "qwen3:4b",
+      "system_variant": "A_baseline",
+      "temperature": 0,
+      "top_k": 4,
+      "final_answer": "证据不足",
+      "elapsed_seconds": 30.954101,
+      "cited_sources": [],
+      "retrieved_chunks": [],
+      "tool_calls": [],
+      "error_message": null,
+      "run_status": "success",
+      "citation_validation": {
+        "passed": null,
+        "mode": "not_applicable_no_retrieval"
+      },
+      "performance": {
+        "total_seconds": 30.954101,
+        "planner_seconds": 0.0,
+        "executor_seconds": 0.0,
+        "replanner_seconds": 0.0,
+        "writer_seconds": 0.0,
+        "context_loader_seconds": 0.0,
+        "node_wall_seconds": {
+          "context_loader": 0.0,
+          "executor": 0.0,
+          "planner": 0.0,
+          "replanner": 0.0,
+          "writer": 0.0
+        },
+        "mcp_tool_seconds": {},
+        "mcp_tool_total_seconds": 0,
+        "chroma_retrieval_seconds": 0.0,
+        "crossref_api_seconds": 0.0,
+        "llm_call_count": 1,
+        "llm_error_count": 0,
+        "llm_wall_seconds": 30.951495,
+        "llm_generation_seconds": 30.946643,
+        "prompt_tokens": 96,
+        "completion_tokens": 1062,
+        "total_tokens": 1158,
+        "llm_calls": [
+          {
+            "call_index": 1,
+            "node": "baseline",
+            "configured_thinking_setting": "default",
+            "prompt_tokens": 96,
+            "completion_tokens": 1062,
+            "total_tokens": 1158,
+            "generation_duration_seconds": 30.946643,
+            "wall_seconds": 30.951496,
+            "thinking_tokens": null,
+            "thinking_tokens_status": "unavailable",
+            "thinking_chars": 0,
+            "final_answer_chars": 4,
+            "has_tool_calls": false,
+            "error": null
+          }
+        ],
+        "thinking_tokens_status": "unavailable",
+        "token_metadata_status": "available",
+        "tool_call_count": 0,
+        "tool_calls_by_name": {},
+        "executed_steps": 0,
+        "replanning_count": 0,
+        "generation_model_loaded_before_run": true,
+        "cold_start": false,
+        "node_call_counts": {
+          "executor": 0
+        }
+      },
+      "review_status": "pending_human_review",
+      "automated_quality_signal": {
+        "status": "not_applicable",
+        "reason": "baseline has no PDF retrieval access",
+        "signal": "not_applicable_for_pdf_evidence"
+      }
+    },
+    {
+      "question_id": "q16",
+      "question": "Using only the imported local PDFs, compare the main design approaches of the entropy paper and the PZO domain-modulation paper.",
+      "question_type": "cross_paragraph_or_paper",
+      "answerable": true,
+      "reference_answer": "The first paper uses increasing entropy to design the polarization configuration; the second studies domain modulation with phase-field simulations.",
+      "reference_verification_status": "pending_human_review",
+      "model": "qwen3:4b",
+      "system_variant": "B_direct_rag",
+      "temperature": 0,
+      "top_k": 4,
+      "final_answer": "证据不足：当前索引中没有与问题足够相关的 PDF 片段，因此不能基于论文回答。",
+      "elapsed_seconds": 1.87744,
+      "cited_sources": [],
+      "retrieved_chunks": [],
+      "tool_calls": [],
+      "error_message": null,
+      "run_status": "success",
+      "citation_validation": {
+        "passed": true,
+        "mode": "program_appended_retrieved_sources",
+        "retrieved_source_count": 0,
+        "unknown_citation_ids": []
+      },
+      "performance": {
+        "total_seconds": 1.87744,
+        "llm_call_count": 0,
+        "prompt_tokens": null,
+        "completion_tokens": null,
+        "total_tokens": null,
+        "chroma_retrieval_seconds": 1.877091084024869,
+        "tool_call_count": 0
+      },
+      "review_status": "pending_human_review",
+      "automated_quality_signal": {
+        "status": "pending_human_review",
+        "signal": "incorrect_abstention",
+        "keyword_check_passed": false
+      }
+    },
+    {
+      "question_id": "q16",
+      "question": "Using only the imported local PDFs, compare the main design approaches of the entropy paper and the PZO domain-modulation paper.",
+      "question_type": "cross_paragraph_or_paper",
+      "answerable": true,
+      "reference_answer": "The first paper uses increasing entropy to design the polarization configuration; the second studies domain modulation with phase-field simulations.",
+      "reference_verification_status": "pending_human_review",
+      "model": "qwen3:4b",
+      "system_variant": "C_fast",
+      "temperature": 0,
+      "top_k": 4,
+      "final_answer": "证据不足。",
+      "elapsed_seconds": 0.052423,
+      "cited_sources": [],
+      "retrieved_chunks": [],
+      "tool_calls": [],
+      "error_message": null,
+      "run_status": "success",
+      "citation_validation": {
+        "passed": true,
+        "known_evidence_ids": [],
+        "used_citation_ids": [],
+        "unknown_citation_ids": [],
+        "valid_source_files": [],
+        "mentioned_source_files": [],
+        "invalid_source_files": [],
+        "valid_dois": [],
+        "mentioned_dois": [],
+        "invalid_dois": [],
+        "page_checks": [],
+        "page_mismatches": [],
+        "insufficient_evidence_stated": true,
+        "scope": "Checks citation-ID existence, source-file membership, and structured page references; scientific correctness is not auto-verified"
+      },
+      "performance": {
+        "total_seconds": 0.047899,
+        "planner_seconds": 0.0,
+        "executor_seconds": 0.0,
+        "replanner_seconds": 0.0,
+        "writer_seconds": 0.0,
+        "context_loader_seconds": 0.0,
+        "node_wall_seconds": {
+          "context_loader": 0.0,
+          "executor": 0.0,
+          "fast_retrieval": 0.047556,
+          "planner": 0.0,
+          "replanner": 0.0,
+          "writer": 0.0
+        },
+        "mcp_tool_seconds": {},
+        "mcp_tool_total_seconds": 0,
+        "chroma_retrieval_seconds": 0.047556,
+        "crossref_api_seconds": 0.0,
+        "llm_call_count": 0,
+        "llm_error_count": 0,
+        "llm_wall_seconds": 0.0,
+        "llm_generation_seconds": null,
+        "prompt_tokens": null,
+        "completion_tokens": null,
+        "total_tokens": null,
+        "llm_calls": [],
+        "thinking_tokens_status": "unavailable",
+        "token_metadata_status": "unavailable",
+        "tool_call_count": 0,
+        "tool_calls_by_name": {},
+        "executed_steps": 0,
+        "replanning_count": 0,
+        "generation_model_loaded_before_run": true,
+        "cold_start": false,
+        "node_call_counts": {
+          "executor": 0,
+          "fast_retrieval": 1
+        }
+      },
+      "review_status": "pending_human_review",
+      "automated_quality_signal": {
+        "status": "pending_human_review",
+        "signal": "incorrect_abstention",
+        "keyword_check_passed": false
+      }
+    },
+    {
+      "question_id": "q16",
+      "question": "Using only the imported local PDFs, compare the main design approaches of the entropy paper and the PZO domain-modulation paper.",
+      "question_type": "cross_paragraph_or_paper",
+      "answerable": true,
+      "reference_answer": "The first paper uses increasing entropy to design the polarization configuration; the second studies domain modulation with phase-field simulations.",
+      "reference_verification_status": "pending_human_review",
+      "model": "qwen3:4b",
+      "system_variant": "D_deep",
+      "temperature": 0,
+      "top_k": 4,
+      "final_answer": "证据不足。根据当前证据，本地PDF库中未检索到与关键词\"entropy\"相关的有效证据（相关性阈值0.25未达标），因此无法确定熵论文的设计方法，进而无法比较熵论文和PZO域调制论文的主要设计方法。",
+      "elapsed_seconds": 324.469497,
+      "cited_sources": [],
+      "retrieved_chunks": [],
+      "tool_calls": [
+        {
+          "step_number": 1,
+          "name": "retrieve_paper_evidence",
+          "args": {
+            "query": "entropy",
+            "top_k": 4
+          },
+          "evidence_ids": []
+        }
+      ],
+      "error_message": null,
+      "run_status": "success",
+      "citation_validation": {
+        "passed": true,
+        "known_evidence_ids": [],
+        "used_citation_ids": [],
+        "unknown_citation_ids": [],
+        "valid_source_files": [],
+        "mentioned_source_files": [],
+        "invalid_source_files": [],
+        "valid_dois": [],
+        "mentioned_dois": [],
+        "invalid_dois": [],
+        "page_checks": [],
+        "page_mismatches": [],
+        "insufficient_evidence_stated": true,
+        "scope": "Checks citation-ID existence, source-file membership, and structured page references; scientific correctness is not auto-verified",
+        "source_matches_retrieved_evidence": true
+      },
+      "performance": {},
+      "review_status": "pending_human_review",
+      "automated_quality_signal": {
+        "status": "pending_human_review",
+        "signal": "incorrect_abstention",
+        "keyword_check_passed": false
+      }
+    },
+    {
+      "question_id": "q10",
+      "question": "根据当前已导入的本地 PDF，这些论文在 500 K 下测得的超导临界温度是多少？",
+      "question_type": "insufficient_evidence",
+      "answerable": false,
+      "reference_answer": "The imported papers do not provide a superconducting critical temperature at 500 K.",
+      "reference_verification_status": "pending_human_review",
+      "model": "qwen3:4b",
+      "system_variant": "A_baseline",
+      "temperature": 0,
+      "top_k": 4,
+      "final_answer": "证据不足",
+      "elapsed_seconds": 40.459046,
+      "cited_sources": [],
+      "retrieved_chunks": [],
+      "tool_calls": [],
+      "error_message": null,
+      "run_status": "success",
+      "citation_validation": {
+        "passed": null,
+        "mode": "not_applicable_no_retrieval"
+      },
+      "performance": {
+        "total_seconds": 40.459046,
+        "planner_seconds": 0.0,
+        "executor_seconds": 0.0,
+        "replanner_seconds": 0.0,
+        "writer_seconds": 0.0,
+        "context_loader_seconds": 0.0,
+        "node_wall_seconds": {
+          "context_loader": 0.0,
+          "executor": 0.0,
+          "planner": 0.0,
+          "replanner": 0.0,
+          "writer": 0.0
+        },
+        "mcp_tool_seconds": {},
+        "mcp_tool_total_seconds": 0,
+        "chroma_retrieval_seconds": 0.0,
+        "crossref_api_seconds": 0.0,
+        "llm_call_count": 1,
+        "llm_error_count": 0,
+        "llm_wall_seconds": 40.45712,
+        "llm_generation_seconds": 40.44759,
+        "prompt_tokens": 97,
+        "completion_tokens": 1253,
+        "total_tokens": 1350,
+        "llm_calls": [
+          {
+            "call_index": 1,
+            "node": "baseline",
+            "configured_thinking_setting": "default",
+            "prompt_tokens": 97,
+            "completion_tokens": 1253,
+            "total_tokens": 1350,
+            "generation_duration_seconds": 40.44759,
+            "wall_seconds": 40.457121,
+            "thinking_tokens": null,
+            "thinking_tokens_status": "unavailable",
+            "thinking_chars": 0,
+            "final_answer_chars": 4,
+            "has_tool_calls": false,
+            "error": null
+          }
+        ],
+        "thinking_tokens_status": "unavailable",
+        "token_metadata_status": "available",
+        "tool_call_count": 0,
+        "tool_calls_by_name": {},
+        "executed_steps": 0,
+        "replanning_count": 0,
+        "generation_model_loaded_before_run": true,
+        "cold_start": false,
+        "node_call_counts": {
+          "executor": 0
+        }
+      },
+      "review_status": "pending_human_review",
+      "automated_quality_signal": {
+        "status": "pending_human_review",
+        "insufficient_evidence_stated": true,
+        "signal": "evidence_insufficient_expected"
+      }
+    },
+    {
+      "question_id": "q10",
+      "question": "根据当前已导入的本地 PDF，这些论文在 500 K 下测得的超导临界温度是多少？",
+      "question_type": "insufficient_evidence",
+      "answerable": false,
+      "reference_answer": "The imported papers do not provide a superconducting critical temperature at 500 K.",
+      "reference_verification_status": "pending_human_review",
+      "model": "qwen3:4b",
+      "system_variant": "B_direct_rag",
+      "temperature": 0,
+      "top_k": 4,
+      "final_answer": "证据不足：当前索引中没有与问题足够相关的 PDF 片段，因此不能基于论文回答。",
+      "elapsed_seconds": 0.127031,
+      "cited_sources": [],
+      "retrieved_chunks": [],
+      "tool_calls": [],
+      "error_message": null,
+      "run_status": "success",
+      "citation_validation": {
+        "passed": true,
+        "mode": "program_appended_retrieved_sources",
+        "retrieved_source_count": 0,
+        "unknown_citation_ids": []
+      },
+      "performance": {
+        "total_seconds": 0.127031,
+        "llm_call_count": 0,
+        "prompt_tokens": null,
+        "completion_tokens": null,
+        "total_tokens": null,
+        "chroma_retrieval_seconds": 0.12656033295206726,
+        "tool_call_count": 0
+      },
+      "review_status": "pending_human_review",
+      "automated_quality_signal": {
+        "status": "pending_human_review",
+        "insufficient_evidence_stated": true,
+        "signal": "evidence_insufficient_expected"
+      }
+    },
+    {
+      "question_id": "q10",
+      "question": "根据当前已导入的本地 PDF，这些论文在 500 K 下测得的超导临界温度是多少？",
+      "question_type": "insufficient_evidence",
+      "answerable": false,
+      "reference_answer": "The imported papers do not provide a superconducting critical temperature at 500 K.",
+      "reference_verification_status": "pending_human_review",
+      "model": "qwen3:4b",
+      "system_variant": "C_fast",
+      "temperature": 0,
+      "top_k": 4,
+      "final_answer": "证据不足。",
+      "elapsed_seconds": 0.08238,
+      "cited_sources": [],
+      "retrieved_chunks": [],
+      "tool_calls": [],
+      "error_message": null,
+      "run_status": "success",
+      "citation_validation": {
+        "passed": true,
+        "known_evidence_ids": [],
+        "used_citation_ids": [],
+        "unknown_citation_ids": [],
+        "valid_source_files": [],
+        "mentioned_source_files": [],
+        "invalid_source_files": [],
+        "valid_dois": [],
+        "mentioned_dois": [],
+        "invalid_dois": [],
+        "page_checks": [],
+        "page_mismatches": [],
+        "insufficient_evidence_stated": true,
+        "scope": "Checks citation-ID existence, source-file membership, and structured page references; scientific correctness is not auto-verified"
+      },
+      "performance": {
+        "total_seconds": 0.074793,
+        "planner_seconds": 0.0,
+        "executor_seconds": 0.0,
+        "replanner_seconds": 0.0,
+        "writer_seconds": 0.0,
+        "context_loader_seconds": 0.0,
+        "node_wall_seconds": {
+          "context_loader": 0.0,
+          "executor": 0.0,
+          "fast_retrieval": 0.074616,
+          "planner": 0.0,
+          "replanner": 0.0,
+          "writer": 0.0
+        },
+        "mcp_tool_seconds": {},
+        "mcp_tool_total_seconds": 0,
+        "chroma_retrieval_seconds": 0.074616,
+        "crossref_api_seconds": 0.0,
+        "llm_call_count": 0,
+        "llm_error_count": 0,
+        "llm_wall_seconds": 0.0,
+        "llm_generation_seconds": null,
+        "prompt_tokens": null,
+        "completion_tokens": null,
+        "total_tokens": null,
+        "llm_calls": [],
+        "thinking_tokens_status": "unavailable",
+        "token_metadata_status": "unavailable",
+        "tool_call_count": 0,
+        "tool_calls_by_name": {},
+        "executed_steps": 0,
+        "replanning_count": 0,
+        "generation_model_loaded_before_run": true,
+        "cold_start": false,
+        "node_call_counts": {
+          "executor": 0,
+          "fast_retrieval": 1
+        }
+      },
+      "review_status": "pending_human_review",
+      "automated_quality_signal": {
+        "status": "pending_human_review",
+        "insufficient_evidence_stated": true,
+        "signal": "evidence_insufficient_expected"
+      }
+    },
+    {
+      "question_id": "q10",
+      "question": "根据当前已导入的本地 PDF，这些论文在 500 K 下测得的超导临界温度是多少？",
+      "question_type": "insufficient_evidence",
+      "answerable": false,
+      "reference_answer": "The imported papers do not provide a superconducting critical temperature at 500 K.",
+      "reference_verification_status": "pending_human_review",
+      "model": "qwen3:4b",
+      "system_variant": "D_deep",
+      "temperature": 0,
+      "top_k": 4,
+      "final_answer": "证据不足",
+      "elapsed_seconds": 304.358959,
+      "cited_sources": [],
+      "retrieved_chunks": [],
+      "tool_calls": [
+        {
+          "name": "retrieve_paper_evidence",
+          "args": {
+            "query": "list of all imported PDF files",
+            "top_k": 4
+          },
+          "evidence_ids": []
+        }
+      ],
+      "error_message": null,
+      "run_status": "success",
+      "citation_validation": {
+        "passed": true,
+        "known_evidence_ids": [],
+        "used_citation_ids": [],
+        "unknown_citation_ids": [],
+        "valid_source_files": [],
+        "mentioned_source_files": [],
+        "invalid_source_files": [],
+        "valid_dois": [],
+        "mentioned_dois": [],
+        "invalid_dois": [],
+        "page_checks": [],
+        "page_mismatches": [],
+        "insufficient_evidence_stated": true,
+        "scope": "Checks citation-ID existence, source-file membership, and structured page references; scientific correctness is not auto-verified"
+      },
+      "review_status": "pending_human_review",
+      "performance": {
+        "total_seconds": 304.358959,
+        "planner_seconds": 115.027976,
+        "executor_seconds": 70.462624,
+        "replanner_seconds": 74.268347,
+        "writer_seconds": 44.277626,
+        "context_loader_seconds": 0.187206,
+        "mcp_tool_seconds": {
+          "retrieve_paper_evidence": 1.516752
+        },
+        "mcp_tool_total_seconds": 1.516752,
+        "chroma_retrieval_seconds": 1.449495,
+        "crossref_api_seconds": 0.0,
+        "llm_call_count": 5,
+        "llm_error_count": 0,
+        "llm_wall_seconds": 302.425849,
+        "llm_generation_seconds": 302.352555,
+        "prompt_tokens": 2515,
+        "completion_tokens": 7617,
+        "total_tokens": 10132,
+        "llm_calls": [
+          {
+            "call_index": 1,
+            "node": "planner",
+            "configured_thinking_setting": "default",
+            "prompt_tokens": 267,
+            "completion_tokens": 2812,
+            "total_tokens": 3079,
+            "generation_duration_seconds": 114.992427,
+            "wall_seconds": 115.013555,
+            "thinking_tokens": null,
+            "thinking_tokens_status": "unavailable",
+            "thinking_chars": 0,
+            "final_answer_chars": 174,
+            "has_tool_calls": false,
+            "error": null
+          },
+          {
+            "call_index": 2,
+            "node": "executor",
+            "configured_thinking_setting": "default",
+            "prompt_tokens": 697,
+            "completion_tokens": 812,
+            "total_tokens": 1509,
+            "generation_duration_seconds": 31.868223,
+            "wall_seconds": 31.878197,
+            "thinking_tokens": null,
+            "thinking_tokens_status": "unavailable",
+            "thinking_chars": 0,
+            "final_answer_chars": 0,
+            "has_tool_calls": true,
+            "error": null
+          },
+          {
+            "call_index": 3,
+            "node": "executor",
+            "configured_thinking_setting": "default",
+            "prompt_tokens": 798,
+            "completion_tokens": 959,
+            "total_tokens": 1757,
+            "generation_duration_seconds": 37.010783,
+            "wall_seconds": 37.017956,
+            "thinking_tokens": null,
+            "thinking_tokens_status": "unavailable",
+            "thinking_chars": 0,
+            "final_answer_chars": 131,
+            "has_tool_calls": false,
+            "error": null
+          },
+          {
+            "call_index": 4,
+            "node": "replanner",
+            "configured_thinking_setting": "default",
+            "prompt_tokens": 413,
+            "completion_tokens": 1909,
+            "total_tokens": 2322,
+            "generation_duration_seconds": 74.234185,
+            "wall_seconds": 74.247328,
+            "thinking_tokens": null,
+            "thinking_tokens_status": "unavailable",
+            "thinking_chars": 0,
+            "final_answer_chars": 253,
+            "has_tool_calls": false,
+            "error": null
+          },
+          {
+            "call_index": 5,
+            "node": "writer",
+            "configured_thinking_setting": "default",
+            "prompt_tokens": 340,
+            "completion_tokens": 1125,
+            "total_tokens": 1465,
+            "generation_duration_seconds": 44.246937,
+            "wall_seconds": 44.268818,
+            "thinking_tokens": null,
+            "thinking_tokens_status": "unavailable",
+            "thinking_chars": 0,
+            "final_answer_chars": 4,
+            "has_tool_calls": false,
+            "error": null
+          }
+        ],
+        "thinking_tokens_status": "unavailable",
+        "token_metadata_status": "available",
+        "tool_call_count": 1,
+        "tool_calls_by_name": {
+          "retrieve_paper_evidence": 1
+        },
+        "executed_steps": 1,
+        "replanning_count": 1,
+        "generation_model_loaded_before_run": true,
+        "cold_start": false,
+        "node_call_counts": {
+          "context_loader": 1,
+          "executor": 1,
+          "planner": 1,
+          "replanner": 1,
+          "writer": 1
+        }
+      },
+      "automated_quality_signal": {
+        "status": "pending_human_review",
+        "insufficient_evidence_stated": true,
+        "signal": "evidence_insufficient_expected"
+      }
+    }
+  ],
+  "metrics": {
+    "attempted_tasks": 20,
+    "completed_tasks": 20,
+    "failed_tasks": 0,
+    "average_elapsed_seconds": 150.046452,
+    "total_tool_calls": 5,
+    "variants": {
+      "A_baseline": {
+        "attempted_tasks": 5,
+        "completed_tasks": 5,
+        "failed_tasks": 0,
+        "average_elapsed_seconds": 38.061305,
+        "tool_call_count": 0,
+        "llm_call_count": 5,
+        "prompt_tokens": 483,
+        "completion_tokens": 5432,
+        "total_tokens": 5915,
+        "chroma_retrieval_seconds": 0.0,
+        "citation_checks": 0,
+        "citation_checks_passed": 0,
+        "citation_checks_failed": 0,
+        "unknown_citation_id_count": 0,
+        "pending_review_tasks": 5
+      },
+      "B_direct_rag": {
+        "attempted_tasks": 5,
+        "completed_tasks": 5,
+        "failed_tasks": 0,
+        "average_elapsed_seconds": 48.730424,
+        "tool_call_count": 0,
+        "llm_call_count": 3,
+        "prompt_tokens": 4027,
+        "completion_tokens": 6327,
+        "total_tokens": 10354,
+        "chroma_retrieval_seconds": 4.219736,
+        "citation_checks": 5,
+        "citation_checks_passed": 5,
+        "citation_checks_failed": 0,
+        "unknown_citation_id_count": 0,
+        "pending_review_tasks": 5
+      },
+      "C_fast": {
+        "attempted_tasks": 5,
+        "completed_tasks": 5,
+        "failed_tasks": 0,
+        "average_elapsed_seconds": 62.95319,
+        "tool_call_count": 0,
+        "llm_call_count": 3,
+        "prompt_tokens": 4172,
+        "completion_tokens": 8279,
+        "total_tokens": 12451,
+        "chroma_retrieval_seconds": 0.543963,
+        "citation_checks": 5,
+        "citation_checks_passed": 5,
+        "citation_checks_failed": 0,
+        "unknown_citation_id_count": 0,
+        "pending_review_tasks": 5
+      },
+      "D_deep": {
+        "attempted_tasks": 5,
+        "completed_tasks": 5,
+        "failed_tasks": 0,
+        "average_elapsed_seconds": 450.440889,
+        "tool_call_count": 5,
+        "llm_call_count": 15,
+        "prompt_tokens": 15174,
+        "completion_tokens": 28018,
+        "total_tokens": 43192,
+        "chroma_retrieval_seconds": 6.874083,
+        "citation_checks": 5,
+        "citation_checks_passed": 5,
+        "citation_checks_failed": 0,
+        "unknown_citation_id_count": 0,
+        "pending_review_tasks": 5
+      }
+    },
+    "pending_review_question_count": 5,
+    "answer_accuracy": null,
+    "answer_accuracy_status": "pending_human_review",
+    "evidence_support": null,
+    "evidence_support_status": "pending_human_review",
+    "unsupported_claim": null,
+    "unsupported_claim_status": "pending_human_review",
+    "incorrect_abstention": null,
+    "incorrect_abstention_status": "pending_human_review",
+    "scientific_quality": null,
+    "scientific_quality_status": "pending_human_review",
+    "scope": "Automatic metrics cover completion, elapsed time, tool calls, citation-ID existence, and retrieved-source mapping only."
+  },
+  "error_analysis": [
+    {
+      "question_id": "q09",
+      "variant": "D_deep",
+      "category": "Tool Selection / Agent planning error",
+      "observed": "selected search_papers and answered geophysics instead of materials-4180042.pdf"
+    },
+    {
+      "question_id": "q16",
+      "variant": "B_direct_rag",
+      "category": "retrieval miss",
+      "observed": "no chunks passed threshold"
+    },
+    {
+      "question_id": "q16",
+      "variant": "C_fast",
+      "category": "retrieval miss",
+      "observed": "no chunks passed threshold"
+    },
+    {
+      "question_id": "q16",
+      "variant": "D_deep",
+      "category": "retrieval miss / premature finish",
+      "observed": "single-word entropy query missed evidence, then finished"
+    },
+    {
+      "question_id": "q01",
+      "variant": "A_baseline",
+      "category": "no PDF access (expected)",
+      "observed": "evidence insufficient"
+    },
+    {
+      "question_id": "q04",
+      "variant": "A_baseline",
+      "category": "no PDF access (expected)",
+      "observed": "evidence insufficient"
+    },
+    {
+      "question_id": "q09",
+      "variant": "A_baseline",
+      "category": "no PDF access (expected)",
+      "observed": "evidence insufficient"
+    }
+  ]
+}

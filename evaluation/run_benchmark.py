@@ -20,11 +20,13 @@ if str(ROOT) not in sys.path:
 
 from rag.config import DEFAULT_TOP_K  # noqa: E402
 from rag.qa import answer_question  # noqa: E402
+from researchpilot_modes import run_fast_mode  # noqa: E402
 from researchpilot_rag import (  # noqa: E402
     SERVER_PATH,
     build_research_graph,
     run_research,
 )
+from evaluation.profiling import PerformanceProfiler  # noqa: E402
 from evaluation.metrics import calculate_metrics  # noqa: E402
 
 
@@ -57,6 +59,7 @@ def make_run_record(
     retrieved_chunks: list[dict[str, Any]] | None = None,
     tool_calls: list[dict[str, Any]] | None = None,
     citation_validation: dict[str, Any] | None = None,
+    performance: dict[str, Any] | None = None,
     error_message: str | None = None,
     run_status: str = "success",
 ) -> dict[str, Any]:
@@ -79,39 +82,54 @@ def make_run_record(
         "error_message": error_message,
         "run_status": run_status,
         "citation_validation": citation_validation,
+        "performance": performance or {},
         "review_status": "pending_human_review",
     }
 
 
 async def run_baseline(question: dict[str, Any], timeout: float) -> dict[str, Any]:
     llm = ChatOllama(model=MODEL, temperature=0)
+    profiler = PerformanceProfiler()
+    profiler.reset()
     started = time.perf_counter()
     try:
         response = await asyncio.wait_for(
-            llm.ainvoke(answer_prompt(question["question"])),
+            llm.ainvoke(
+                answer_prompt(question["question"]),
+                config={
+                    "callbacks": [profiler],
+                    "metadata": {
+                        "node": "baseline",
+                        "thinking_setting": "default",
+                    },
+                    "tags": ["node:baseline"],
+                },
+            ),
             timeout=timeout,
         )
         elapsed = time.perf_counter() - started
         return make_run_record(
             question,
-            "baseline",
+            "A_baseline",
             elapsed,
             str(response.content),
             citation_validation={
                 "passed": None,
                 "mode": "not_applicable_no_retrieval",
             },
+            performance=profiler.snapshot({}, elapsed),
         )
     except Exception as exc:
         elapsed = time.perf_counter() - started
         status = "timeout" if isinstance(exc, asyncio.TimeoutError) else "error"
         return make_run_record(
             question,
-            "baseline",
+            "A_baseline",
             elapsed,
             "",
             error_message=f"{type(exc).__name__}: {exc}",
             run_status=status,
+            performance=profiler.snapshot({}, elapsed),
         )
 
 
@@ -148,7 +166,7 @@ async def run_direct_rag(question: dict[str, Any], timeout: float) -> dict[str, 
         ]
         return make_run_record(
             question,
-            "direct_rag",
+            "B_direct_rag",
             elapsed,
             result.answer,
             cited_sources=cited_sources,
@@ -159,13 +177,87 @@ async def run_direct_rag(question: dict[str, Any], timeout: float) -> dict[str, 
                 "retrieved_source_count": len(chunks),
                 "unknown_citation_ids": [],
             },
+            performance={
+                "total_seconds": round(elapsed, 6),
+                "llm_call_count": result.llm_call_count,
+                "prompt_tokens": (
+                    (result.usage_metadata or {}).get("input_tokens")
+                ),
+                "completion_tokens": (
+                    (result.usage_metadata or {}).get("output_tokens")
+                ),
+                "total_tokens": (
+                    (result.usage_metadata or {}).get("total_tokens")
+                ),
+                "chroma_retrieval_seconds": result.retrieval_seconds,
+                "tool_call_count": 0,
+            },
         )
     except Exception as exc:
         elapsed = time.perf_counter() - started
         status = "timeout" if isinstance(exc, asyncio.TimeoutError) else "error"
         return make_run_record(
             question,
-            "direct_rag",
+            "B_direct_rag",
+            elapsed,
+            "",
+            error_message=f"{type(exc).__name__}: {exc}",
+            run_status=status,
+            performance={"total_seconds": round(elapsed, 6)},
+        )
+
+
+async def run_fast(question: dict[str, Any], timeout: float) -> dict[str, Any]:
+    started = time.perf_counter()
+    try:
+        result = await asyncio.wait_for(
+            run_fast_mode(question["question"]),
+            timeout=timeout,
+        )
+        elapsed = time.perf_counter() - started
+        evidence = result["evidence"]
+        chunks = [
+            {
+                "evidence_id": item["evidence_id"],
+                "source_file": item["source_file"],
+                "page_number": item["page_number"],
+                "chunk_id": item["chunk_id"],
+                "score": item.get("retrieval_score"),
+                "score_type": item.get("score_type"),
+                "text": item["supporting_text"][:900],
+            }
+            for item in evidence
+        ]
+        used_ids = set(
+            result["citation_validation"].get("used_citation_ids") or []
+        )
+        cited_sources = [
+            {
+                "evidence_id": item["evidence_id"],
+                "source_file": item["source_file"],
+                "page_number": item["page_number"],
+                "chunk_id": item["chunk_id"],
+            }
+            for item in evidence
+            if item["evidence_id"] in used_ids
+        ]
+        return make_run_record(
+            question,
+            "C_fast",
+            elapsed,
+            result["final_answer"],
+            cited_sources=cited_sources,
+            retrieved_chunks=chunks,
+            tool_calls=[],
+            citation_validation=result["citation_validation"],
+            performance=result["performance"],
+        )
+    except Exception as exc:
+        elapsed = time.perf_counter() - started
+        status = "timeout" if isinstance(exc, asyncio.TimeoutError) else "error"
+        return make_run_record(
+            question,
+            "C_fast",
             elapsed,
             "",
             error_message=f"{type(exc).__name__}: {exc}",
@@ -191,6 +283,7 @@ async def run_researchpilot(
     question: dict[str, Any],
     graph,
     timeout: float,
+    profiler: PerformanceProfiler | None = None,
 ) -> dict[str, Any]:
     started = time.perf_counter()
     try:
@@ -198,7 +291,8 @@ async def run_researchpilot(
             run_research(
                 graph,
                 question["question"],
-                f"Benchmark C: {question['question_id']}",
+                f"Benchmark D: {question['question_id']}",
+                profiler=profiler,
             ),
             timeout=timeout,
         )
@@ -243,7 +337,7 @@ async def run_researchpilot(
         ]
         return make_run_record(
             question,
-            "researchpilot",
+            "D_deep",
             elapsed,
             state.get("final_answer", ""),
             cited_sources=cited_sources,
@@ -257,13 +351,14 @@ async def run_researchpilot(
                     else None
                 ),
             },
+            performance=state.get("performance", {}),
         )
     except Exception as exc:
         elapsed = time.perf_counter() - started
         status = "timeout" if isinstance(exc, asyncio.TimeoutError) else "error"
         return make_run_record(
             question,
-            "researchpilot",
+            "D_deep",
             elapsed,
             "",
             error_message=(
@@ -294,7 +389,7 @@ async def main() -> None:
     )
     parser.add_argument(
         "--variants",
-        default="baseline,direct_rag,researchpilot",
+        default="baseline,direct_rag,fast,deep",
     )
     parser.add_argument("--timeout", type=float, default=600.0)
     args = parser.parse_args()
@@ -320,19 +415,27 @@ async def main() -> None:
     )
     async with adapter:
         tools = await adapter.list_tools()
-        graph = build_research_graph(adapter.client, tools)
+        deep_profiler = PerformanceProfiler()
+        graph = build_research_graph(
+            adapter.client,
+            tools,
+            profiler=deep_profiler,
+        )
 
         for question in selected_questions:
             if "baseline" in variants:
                 runs.append(await run_baseline(question, args.timeout))
             if "direct_rag" in variants:
                 runs.append(await run_direct_rag(question, args.timeout))
-            if "researchpilot" in variants:
+            if "fast" in variants:
+                runs.append(await run_fast(question, args.timeout))
+            if "deep" in variants:
                 runs.append(
                     await run_researchpilot(
                         question,
                         graph,
                         args.timeout,
+                        profiler=deep_profiler,
                     )
                 )
 

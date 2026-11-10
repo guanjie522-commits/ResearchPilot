@@ -26,6 +26,12 @@ def calculate_metrics(
             if run.get("citation_validation")
             and run["citation_validation"].get("passed") is not None
         ]
+        performance = [
+            run.get("performance") or {} for run in variant_runs
+        ]
+        llm_metric_runs = sum(
+            item.get("llm_call_count") is not None for item in performance
+        )
         variant_metrics[variant] = {
             "attempted_tasks": len(variant_runs),
             "completed_tasks": completed,
@@ -35,6 +41,38 @@ def calculate_metrics(
             ),
             "tool_call_count": sum(
                 len(run.get("tool_calls") or []) for run in variant_runs
+            ),
+            "llm_call_count": sum(
+                int(item.get("llm_call_count") or 0)
+                for item in performance
+            ),
+            "llm_metric_runs": llm_metric_runs,
+            "llm_metric_missing_runs": len(variant_runs) - llm_metric_runs,
+            "llm_metric_status": (
+                "available"
+                if llm_metric_runs == len(variant_runs)
+                else "partial"
+                if llm_metric_runs
+                else "unavailable"
+            ),
+            "prompt_tokens": sum(
+                int(item.get("prompt_tokens") or 0)
+                for item in performance
+            ),
+            "completion_tokens": sum(
+                int(item.get("completion_tokens") or 0)
+                for item in performance
+            ),
+            "total_tokens": sum(
+                int(item.get("total_tokens") or 0)
+                for item in performance
+            ),
+            "chroma_retrieval_seconds": round(
+                sum(
+                    float(item.get("chroma_retrieval_seconds") or 0)
+                    for item in performance
+                ),
+                6,
             ),
             "citation_checks": len(citation_checks),
             "citation_checks_passed": sum(
@@ -74,6 +112,14 @@ def calculate_metrics(
         ),
         "answer_accuracy": None,
         "answer_accuracy_status": "pending_human_review",
+        "evidence_support": None,
+        "evidence_support_status": "pending_human_review",
+        "unsupported_claim": None,
+        "unsupported_claim_status": "pending_human_review",
+        "incorrect_abstention": None,
+        "incorrect_abstention_status": "pending_human_review",
+        "task_completion": None,
+        "task_completion_status": "pending_human_review",
         "scientific_quality": None,
         "scientific_quality_status": "pending_human_review",
         "scope": (

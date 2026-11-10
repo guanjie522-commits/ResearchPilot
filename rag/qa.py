@@ -44,6 +44,9 @@ class RAGAnswer:
     answer: str
     chunks: list[RetrievedChunk]
     insufficient_evidence: bool
+    usage_metadata: dict[str, Any] | None = None
+    llm_call_count: int = 0
+    retrieval_seconds: float | None = None
 
 
 def strip_thinking(text: str) -> str:
@@ -184,12 +187,14 @@ def answer_question(
     chroma_dir: Path = DEFAULT_CHROMA_DIR,
     manifest_path: Path = DEFAULT_INDEX_MANIFEST,
 ) -> RAGAnswer:
+    retrieval_started = time.perf_counter()
     chunks = retrieve(
         question,
         top_k=top_k,
         chroma_dir=chroma_dir,
         manifest_path=manifest_path,
     )
+    retrieval_seconds = time.perf_counter() - retrieval_started
     if not chunks:
         return RAGAnswer(
             question=question,
@@ -199,6 +204,9 @@ def answer_question(
             ),
             chunks=[],
             insufficient_evidence=True,
+            usage_metadata=None,
+            llm_call_count=0,
+            retrieval_seconds=retrieval_seconds,
         )
 
     context = build_context(chunks)
@@ -241,4 +249,11 @@ def answer_question(
         answer=answer,
         chunks=chunks,
         insufficient_evidence=False,
+        usage_metadata=(
+            dict(response.usage_metadata)
+            if response.usage_metadata is not None
+            else None
+        ),
+        llm_call_count=1,
+        retrieval_seconds=retrieval_seconds,
     )
