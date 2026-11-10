@@ -1,0 +1,774 @@
+{
+  "analysis_id": "task12e_20261110",
+  "source_result": "evaluation/results/formal_benchmark_pilot_20261110.json",
+  "source_result_modified": false,
+  "tool_discovery": {
+    "scope": "live MCP discovery during this analysis",
+    "historical_model_context_available": false,
+    "tools": [
+      {
+        "name": "calculator",
+        "description": "计算两个数字的乘积。遇到乘法计算时使用。"
+      },
+      {
+        "name": "search_github",
+        "description": "通过 GitHub 公共 REST API 搜索公开仓库。适用于查找 GitHub 项目、开源实现或代码示例；返回前 5 个仓库。"
+      },
+      {
+        "name": "search_papers",
+        "description": "通过 Crossref 公共 REST API 检索真实学术论文元数据。适用于论文、文献和研究主题检索；不用于 GitHub 项目。返回标题、作者、年份、期刊、DOI、URL、摘要和来源，不提供论文全文。"
+      },
+      {
+        "name": "retrieve_paper_evidence",
+        "description": "从 ResearchPilot 已导入的本地 PDF 论文库检索真实原文证据。只返回 Chroma 命中的 PDF 文件名、页码、chunk_id、相关度分数、分数类型和受限长度原文，不生成最终答案。适用于根据本地论文回答被引用的问题；不用于在线论文搜索。"
+      }
+    ]
+  },
+  "historical_trace_limitations": [
+    "Planner plan was not saved in the q09/q16 result records.",
+    "Executor current-step text and messages were not saved.",
+    "Replanner decision and reason were not saved.",
+    "Token fields for q09/q16 Deep runs are unavailable, not zero."
+  ],
+  "q04_before_after": {
+    "before": [
+      {
+        "system_variant": "A_baseline",
+        "keyword_check_passed": null
+      },
+      {
+        "system_variant": "B_direct_rag",
+        "keyword_check_passed": false
+      },
+      {
+        "system_variant": "C_fast",
+        "keyword_check_passed": true
+      },
+      {
+        "system_variant": "D_deep",
+        "keyword_check_passed": true
+      }
+    ],
+    "after": [
+      {
+        "system_variant": "A_baseline",
+        "passed": false
+      },
+      {
+        "system_variant": "B_direct_rag",
+        "passed": true
+      },
+      {
+        "system_variant": "C_fast",
+        "passed": true
+      },
+      {
+        "system_variant": "D_deep",
+        "passed": true
+      }
+    ],
+    "before_passed": 2,
+    "before_applicable": 3,
+    "after_passed": 3,
+    "after_applicable": 3
+  },
+  "diagnostics": {
+    "q09": {
+      "original_task": "请用中文说明这个扰动模型为何能处理以前常系数或各向同性近似难以处理的问题。",
+      "expected_source": [
+        {
+          "source_file": "materials-4180042.pdf",
+          "page_number": 1,
+          "supporting_excerpt": "Through a Fou- rier-space perturbation scheme, we achieve the ability to treat the full anisotropic gradient energy tensor with spatial variations, overcoming limitations of previous constant-coeﬃ- cient or isotropic approximations."
+        }
+      ],
+      "observed_tool_call": {
+        "step_number": 1,
+        "name": "search_papers",
+        "args": {
+          "query": "perturbation model constant coefficients isotropic approximation",
+          "max_results": 5
+        },
+        "evidence_ids": [
+          "S1",
+          "S2",
+          "S3",
+          "S4",
+          "S5"
+        ]
+      },
+      "local_pdf_evidence_ids": [],
+      "crossref_evidence_ids": [
+        "S5"
+      ],
+      "confirmed_findings": [
+        "Executor step 1 selected search_papers.",
+        "The selected Crossref evidence was used in the final answer instead of local PDF evidence.",
+        "The tool-selection failure occurs in the Executor layer; the Writer propagates the wrong evidence.",
+        "The question is ambiguous because it says '这个扰动模型' without explicitly requesting the imported local PDFs."
+      ],
+      "planner_plan": "unavailable_not_persisted_in_historical_result",
+      "executor_step_text": "unavailable_not_persisted_in_historical_result",
+      "why_model_selected_search_papers": "unavailable_no_model_rationale_was_persisted",
+      "replanner_decision": "unavailable_not_persisted_in_historical_result",
+      "replanner_detected_error": "unknown",
+      "premature_termination": "unknown"
+    },
+    "q16": {
+      "original_task": "Using only the imported local PDFs, compare the main design approaches of the entropy paper and the PZO domain-modulation paper.",
+      "expected_sources": [
+        {
+          "source_file": "s41467-025-56194-1.pdf",
+          "page_number": 1,
+          "supporting_excerpt": "Design of antiferroelectric polarization conﬁguration for ultrahigh capacitive energy storage via increasing entropy"
+        },
+        {
+          "source_file": "1-s2.0-S2352847824001278-main.pdf",
+          "page_number": 1,
+          "supporting_excerpt": "Antiferroelectric domain modulation enhancing energy storage performance by phase- ﬁeld simulations"
+        }
+      ],
+      "observed_tool_call": {
+        "step_number": 1,
+        "name": "retrieve_paper_evidence",
+        "args": {
+          "query": "entropy",
+          "top_k": 4
+        },
+        "evidence_ids": []
+      },
+      "confirmed_findings": [
+        "Executor step 1 selected retrieve_paper_evidence.",
+        "The retrieval query was reduced to the single term 'entropy'.",
+        "No evidence IDs were returned.",
+        "The final answer stated insufficient evidence even though the candidate question is marked answerable with real supporting PDF excerpts."
+      ],
+      "tool_selection_correctness": true,
+      "retrieval_miss": true,
+      "incorrect_abstention": true,
+      "planner_plan": "unavailable_not_persisted_in_historical_result",
+      "executor_step_text": "unavailable_not_persisted_in_historical_result",
+      "replanner_decision": "unavailable_not_persisted_in_historical_result",
+      "replanner_checked_retrieval_gap": "unknown",
+      "premature_termination": "unknown"
+    }
+  },
+  "runs": [
+    {
+      "question_id": "q01",
+      "system_variant": "A_baseline",
+      "latency_seconds": 27.482731,
+      "automatic": {
+        "citation_structural_validity": null,
+        "citation_structural_validity_status": "not_applicable",
+        "abstention_detected": true,
+        "tool_call_success": "not_applicable",
+        "tool_selection_correctness": "not_applicable",
+        "names": [],
+        "answer_correctness_status": "pending_human_review",
+        "evidence_support_status": "pending_human_review"
+      },
+      "raw_answer_preserved": true
+    },
+    {
+      "question_id": "q01",
+      "system_variant": "B_direct_rag",
+      "latency_seconds": 63.914198,
+      "automatic": {
+        "citation_structural_validity": true,
+        "citation_structural_validity_status": "available",
+        "abstention_detected": false,
+        "tool_call_success": "not_applicable",
+        "tool_selection_correctness": "not_applicable",
+        "names": [],
+        "answer_correctness_status": "pending_human_review",
+        "evidence_support_status": "pending_human_review"
+      },
+      "raw_answer_preserved": true
+    },
+    {
+      "question_id": "q01",
+      "system_variant": "C_fast",
+      "latency_seconds": 83.921772,
+      "automatic": {
+        "citation_structural_validity": true,
+        "citation_structural_validity_status": "available",
+        "abstention_detected": false,
+        "tool_call_success": "not_applicable",
+        "tool_selection_correctness": "not_applicable",
+        "names": [],
+        "answer_correctness_status": "pending_human_review",
+        "evidence_support_status": "pending_human_review"
+      },
+      "raw_answer_preserved": true
+    },
+    {
+      "question_id": "q01",
+      "system_variant": "D_deep",
+      "latency_seconds": 526.108006,
+      "automatic": {
+        "citation_structural_validity": true,
+        "citation_structural_validity_status": "available",
+        "abstention_detected": false,
+        "tool_call_success": "confirmed_from_recorded_output",
+        "tool_selection_correctness": "correct",
+        "names": [
+          "retrieve_paper_evidence"
+        ],
+        "answer_correctness_status": "pending_human_review",
+        "evidence_support_status": "pending_human_review",
+        "expected_tool_for_pilot_task": "retrieve_paper_evidence"
+      },
+      "raw_answer_preserved": true
+    },
+    {
+      "question_id": "q04",
+      "system_variant": "A_baseline",
+      "latency_seconds": 36.897134,
+      "automatic": {
+        "citation_structural_validity": null,
+        "citation_structural_validity_status": "not_applicable",
+        "abstention_detected": true,
+        "tool_call_success": "not_applicable",
+        "tool_selection_correctness": "not_applicable",
+        "names": [],
+        "answer_correctness_status": "pending_human_review",
+        "evidence_support_status": "pending_human_review",
+        "q04_before_normalization": {
+          "keyword_check_passed": null,
+          "signal": "not_applicable_for_pdf_evidence"
+        },
+        "q04_after_normalization": {
+          "checks": {
+            "misfit_strain": false,
+            "defect_dipole_doping": false,
+            "film_thickness": false,
+            "does_not_abstain": false
+          },
+          "passed": false,
+          "status": "pending_human_review",
+          "scope": "Checks explicit required-term presence only; it does not establish scientific correctness."
+        }
+      },
+      "raw_answer_preserved": true
+    },
+    {
+      "question_id": "q04",
+      "system_variant": "B_direct_rag",
+      "latency_seconds": 62.93424,
+      "automatic": {
+        "citation_structural_validity": true,
+        "citation_structural_validity_status": "available",
+        "abstention_detected": false,
+        "tool_call_success": "not_applicable",
+        "tool_selection_correctness": "not_applicable",
+        "names": [],
+        "answer_correctness_status": "pending_human_review",
+        "evidence_support_status": "pending_human_review",
+        "q04_before_normalization": {
+          "keyword_check_passed": false,
+          "signal": "probable_content_mismatch"
+        },
+        "q04_after_normalization": {
+          "checks": {
+            "misfit_strain": true,
+            "defect_dipole_doping": true,
+            "film_thickness": true,
+            "does_not_abstain": true
+          },
+          "passed": true,
+          "status": "pending_human_review",
+          "scope": "Checks explicit required-term presence only; it does not establish scientific correctness."
+        }
+      },
+      "raw_answer_preserved": true
+    },
+    {
+      "question_id": "q04",
+      "system_variant": "C_fast",
+      "latency_seconds": 108.266626,
+      "automatic": {
+        "citation_structural_validity": true,
+        "citation_structural_validity_status": "available",
+        "abstention_detected": false,
+        "tool_call_success": "not_applicable",
+        "tool_selection_correctness": "not_applicable",
+        "names": [],
+        "answer_correctness_status": "pending_human_review",
+        "evidence_support_status": "pending_human_review",
+        "q04_before_normalization": {
+          "keyword_check_passed": true,
+          "signal": "keyword_signal_pass"
+        },
+        "q04_after_normalization": {
+          "checks": {
+            "misfit_strain": true,
+            "defect_dipole_doping": true,
+            "film_thickness": true,
+            "does_not_abstain": true
+          },
+          "passed": true,
+          "status": "pending_human_review",
+          "scope": "Checks explicit required-term presence only; it does not establish scientific correctness."
+        }
+      },
+      "raw_answer_preserved": true
+    },
+    {
+      "question_id": "q04",
+      "system_variant": "D_deep",
+      "latency_seconds": 548.943545,
+      "automatic": {
+        "citation_structural_validity": true,
+        "citation_structural_validity_status": "available",
+        "abstention_detected": false,
+        "tool_call_success": "confirmed_from_recorded_output",
+        "tool_selection_correctness": "correct",
+        "names": [
+          "retrieve_paper_evidence"
+        ],
+        "answer_correctness_status": "pending_human_review",
+        "evidence_support_status": "pending_human_review",
+        "expected_tool_for_pilot_task": "retrieve_paper_evidence",
+        "q04_before_normalization": {
+          "keyword_check_passed": true,
+          "signal": "keyword_signal_pass"
+        },
+        "q04_after_normalization": {
+          "checks": {
+            "misfit_strain": true,
+            "defect_dipole_doping": true,
+            "film_thickness": true,
+            "does_not_abstain": true
+          },
+          "passed": true,
+          "status": "pending_human_review",
+          "scope": "Checks explicit required-term presence only; it does not establish scientific correctness."
+        }
+      },
+      "raw_answer_preserved": true
+    },
+    {
+      "question_id": "q09",
+      "system_variant": "A_baseline",
+      "latency_seconds": 54.513515,
+      "automatic": {
+        "citation_structural_validity": null,
+        "citation_structural_validity_status": "not_applicable",
+        "abstention_detected": true,
+        "tool_call_success": "not_applicable",
+        "tool_selection_correctness": "not_applicable",
+        "names": [],
+        "answer_correctness_status": "pending_human_review",
+        "evidence_support_status": "pending_human_review"
+      },
+      "raw_answer_preserved": true
+    },
+    {
+      "question_id": "q09",
+      "system_variant": "B_direct_rag",
+      "latency_seconds": 114.799213,
+      "automatic": {
+        "citation_structural_validity": true,
+        "citation_structural_validity_status": "available",
+        "abstention_detected": false,
+        "tool_call_success": "not_applicable",
+        "tool_selection_correctness": "not_applicable",
+        "names": [],
+        "answer_correctness_status": "pending_human_review",
+        "evidence_support_status": "pending_human_review"
+      },
+      "raw_answer_preserved": true
+    },
+    {
+      "question_id": "q09",
+      "system_variant": "C_fast",
+      "latency_seconds": 122.442749,
+      "automatic": {
+        "citation_structural_validity": true,
+        "citation_structural_validity_status": "available",
+        "abstention_detected": false,
+        "tool_call_success": "not_applicable",
+        "tool_selection_correctness": "not_applicable",
+        "names": [],
+        "answer_correctness_status": "pending_human_review",
+        "evidence_support_status": "pending_human_review"
+      },
+      "raw_answer_preserved": true
+    },
+    {
+      "question_id": "q09",
+      "system_variant": "D_deep",
+      "latency_seconds": 548.324437,
+      "automatic": {
+        "citation_structural_validity": true,
+        "citation_structural_validity_status": "available",
+        "abstention_detected": false,
+        "tool_call_success": "confirmed_from_recorded_output",
+        "tool_selection_correctness": "incorrect_against_task_source",
+        "names": [
+          "search_papers"
+        ],
+        "answer_correctness_status": "pending_human_review",
+        "evidence_support_status": "pending_human_review",
+        "expected_tool_for_pilot_task": "retrieve_paper_evidence"
+      },
+      "raw_answer_preserved": true
+    },
+    {
+      "question_id": "q16",
+      "system_variant": "A_baseline",
+      "latency_seconds": 30.954101,
+      "automatic": {
+        "citation_structural_validity": null,
+        "citation_structural_validity_status": "not_applicable",
+        "abstention_detected": true,
+        "tool_call_success": "not_applicable",
+        "tool_selection_correctness": "not_applicable",
+        "names": [],
+        "answer_correctness_status": "pending_human_review",
+        "evidence_support_status": "pending_human_review"
+      },
+      "raw_answer_preserved": true
+    },
+    {
+      "question_id": "q16",
+      "system_variant": "B_direct_rag",
+      "latency_seconds": 1.87744,
+      "automatic": {
+        "citation_structural_validity": true,
+        "citation_structural_validity_status": "available",
+        "abstention_detected": true,
+        "tool_call_success": "not_applicable",
+        "tool_selection_correctness": "not_applicable",
+        "names": [],
+        "answer_correctness_status": "pending_human_review",
+        "evidence_support_status": "pending_human_review"
+      },
+      "raw_answer_preserved": true
+    },
+    {
+      "question_id": "q16",
+      "system_variant": "C_fast",
+      "latency_seconds": 0.052423,
+      "automatic": {
+        "citation_structural_validity": true,
+        "citation_structural_validity_status": "available",
+        "abstention_detected": true,
+        "tool_call_success": "not_applicable",
+        "tool_selection_correctness": "not_applicable",
+        "names": [],
+        "answer_correctness_status": "pending_human_review",
+        "evidence_support_status": "pending_human_review"
+      },
+      "raw_answer_preserved": true
+    },
+    {
+      "question_id": "q16",
+      "system_variant": "D_deep",
+      "latency_seconds": 324.469497,
+      "automatic": {
+        "citation_structural_validity": true,
+        "citation_structural_validity_status": "available",
+        "abstention_detected": true,
+        "tool_call_success": "confirmed_from_recorded_output",
+        "tool_selection_correctness": "correct",
+        "names": [
+          "retrieve_paper_evidence"
+        ],
+        "answer_correctness_status": "pending_human_review",
+        "evidence_support_status": "pending_human_review",
+        "expected_tool_for_pilot_task": "retrieve_paper_evidence"
+      },
+      "raw_answer_preserved": true
+    },
+    {
+      "question_id": "q10",
+      "system_variant": "A_baseline",
+      "latency_seconds": 40.459046,
+      "automatic": {
+        "citation_structural_validity": null,
+        "citation_structural_validity_status": "not_applicable",
+        "abstention_detected": true,
+        "tool_call_success": "not_applicable",
+        "tool_selection_correctness": "not_applicable",
+        "names": [],
+        "answer_correctness_status": "pending_human_review",
+        "evidence_support_status": "pending_human_review"
+      },
+      "raw_answer_preserved": true
+    },
+    {
+      "question_id": "q10",
+      "system_variant": "B_direct_rag",
+      "latency_seconds": 0.127031,
+      "automatic": {
+        "citation_structural_validity": true,
+        "citation_structural_validity_status": "available",
+        "abstention_detected": true,
+        "tool_call_success": "not_applicable",
+        "tool_selection_correctness": "not_applicable",
+        "names": [],
+        "answer_correctness_status": "pending_human_review",
+        "evidence_support_status": "pending_human_review"
+      },
+      "raw_answer_preserved": true
+    },
+    {
+      "question_id": "q10",
+      "system_variant": "C_fast",
+      "latency_seconds": 0.08238,
+      "automatic": {
+        "citation_structural_validity": true,
+        "citation_structural_validity_status": "available",
+        "abstention_detected": true,
+        "tool_call_success": "not_applicable",
+        "tool_selection_correctness": "not_applicable",
+        "names": [],
+        "answer_correctness_status": "pending_human_review",
+        "evidence_support_status": "pending_human_review"
+      },
+      "raw_answer_preserved": true
+    },
+    {
+      "question_id": "q10",
+      "system_variant": "D_deep",
+      "latency_seconds": 304.358959,
+      "automatic": {
+        "citation_structural_validity": true,
+        "citation_structural_validity_status": "available",
+        "abstention_detected": true,
+        "tool_call_success": "confirmed_from_recorded_output",
+        "tool_selection_correctness": "correct",
+        "names": [
+          "retrieve_paper_evidence"
+        ],
+        "answer_correctness_status": "pending_human_review",
+        "evidence_support_status": "pending_human_review",
+        "expected_tool_for_pilot_task": "retrieve_paper_evidence"
+      },
+      "raw_answer_preserved": true
+    }
+  ],
+  "manual_review": {
+    "reviewed": 0,
+    "pending": 5,
+    "status": "pending_human_review"
+  },
+  "recomputed_metrics": {
+    "attempted_tasks": 20,
+    "completed_tasks": 20,
+    "failed_tasks": 0,
+    "average_elapsed_seconds": 150.046452,
+    "total_tool_calls": 5,
+    "variants": {
+      "A_baseline": {
+        "attempted_tasks": 5,
+        "completed_tasks": 5,
+        "failed_tasks": 0,
+        "average_elapsed_seconds": 38.061305,
+        "tool_call_count": 0,
+        "tool_call_success": 0,
+        "tool_call_failure": 0,
+        "tool_call_success_recorded": 0,
+        "tool_call_success_missing": 0,
+        "tool_call_success_status": "not_applicable",
+        "llm_call_count": 5,
+        "llm_call_count_available_sum": 5,
+        "llm_metric_runs": 5,
+        "llm_metric_missing_runs": 0,
+        "llm_metric_status": "available",
+        "prompt_tokens": 483,
+        "prompt_tokens_available_sum": 483,
+        "prompt_token_metric_runs": 5,
+        "prompt_token_metric_missing_runs": 0,
+        "prompt_token_metric_status": "available",
+        "completion_tokens": 5432,
+        "completion_tokens_available_sum": 5432,
+        "completion_token_metric_runs": 5,
+        "completion_token_metric_missing_runs": 0,
+        "completion_token_metric_status": "available",
+        "total_tokens": 5915,
+        "total_tokens_available_sum": 5915,
+        "total_token_metric_runs": 5,
+        "total_token_metric_missing_runs": 0,
+        "total_token_metric_status": "available",
+        "chroma_retrieval_seconds": 0.0,
+        "chroma_retrieval_seconds_available_sum": 0.0,
+        "chroma_retrieval_metric_runs": 5,
+        "chroma_retrieval_metric_missing_runs": 0,
+        "chroma_retrieval_metric_status": "available",
+        "citation_checks": 0,
+        "citation_checks_passed": 0,
+        "citation_checks_failed": 0,
+        "unknown_citation_id_count": 0,
+        "citation_structural_validity": null,
+        "citation_structural_validity_status": "not_applicable",
+        "tool_selection_correctness": null,
+        "tool_selection_correctness_status": "not_applicable",
+        "pending_review_tasks": 5
+      },
+      "B_direct_rag": {
+        "attempted_tasks": 5,
+        "completed_tasks": 5,
+        "failed_tasks": 0,
+        "average_elapsed_seconds": 48.730424,
+        "tool_call_count": 0,
+        "tool_call_success": 0,
+        "tool_call_failure": 0,
+        "tool_call_success_recorded": 0,
+        "tool_call_success_missing": 0,
+        "tool_call_success_status": "not_applicable",
+        "llm_call_count": 3,
+        "llm_call_count_available_sum": 3,
+        "llm_metric_runs": 5,
+        "llm_metric_missing_runs": 0,
+        "llm_metric_status": "available",
+        "prompt_tokens": 4027,
+        "prompt_tokens_available_sum": 4027,
+        "prompt_token_metric_runs": 5,
+        "prompt_token_metric_missing_runs": 0,
+        "prompt_token_metric_status": "available",
+        "completion_tokens": 6327,
+        "completion_tokens_available_sum": 6327,
+        "completion_token_metric_runs": 5,
+        "completion_token_metric_missing_runs": 0,
+        "completion_token_metric_status": "available",
+        "total_tokens": 10354,
+        "total_tokens_available_sum": 10354,
+        "total_token_metric_runs": 5,
+        "total_token_metric_missing_runs": 0,
+        "total_token_metric_status": "available",
+        "chroma_retrieval_seconds": 4.219736,
+        "chroma_retrieval_seconds_available_sum": 4.219736,
+        "chroma_retrieval_metric_runs": 5,
+        "chroma_retrieval_metric_missing_runs": 0,
+        "chroma_retrieval_metric_status": "available",
+        "citation_checks": 5,
+        "citation_checks_passed": 5,
+        "citation_checks_failed": 0,
+        "unknown_citation_id_count": 0,
+        "citation_structural_validity": 1.0,
+        "citation_structural_validity_status": "available",
+        "tool_selection_correctness": null,
+        "tool_selection_correctness_status": "not_applicable",
+        "pending_review_tasks": 5
+      },
+      "C_fast": {
+        "attempted_tasks": 5,
+        "completed_tasks": 5,
+        "failed_tasks": 0,
+        "average_elapsed_seconds": 62.95319,
+        "tool_call_count": 0,
+        "tool_call_success": 0,
+        "tool_call_failure": 0,
+        "tool_call_success_recorded": 0,
+        "tool_call_success_missing": 0,
+        "tool_call_success_status": "not_applicable",
+        "llm_call_count": 3,
+        "llm_call_count_available_sum": 3,
+        "llm_metric_runs": 5,
+        "llm_metric_missing_runs": 0,
+        "llm_metric_status": "available",
+        "prompt_tokens": 4172,
+        "prompt_tokens_available_sum": 4172,
+        "prompt_token_metric_runs": 5,
+        "prompt_token_metric_missing_runs": 0,
+        "prompt_token_metric_status": "available",
+        "completion_tokens": 8279,
+        "completion_tokens_available_sum": 8279,
+        "completion_token_metric_runs": 5,
+        "completion_token_metric_missing_runs": 0,
+        "completion_token_metric_status": "available",
+        "total_tokens": 12451,
+        "total_tokens_available_sum": 12451,
+        "total_token_metric_runs": 5,
+        "total_token_metric_missing_runs": 0,
+        "total_token_metric_status": "available",
+        "chroma_retrieval_seconds": 0.543963,
+        "chroma_retrieval_seconds_available_sum": 0.543963,
+        "chroma_retrieval_metric_runs": 5,
+        "chroma_retrieval_metric_missing_runs": 0,
+        "chroma_retrieval_metric_status": "available",
+        "citation_checks": 5,
+        "citation_checks_passed": 5,
+        "citation_checks_failed": 0,
+        "unknown_citation_id_count": 0,
+        "citation_structural_validity": 1.0,
+        "citation_structural_validity_status": "available",
+        "tool_selection_correctness": null,
+        "tool_selection_correctness_status": "not_applicable",
+        "pending_review_tasks": 5
+      },
+      "D_deep": {
+        "attempted_tasks": 5,
+        "completed_tasks": 5,
+        "failed_tasks": 0,
+        "average_elapsed_seconds": 450.440889,
+        "tool_call_count": 5,
+        "tool_call_success": 0,
+        "tool_call_failure": 0,
+        "tool_call_success_recorded": 0,
+        "tool_call_success_missing": 5,
+        "tool_call_success_status": "unavailable",
+        "llm_call_count": null,
+        "llm_call_count_available_sum": 15,
+        "llm_metric_runs": 3,
+        "llm_metric_missing_runs": 2,
+        "llm_metric_status": "partial",
+        "prompt_tokens": null,
+        "prompt_tokens_available_sum": 15174,
+        "prompt_token_metric_runs": 3,
+        "prompt_token_metric_missing_runs": 2,
+        "prompt_token_metric_status": "partial",
+        "completion_tokens": null,
+        "completion_tokens_available_sum": 28018,
+        "completion_token_metric_runs": 3,
+        "completion_token_metric_missing_runs": 2,
+        "completion_token_metric_status": "partial",
+        "total_tokens": null,
+        "total_tokens_available_sum": 43192,
+        "total_token_metric_runs": 3,
+        "total_token_metric_missing_runs": 2,
+        "total_token_metric_status": "partial",
+        "chroma_retrieval_seconds": null,
+        "chroma_retrieval_seconds_available_sum": 6.874083,
+        "chroma_retrieval_metric_runs": 3,
+        "chroma_retrieval_metric_missing_runs": 2,
+        "chroma_retrieval_metric_status": "partial",
+        "citation_checks": 5,
+        "citation_checks_passed": 5,
+        "citation_checks_failed": 0,
+        "unknown_citation_id_count": 0,
+        "citation_structural_validity": 1.0,
+        "citation_structural_validity_status": "available",
+        "tool_selection_correctness": null,
+        "tool_selection_correctness_status": "pending_human_review",
+        "pending_review_tasks": 5
+      }
+    },
+    "pending_review_question_count": 5,
+    "answer_accuracy": null,
+    "answer_accuracy_status": "pending_human_review",
+    "evidence_support": null,
+    "evidence_support_status": "pending_human_review",
+    "tool_call_success": null,
+    "tool_call_success_available_sum": 0,
+    "tool_call_success_status": "unavailable",
+    "tool_selection_correctness": null,
+    "tool_selection_correctness_status": "pending_human_review",
+    "citation_structural_validity": 1.0,
+    "citation_structural_validity_status": "available",
+    "premature_termination": null,
+    "premature_termination_status": "pending_human_review",
+    "unsupported_claim": null,
+    "unsupported_claim_status": "pending_human_review",
+    "incorrect_abstention": null,
+    "incorrect_abstention_status": "pending_human_review",
+    "task_completion": null,
+    "task_completion_status": "pending_human_review",
+    "scientific_quality": null,
+    "scientific_quality_status": "pending_human_review",
+    "scope": "Automatic metrics cover completion, latency, tool-call execution metadata when present, token metadata when present, and citation-ID/source structure only. Semantic correctness and evidence support remain pending human review."
+  }
+}

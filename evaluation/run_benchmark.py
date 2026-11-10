@@ -60,9 +60,11 @@ def make_run_record(
     tool_calls: list[dict[str, Any]] | None = None,
     citation_validation: dict[str, Any] | None = None,
     performance: dict[str, Any] | None = None,
+    execution_trace: dict[str, Any] | None = None,
     error_message: str | None = None,
     run_status: str = "success",
 ) -> dict[str, Any]:
+    calls = tool_calls or []
     return {
         "question_id": question["question_id"],
         "question": question["question"],
@@ -78,7 +80,17 @@ def make_run_record(
         "elapsed_seconds": round(elapsed, 6),
         "cited_sources": cited_sources or [],
         "retrieved_chunks": retrieved_chunks or [],
-        "tool_calls": tool_calls or [],
+        "tool_calls": calls,
+        "tool_call_success": (
+            None
+            if not calls
+            else all(call.get("response_received") is True for call in calls)
+        ),
+        "tool_selection_correctness": (
+            "not_applicable" if not calls else None
+        ),
+        "premature_termination": None,
+        "execution_trace": execution_trace or {},
         "error_message": error_message,
         "run_status": run_status,
         "citation_validation": citation_validation,
@@ -331,10 +343,22 @@ async def run_researchpilot(
                 "name": call["name"],
                 "args": call["args"],
                 "evidence_ids": call["evidence_ids"],
+                "result_summary": call.get("result_summary"),
+                "response_received": bool(call.get("result_summary")),
             }
             for result in state.get("step_results", [])
             for call in result.get("tool_calls", [])
         ]
+        execution_trace = {
+            "plan": state.get("plan", []),
+            "current_step": state.get("current_step"),
+            "completed_steps": state.get("completed_steps", []),
+            "step_results": state.get("step_results", []),
+            "replanner_action": state.get("replanner_action"),
+            "replanner_reason": state.get("replanner_reason"),
+            "replan_count": state.get("replan_count"),
+            "evidence_ids": [item["evidence_id"] for item in evidence],
+        }
         return make_run_record(
             question,
             "D_deep",
@@ -352,6 +376,7 @@ async def run_researchpilot(
                 ),
             },
             performance=state.get("performance", {}),
+            execution_trace=execution_trace,
         )
     except Exception as exc:
         elapsed = time.perf_counter() - started
@@ -415,6 +440,13 @@ async def main() -> None:
     )
     async with adapter:
         tools = await adapter.list_tools()
+        tool_catalog = [
+            {
+                "name": tool.name,
+                "description": tool.description,
+            }
+            for tool in tools
+        ]
         deep_profiler = PerformanceProfiler()
         graph = build_research_graph(
             adapter.client,
@@ -449,6 +481,7 @@ async def main() -> None:
                 ),
                 "questions": question_ids,
                 "variants": variants,
+                "mcp_tool_catalog": tool_catalog,
                 "runs": runs,
                 "metrics": calculate_metrics(runs, selected_questions),
             }

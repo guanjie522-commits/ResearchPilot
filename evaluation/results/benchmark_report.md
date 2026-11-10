@@ -1,5 +1,10 @@
 # ResearchPilot 正式 Benchmark 第一轮报告
 
+> Task 12-E 修正说明：本报告保留第一轮原始结论。后续可靠性分析已将
+> q04 的 `mis fit` 误判修正为通过，并将 q16 的 premature termination
+> 从“已确认”降级为“历史日志无法确认”。详见
+> `evaluation/results/benchmark_reliability_report.md`。
+
 - 报告日期：2026-11-10
 - 数据集版本：`0.2`
 - 模型：`qwen3:4b`
