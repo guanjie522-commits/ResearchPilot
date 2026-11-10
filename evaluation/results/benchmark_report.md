@@ -4,6 +4,9 @@
 > q04 的 `mis fit` 误判修正为通过，并将 q16 的 premature termination
 > 从“已确认”降级为“历史日志无法确认”。详见
 > `evaluation/results/benchmark_reliability_report.md`。
+>
+> Task 12-F 补充：当前数据集为 20 道原始题加 1 道尚未运行的
+> `q09_local_pdf` 来源明确化变体。本报告的 20 题统计不对新变体作推断。
 
 - 报告日期：2026-11-10
 - 数据集版本：`0.2`

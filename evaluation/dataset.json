@@ -1,7 +1,17 @@
 {
-  "version": "0.2",
+  "version": "0.3",
   "created_at": "2026-11-09",
+  "updated_at": "2026-11-10",
   "status": "candidate_pending_human_review",
+  "task_type_taxonomy": {
+    "local_pdf_qa": "回答必须来自当前已导入的本地 PDF",
+    "paper_discovery": "发现当前本地 PDF 之外的学术论文",
+    "cross_paper_synthesis": "综合两篇或更多论文的内容",
+    "insufficient_evidence": "预期当前来源范围不足以支持答案"
+  },
+  "source_scope_taxonomy": {
+    "imported_local_pdfs": "仅使用当前 Chroma 索引中的三篇本地论文"
+  },
   "papers": [
     "s41467-025-56194-1.pdf",
     "1-s2.0-S2352847824001278-main.pdf",
@@ -18,6 +28,9 @@
       "q09",
       "q16",
       "q10"
+    ],
+    "pending_execution_question_ids": [
+      "q09_local_pdf"
     ]
   },
   "questions": [
@@ -31,6 +44,13 @@
       "supporting_excerpt": "Design of antiferroelectric polarization conﬁguration for ultrahigh capacitive energy storage via increasing entropy",
       "reference_answer": "The paper uses an entropy-increase strategy to design the antiferroelectric polarization configuration.",
       "answerable": true,
+      "task_types": [
+        "local_pdf_qa"
+      ],
+      "source_scope": "imported_local_pdfs",
+      "expected_tools": [
+        "retrieve_paper_evidence"
+      ],
       "verification_status": "pending_human_review",
       "excerpt_match": true
     },
@@ -44,6 +64,13 @@
       "supporting_excerpt": "Electric ﬁeld induced antiferroelectric-ferroelectric phase transition is a double-edged sword for energy storage properties, which not only offers a congenital superiority with substantial energy storage density but also poses signiﬁcant challenges such as large polarization hysteresis and poor efﬁciency",
       "reference_answer": "It provides high energy-storage density but also causes large polarization hysteresis and poor efficiency.",
       "answerable": true,
+      "task_types": [
+        "local_pdf_qa"
+      ],
+      "source_scope": "imported_local_pdfs",
+      "expected_tools": [
+        "retrieve_paper_evidence"
+      ],
       "verification_status": "pending_human_review",
       "excerpt_match": true
     },
@@ -57,6 +84,13 @@
       "supporting_excerpt": "recoverable energy storge density (14.8 J cm−3)a n de fﬁciency (90.2%)",
       "reference_answer": "The reported recoverable energy-storage density is 14.8 J cm^-3 and the efficiency is 90.2%.",
       "answerable": true,
+      "task_types": [
+        "local_pdf_qa"
+      ],
+      "source_scope": "imported_local_pdfs",
+      "expected_tools": [
+        "retrieve_paper_evidence"
+      ],
       "verification_status": "pending_human_review",
       "excerpt_match": true
     },
@@ -70,6 +104,13 @@
       "supporting_excerpt": "the effects of three variables, mis ﬁt strain between the thin ﬁlm and substrate, defect dipoles doping, and ﬁlm thickness, on the domain structure and energy storage performance of PZO-based antiferroelectric materials are comprehensively investigated via phase-ﬁeld simulations.",
       "reference_answer": "The variables are misfit strain between film and substrate, defect-dipole doping, and film thickness.",
       "answerable": true,
+      "task_types": [
+        "local_pdf_qa"
+      ],
+      "source_scope": "imported_local_pdfs",
+      "expected_tools": [
+        "retrieve_paper_evidence"
+      ],
       "verification_status": "pending_human_review",
       "excerpt_match": true
     },
@@ -83,6 +124,13 @@
       "supporting_excerpt": "a recoverable energy density of 38.3 J/cm 3 and an energy storage ef ﬁciency of about 89.4% can be realized at 1.5% tensile strain and 2% defect dipole concentration.",
       "reference_answer": "A recoverable energy density of 38.3 J/cm^3 and an efficiency of about 89.4%.",
       "answerable": true,
+      "task_types": [
+        "local_pdf_qa"
+      ],
+      "source_scope": "imported_local_pdfs",
+      "expected_tools": [
+        "retrieve_paper_evidence"
+      ],
       "verification_status": "pending_human_review",
       "excerpt_match": true
     },
@@ -96,6 +144,13 @@
       "supporting_excerpt": "we have developed a perturbation model for solv- ing anisotropic gradient energy based on Fourier spectral methods.",
       "reference_answer": "It is based on Fourier spectral methods.",
       "answerable": true,
+      "task_types": [
+        "local_pdf_qa"
+      ],
+      "source_scope": "imported_local_pdfs",
+      "expected_tools": [
+        "retrieve_paper_evidence"
+      ],
       "verification_status": "pending_human_review",
       "excerpt_match": true
     },
@@ -109,6 +164,13 @@
       "supporting_excerpt": "Design of antiferroelectric polarization conﬁguration for ultrahigh capacitive energy storage via increasing entropy",
       "reference_answer": "主要通过增加熵来设计反铁电极化构型。",
       "answerable": true,
+      "task_types": [
+        "local_pdf_qa"
+      ],
+      "source_scope": "imported_local_pdfs",
+      "expected_tools": [
+        "retrieve_paper_evidence"
+      ],
       "verification_status": "pending_human_review",
       "excerpt_match": true
     },
@@ -122,6 +184,13 @@
       "supporting_excerpt": "the effects of three variables, mis ﬁt strain between the thin ﬁlm and substrate, defect dipoles doping, and ﬁlm thickness, on the domain structure and energy storage performance of PZO-based antiferroelectric materials are comprehensively investigated via phase-ﬁeld simulations.",
       "reference_answer": "研究者考察了薄膜与基底之间的失配应变、缺陷偶极子掺杂以及薄膜厚度三类变量。",
       "answerable": true,
+      "task_types": [
+        "local_pdf_qa"
+      ],
+      "source_scope": "imported_local_pdfs",
+      "expected_tools": [
+        "retrieve_paper_evidence"
+      ],
       "verification_status": "pending_human_review",
       "excerpt_match": true
     },
@@ -135,6 +204,39 @@
       "supporting_excerpt": "Through a Fou- rier-space perturbation scheme, we achieve the ability to treat the full anisotropic gradient energy tensor with spatial variations, overcoming limitations of previous constant-coeﬃ- cient or isotropic approximations.",
       "reference_answer": "它通过傅里叶空间扰动方案处理具有空间变化的完整各向异性梯度能量张量。",
       "answerable": true,
+      "task_types": [
+        "local_pdf_qa"
+      ],
+      "source_scope": "imported_local_pdfs",
+      "source_scope_is_explicit": false,
+      "ambiguity_notes": "题干中的“这个扰动模型”没有明确指向当前已导入的本地 PDF。",
+      "expected_tools": [
+        "retrieve_paper_evidence"
+      ],
+      "verification_status": "pending_human_review",
+      "excerpt_match": true
+    },
+    {
+      "question_id": "q09_local_pdf",
+      "question": "请仅根据当前已经导入的本地 PDF，针对 materials-4180042.pdf，用中文说明这个扰动模型为何能处理以前常系数或各向同性近似难以处理的问题。",
+      "question_type": "cross_language",
+      "source_file": "materials-4180042.pdf",
+      "expected_source_page": 1,
+      "page_number": 1,
+      "supporting_excerpt": "Through a Fou- rier-space perturbation scheme, we achieve the ability to treat the full anisotropic gradient energy tensor with spatial variations, overcoming limitations of previous constant-coeﬃ- cient or isotropic approximations.",
+      "reference_answer": "它通过傅里叶空间扰动方案处理具有空间变化的完整各向异性梯度能量张量。",
+      "answerable": true,
+      "task_types": [
+        "local_pdf_qa"
+      ],
+      "source_scope": "imported_local_pdfs",
+      "source_scope_is_explicit": true,
+      "expected_tools": [
+        "retrieve_paper_evidence"
+      ],
+      "derived_from": "q09",
+      "variant_reason": "明确限定本地 PDF 来源，用于消除原始题干的指代歧义。",
+      "execution_status": "not_run",
       "verification_status": "pending_human_review",
       "excerpt_match": true
     },
@@ -148,6 +250,14 @@
       "supporting_excerpt": null,
       "reference_answer": "The imported papers do not provide a superconducting critical temperature at 500 K.",
       "answerable": false,
+      "task_types": [
+        "local_pdf_qa",
+        "insufficient_evidence"
+      ],
+      "source_scope": "imported_local_pdfs",
+      "expected_tools": [
+        "retrieve_paper_evidence"
+      ],
       "verification_status": "pending_human_review",
       "excerpt_match": null
     },
@@ -161,6 +271,14 @@
       "supporting_excerpt": null,
       "reference_answer": "The imported papers do not report an optimized gold-nanoparticle diameter.",
       "answerable": false,
+      "task_types": [
+        "local_pdf_qa",
+        "insufficient_evidence"
+      ],
+      "source_scope": "imported_local_pdfs",
+      "expected_tools": [
+        "retrieve_paper_evidence"
+      ],
       "verification_status": "pending_human_review",
       "excerpt_match": null
     },
@@ -174,6 +292,14 @@
       "supporting_excerpt": null,
       "reference_answer": "The imported papers do not report a randomized clinical trial patient count.",
       "answerable": false,
+      "task_types": [
+        "local_pdf_qa",
+        "insufficient_evidence"
+      ],
+      "source_scope": "imported_local_pdfs",
+      "expected_tools": [
+        "retrieve_paper_evidence"
+      ],
       "verification_status": "pending_human_review",
       "excerpt_match": null
     },
@@ -187,6 +313,13 @@
       "supporting_excerpt": "Ultrathin ﬁlms possess low energy loss (Wloss), the dielectric constant and Ps increase as the ﬁlm thickness increases. However, excessively thick ﬁlms suffer from low energy storage efﬁciency and susceptibility to breakdown, which impair the energy storage performance",
       "reference_answer": "Increasing thickness can raise dielectric constant and Ps, but excessively thick films can reduce efficiency and increase breakdown susceptibility.",
       "answerable": true,
+      "task_types": [
+        "local_pdf_qa"
+      ],
+      "source_scope": "imported_local_pdfs",
+      "expected_tools": [
+        "retrieve_paper_evidence"
+      ],
       "verification_status": "pending_human_review",
       "excerpt_match": true
     },
@@ -200,6 +333,13 @@
       "supporting_excerpt": "Through a Fou- rier-space perturbation scheme, we achieve the ability to treat the full anisotropic gradient energy tensor with spatial variations, overcoming limitations of previous constant-coeﬃ- cient or isotropic approximations.",
       "reference_answer": "The Fourier-space perturbation formulation treats a full anisotropic gradient-energy tensor whose coefficients vary spatially.",
       "answerable": true,
+      "task_types": [
+        "local_pdf_qa"
+      ],
+      "source_scope": "imported_local_pdfs",
+      "expected_tools": [
+        "retrieve_paper_evidence"
+      ],
       "verification_status": "pending_human_review",
       "excerpt_match": true
     },
@@ -213,6 +353,13 @@
       "supporting_excerpt": "applying tensile strain to the ﬁlms can effectively increase the transition electric ﬁeld from antiferroelectric to ferroelectric. In addition, the introduction of defect dipoles while applying tensile strain can signi ﬁcantly reduce the hysteresis and improve energy storage ef ﬁciency.",
       "reference_answer": "Tensile strain increases the AFE-to-FE transition field, while defect dipoles combined with tensile strain reduce hysteresis and improve efficiency.",
       "answerable": true,
+      "task_types": [
+        "local_pdf_qa"
+      ],
+      "source_scope": "imported_local_pdfs",
+      "expected_tools": [
+        "retrieve_paper_evidence"
+      ],
       "verification_status": "pending_human_review",
       "excerpt_match": true
     },
@@ -238,6 +385,14 @@
       "supporting_excerpt": "Design of antiferroelectric polarization conﬁguration for ultrahigh capacitive energy storage via increasing entropy\n---\nAntiferroelectric domain modulation enhancing energy storage performance by phase- ﬁeld simulations",
       "reference_answer": "The first paper uses increasing entropy to design the polarization configuration; the second studies domain modulation with phase-field simulations.",
       "answerable": true,
+      "task_types": [
+        "local_pdf_qa",
+        "cross_paper_synthesis"
+      ],
+      "source_scope": "imported_local_pdfs",
+      "expected_tools": [
+        "retrieve_paper_evidence"
+      ],
       "verification_status": "pending_human_review",
       "excerpt_match": true
     },
@@ -263,6 +418,14 @@
       "supporting_excerpt": "the effects of three variables, mis ﬁt strain between the thin ﬁlm and substrate, defect dipoles doping, and ﬁlm thickness, on the domain structure and energy storage performance of PZO-based antiferroelectric materials are comprehensively investigated via phase-ﬁeld simulations.\n---\nwe have developed a perturbation model for solv- ing anisotropic gradient energy based on Fourier spectral methods.",
       "reference_answer": "The PZO study applies phase-field simulations to strain, defect-dipole, and thickness effects; the modeling paper contributes a Fourier-spectral perturbation method for anisotropic gradient energy.",
       "answerable": true,
+      "task_types": [
+        "local_pdf_qa",
+        "cross_paper_synthesis"
+      ],
+      "source_scope": "imported_local_pdfs",
+      "expected_tools": [
+        "retrieve_paper_evidence"
+      ],
       "verification_status": "pending_human_review",
       "excerpt_match": true
     },
@@ -293,6 +456,14 @@
       "supporting_excerpt": "Design of antiferroelectric polarization conﬁguration for ultrahigh capacitive energy storage via increasing entropy\n---\nAntiferroelectric domain modulation enhancing energy storage performance by phase- ﬁeld simulations\n---\nThe application of this model to FE/AFE composites demonstrates exceptional robustness and convergence eﬃciency.",
       "reference_answer": "The entropy and domain-modulation papers target improved antiferroelectric energy storage, while the modeling paper provides a robust numerical approach for FE/AFE composite phase-field simulations.",
       "answerable": true,
+      "task_types": [
+        "local_pdf_qa",
+        "cross_paper_synthesis"
+      ],
+      "source_scope": "imported_local_pdfs",
+      "expected_tools": [
+        "retrieve_paper_evidence"
+      ],
       "verification_status": "pending_human_review",
       "excerpt_match": true
     },
@@ -318,6 +489,13 @@
       "supporting_excerpt": "The application of this model to FE/AFE composites demonstrates exceptional robustness and convergence eﬃciency.\n---\nthe proposed perturbation scheme can accurately reproduce antiferroelectric phase diagrams and AFE-FE phase transition pathways under varying gradient energy parameters.",
       "reference_answer": "The model shows robustness and convergence efficiency and can reproduce antiferroelectric phase diagrams and AFE-FE transition pathways under varying gradient-energy parameters.",
       "answerable": true,
+      "task_types": [
+        "local_pdf_qa"
+      ],
+      "source_scope": "imported_local_pdfs",
+      "expected_tools": [
+        "retrieve_paper_evidence"
+      ],
       "verification_status": "pending_human_review",
       "excerpt_match": true
     },
@@ -331,6 +509,14 @@
       "supporting_excerpt": null,
       "reference_answer": "The imported papers do not report a 20-year field-service annual failure rate.",
       "answerable": false,
+      "task_types": [
+        "local_pdf_qa",
+        "insufficient_evidence"
+      ],
+      "source_scope": "imported_local_pdfs",
+      "expected_tools": [
+        "retrieve_paper_evidence"
+      ],
       "verification_status": "pending_human_review",
       "excerpt_match": null
     }

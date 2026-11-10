@@ -1,0 +1,197 @@
+{
+  "diagnosis_id": "q16_retrieval_20261110",
+  "created_at": "2026-11-10T06:20:14.593344+00:00",
+  "index": {
+    "collection_count": 145,
+    "embedding_model": "qwen3-embedding:0.6b",
+    "embedding_dimension": 1024,
+    "relevance_threshold": 0.25,
+    "score_type": "chroma_relevance_1_minus_cosine_distance_higher_is_better"
+  },
+  "original_retrieval": {
+    "query": "entropy",
+    "top_k": 4,
+    "raw_top_k_results": [
+      {
+        "source_file": "s41467-025-56194-1.pdf",
+        "page_number": 3,
+        "chunk_id": "c01c9f511e2a100e:p0003:c0002",
+        "relevance_score": 0.093935,
+        "passes_threshold": false,
+        "text_excerpt": "entropy increase effect by introducing an appropriate amount of La (Fig. 1c), realizing outstanding energy storage properties in incom- mensurate medium-entropy AFEs, which exhibit enormous application potential for advanced capacitors. Res"
+      },
+      {
+        "source_file": "s41467-025-56194-1.pdf",
+        "page_number": 3,
+        "chunk_id": "c01c9f511e2a100e:p0003:c0004",
+        "relevance_score": 0.055755,
+        "passes_threshold": false,
+        "text_excerpt": "dielectric spectrum gradually broadens with increasing La (Supple- mentary Fig. 5), indicating that the macroscopic AFE nature of the PLxZSH samples are always maintained. It should be noted that EA-F, EF-A,a n dEb also increase with increa"
+      },
+      {
+        "source_file": "materials-4180042.pdf",
+        "page_number": 3,
+        "chunk_id": "f831e3b0bc234f0b:p0003:c0001",
+        "relevance_score": 0.025202,
+        "passes_threshold": false,
+        "text_excerpt": "poral evolution of the polarization ﬁeld toward the free energy minimum ; σij is the stress tensor; D is the electric displacement; 𝜌௙ is the free charge density ; r and t are the spatial coordinate and time, respectively. E thermal is the "
+      },
+      {
+        "source_file": "materials-4180042.pdf",
+        "page_number": 6,
+        "chunk_id": "f831e3b0bc234f0b:p0006:c0000",
+        "relevance_score": 0.010102,
+        "passes_threshold": false,
+        "text_excerpt": "Materials 2026, 19, x FOR PEER REVIEW 6 of 11 https://doi.org/10.3390/xxxxx where 𝑅෠(௡) = ℱቂ𝛿𝐹୥୰ୟୢ (ଶ) /𝛿𝑃௜ (௡)ቃ − 𝐻ഥ|𝐤|ସ𝑃෠௜ (௡). 4. Result and Discussion: In our simulation, we employed the thermodynamic potential function of PZO ma- teria"
+      }
+    ],
+    "results_passing_threshold": [],
+    "targeted_papers_hit": [],
+    "hit_paper_count": 0,
+    "raw_candidate_source_files": [
+      "materials-4180042.pdf",
+      "s41467-025-56194-1.pdf"
+    ],
+    "raw_candidate_paper_count": 2,
+    "expected_target_paper_count": 2,
+    "retrieved_target_paper_count": 0,
+    "current_tool_result": "Evidence insufficient: no PDF chunks passed the relevance threshold. query='entropy', threshold=0.25, score_type=chroma_relevance_1_minus_cosine_distance_higher_is_better, retrieval_seconds=0.030387"
+  },
+  "target_presence_in_index": [
+    {
+      "paper": "entropy paper",
+      "source_file": "s41467-025-56194-1.pdf",
+      "excerpt": "Design of antiferroelectric polarization conﬁguration for ultrahigh capacitive energy storage via increasing entropy",
+      "present_in_index": true,
+      "hits": [
+        {
+          "source_file": "s41467-025-56194-1.pdf",
+          "page_number": 1,
+          "chunk_id": "c01c9f511e2a100e:p0001:c0000"
+        }
+      ]
+    },
+    {
+      "paper": "PZO domain-modulation paper",
+      "source_file": "1-s2.0-S2352847824001278-main.pdf",
+      "excerpt": "Antiferroelectric domain modulation enhancing energy storage performance by phase- ﬁeld simulations",
+      "present_in_index": true,
+      "hits": [
+        {
+          "source_file": "1-s2.0-S2352847824001278-main.pdf",
+          "page_number": 1,
+          "chunk_id": "d99a382568c429f7:p0001:c0000"
+        }
+      ]
+    }
+  ],
+  "diagnostic_queries_without_changing_algorithm": {
+    "entropy_antiferroelectric_polarization_configuration": [
+      {
+        "source_file": "s41467-025-56194-1.pdf",
+        "page_number": 1,
+        "chunk_id": "c01c9f511e2a100e:p0001:c0000",
+        "relevance_score": 0.469132,
+        "passes_threshold": true,
+        "text_excerpt": "Article https://doi.org/10.1038/s41467-025-56194-1 Design of antiferroelectric polarization conﬁguration for ultrahigh capacitive energy storage via increasing entropy Yongxiao Zhou1,2,6, Tianfu Zhang3,6,L i a n gC h e n1,6 ,H u i f e nY u1"
+      },
+      {
+        "source_file": "s41467-025-56194-1.pdf",
+        "page_number": 1,
+        "chunk_id": "c01c9f511e2a100e:p0001:c0001",
+        "relevance_score": 0.461399,
+        "passes_threshold": true,
+        "text_excerpt": "increase effect is utilized to simultaneously break the long-range antiferro- electric order and locally adjust the fourfold commensurate modulated polarization conﬁguration, leading to a breakthr o u g hi nt h et r a d e - o f fb e t w e e"
+      },
+      {
+        "source_file": "s41467-025-56194-1.pdf",
+        "page_number": 2,
+        "chunk_id": "c01c9f511e2a100e:p0002:c0004",
+        "relevance_score": 0.431142,
+        "passes_threshold": true,
+        "text_excerpt": "improve Wrec (Fig. 1b)12,20,26–28. However, the intense AFE-FE phase Fig. 1 | Schematic diagram for controlling AFE polarization conﬁguration by increasing entropy.Polarization conﬁguration with the corresponding polariza- tion angle and ma"
+      },
+      {
+        "source_file": "s41467-025-56194-1.pdf",
+        "page_number": 6,
+        "chunk_id": "c01c9f511e2a100e:p0006:c0005",
+        "relevance_score": 0.423679,
+        "passes_threshold": true,
+        "text_excerpt": "have meticulously crafted a locally heterogeneous AFE polarization landscape, where commensurate, incommensurate, and relaxor AFE polarization conﬁgurations intertwine harmoniously. This intricate arrangement facilitates the traversal of se"
+      },
+      {
+        "source_file": "materials-4180042.pdf",
+        "page_number": 10,
+        "chunk_id": "f831e3b0bc234f0b:p0010:c0003",
+        "relevance_score": 0.423577,
+        "passes_threshold": true,
+        "text_excerpt": "Energy Storage Materials, 2022, 45: 541–567 [9] Yang B, Zhang Y, Pan H, et al. High-entropy enhanced capacitive energy storage. Nature Materials, 2022, 21: 1074–1080 [10] Yang B, Liu Y, Jiang R-J, et al. Enhanced energy storage in antiferro"
+      },
+      {
+        "source_file": "1-s2.0-S2352847824001278-main.pdf",
+        "page_number": 8,
+        "chunk_id": "d99a382568c429f7:p0008:c0012",
+        "relevance_score": 0.416466,
+        "passes_threshold": true,
+        "text_excerpt": "[45] Liu Z, Xu B. Insight into perovskite antiferroelectric phases: Landau theory and phase ﬁeld study. Scripta Mater 2020;186:136 e41. K. Xu, S. Tang, C. Guo et al. Journal of Materiomics 1 1 (2025) 100901 8"
+      }
+    ],
+    "antiferroelectric_domain_modulation_phase_field": [
+      {
+        "source_file": "materials-4180042.pdf",
+        "page_number": 11,
+        "chunk_id": "f831e3b0bc234f0b:p0011:c0001",
+        "relevance_score": 0.540468,
+        "passes_threshold": true,
+        "text_excerpt": "[23] Yang T, Wang B, Hu J-M, et al. Domain dynamics under ultrafast electric- ﬁeld pulses. Physical review leĴers, 2020, 124: 107601 [24] Liu Z, Xu B-X. Insight into perovskite antiferroelectric phases: Landau theory and phase ﬁeld study. S"
+      },
+      {
+        "source_file": "materials-4180042.pdf",
+        "page_number": 10,
+        "chunk_id": "f831e3b0bc234f0b:p0010:c0004",
+        "relevance_score": 0.496709,
+        "passes_threshold": true,
+        "text_excerpt": "[14] Filho MAM, Farmer W, Hsiao C-L, et al. Density functional theory-fed phase ﬁeld model for semiconductor nanostructures: The case of self-induced core–shell inaln nanorods. Crystal growth & design, 2024, 24: 4717–4727 [15] BhaĴacharyya "
+      },
+      {
+        "source_file": "materials-4180042.pdf",
+        "page_number": 8,
+        "chunk_id": "f831e3b0bc234f0b:p0008:c0000",
+        "relevance_score": 0.492862,
+        "passes_threshold": true,
+        "text_excerpt": "Materials 2026, 19, x FOR PEER REVIEW 8 of 11 https://doi.org/10.3390/xxxxx This domain evolution aligns quantitatively with prior theoretical predictions based on pure antiferroelectric phase-ﬁeld models, thereby validating the high precis"
+      },
+      {
+        "source_file": "1-s2.0-S2352847824001278-main.pdf",
+        "page_number": 1,
+        "chunk_id": "d99a382568c429f7:p0001:c0000",
+        "relevance_score": 0.486655,
+        "passes_threshold": true,
+        "text_excerpt": "Research paper Antiferroelectric domain modulation enhancing energy storage performance by phase- ﬁeld simulations Ke Xu a, b, Shiyu Tang a, b, Changqing Guo a, b, Yu Song a, b, Houbing Huang a, b, * a School of Materials Science and Engine"
+      },
+      {
+        "source_file": "materials-4180042.pdf",
+        "page_number": 11,
+        "chunk_id": "f831e3b0bc234f0b:p0011:c0000",
+        "relevance_score": 0.479317,
+        "passes_threshold": true,
+        "text_excerpt": "Materials 2026, 19, x FOR PEER REVIEW 11 of 11 https://doi.org/10.3390/xxxxx [19] Zhang K, Wang J, Ji Y, et al. Computational impedance spectra of arbitrary 3d microstructures of dielectrics. Acta Materialia, 2026, 304: [20] Liang D, Chen L"
+      },
+      {
+        "source_file": "materials-4180042.pdf",
+        "page_number": 9,
+        "chunk_id": "f831e3b0bc234f0b:p0009:c0000",
+        "relevance_score": 0.475093,
+        "passes_threshold": true,
+        "text_excerpt": "Materials 2026, 19, x FOR PEER REVIEW 9 of 11 https://doi.org/10.3390/xxxxx Figure 4. 3d ferroelectric/antiferroelectric domain structures with gradient coeﬀcients inhomogene- ous. (a) the 3d domain structure with the left half(𝐺ଵଵ = 0.1) a"
+      }
+    ]
+  },
+  "diagnosis": {
+    "retrieval_miss": true,
+    "reason": "The single-term query 'entropy' did not produce any target evidence above the configured threshold.",
+    "target_chunks_missing_from_index": false,
+    "source_coverage_failure": true,
+    "algorithm_changed": false
+  }
+}

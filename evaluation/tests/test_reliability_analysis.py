@@ -76,6 +76,9 @@ class HistoricalReliabilityTests(unittest.TestCase):
         self.assertEqual(deep["total_tokens_available_sum"], 43192)
         self.assertEqual(deep["total_token_metric_status"], "partial")
         self.assertEqual(deep["total_token_metric_missing_runs"], 2)
+        self.assertEqual(deep["tool_selection_correct_count"], 4)
+        self.assertEqual(deep["tool_selection_checks"], 5)
+        self.assertEqual(deep["tool_selection_correctness"], 0.8)
 
 
 if __name__ == "__main__":

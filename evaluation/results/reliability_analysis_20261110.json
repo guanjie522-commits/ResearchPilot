@@ -605,7 +605,9 @@
         "citation_structural_validity": null,
         "citation_structural_validity_status": "not_applicable",
         "tool_selection_correctness": null,
-        "tool_selection_correctness_status": "not_applicable",
+        "tool_selection_correctness_status": "not_applicable_by_variant",
+        "tool_selection_checks": 0,
+        "tool_selection_correct_count": 0,
         "pending_review_tasks": 5
       },
       "B_direct_rag": {
@@ -651,7 +653,9 @@
         "citation_structural_validity": 1.0,
         "citation_structural_validity_status": "available",
         "tool_selection_correctness": null,
-        "tool_selection_correctness_status": "not_applicable",
+        "tool_selection_correctness_status": "not_applicable_by_variant",
+        "tool_selection_checks": 0,
+        "tool_selection_correct_count": 0,
         "pending_review_tasks": 5
       },
       "C_fast": {
@@ -697,7 +701,9 @@
         "citation_structural_validity": 1.0,
         "citation_structural_validity_status": "available",
         "tool_selection_correctness": null,
-        "tool_selection_correctness_status": "not_applicable",
+        "tool_selection_correctness_status": "not_applicable_by_variant",
+        "tool_selection_checks": 0,
+        "tool_selection_correct_count": 0,
         "pending_review_tasks": 5
       },
       "D_deep": {
@@ -742,8 +748,10 @@
         "unknown_citation_id_count": 0,
         "citation_structural_validity": 1.0,
         "citation_structural_validity_status": "available",
-        "tool_selection_correctness": null,
-        "tool_selection_correctness_status": "pending_human_review",
+        "tool_selection_correctness": 0.8,
+        "tool_selection_correctness_status": "available_against_declared_expected_tools",
+        "tool_selection_checks": 5,
+        "tool_selection_correct_count": 4,
         "pending_review_tasks": 5
       }
     },
@@ -755,8 +763,8 @@
     "tool_call_success": null,
     "tool_call_success_available_sum": 0,
     "tool_call_success_status": "unavailable",
-    "tool_selection_correctness": null,
-    "tool_selection_correctness_status": "pending_human_review",
+    "tool_selection_correctness": 0.8,
+    "tool_selection_correctness_status": "available_against_declared_expected_tools",
     "citation_structural_validity": 1.0,
     "citation_structural_validity_status": "available",
     "premature_termination": null,

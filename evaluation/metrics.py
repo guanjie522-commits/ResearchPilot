@@ -42,6 +42,7 @@ def calculate_metrics(
     questions: list[dict[str, Any]],
 ) -> dict[str, Any]:
     by_variant: dict[str, list[dict[str, Any]]] = defaultdict(list)
+    question_map = {question["question_id"]: question for question in questions}
     for run in runs:
         by_variant[run["system_variant"]].append(run)
 
@@ -93,6 +94,20 @@ def calculate_metrics(
             performance,
             "chroma_retrieval_seconds",
         )
+        tool_selection_checks = []
+        if variant == "D_deep":
+            for run in variant_runs:
+                expected = set(
+                    run.get("expected_tools")
+                    or question_map.get(run.get("question_id"), {}).get(
+                        "expected_tools",
+                        [],
+                    )
+                )
+                actual = {
+                    call.get("name") for call in (run.get("tool_calls") or [])
+                }
+                tool_selection_checks.append(actual == expected)
         variant_metrics[variant] = {
             "attempted_tasks": len(variant_runs),
             "completed_tasks": completed,
@@ -163,12 +178,22 @@ def calculate_metrics(
                 if not citation_checks
                 else "available"
             ),
-            "tool_selection_correctness": None,
-            "tool_selection_correctness_status": (
-                "not_applicable"
-                if not tool_calls
-                else "pending_human_review"
+            "tool_selection_correctness": (
+                sum(tool_selection_checks) / len(tool_selection_checks)
+                if tool_selection_checks
+                else None
             ),
+            "tool_selection_correctness_status": (
+                "not_applicable_by_variant"
+                if variant != "D_deep"
+                else (
+                    "available_against_declared_expected_tools"
+                    if tool_selection_checks
+                    else "unavailable"
+                )
+            ),
+            "tool_selection_checks": len(tool_selection_checks),
+            "tool_selection_correct_count": sum(tool_selection_checks),
             "pending_review_tasks": len(variant_runs),
         }
 
@@ -188,6 +213,14 @@ def calculate_metrics(
         if run.get("citation_validation")
         and run["citation_validation"].get("passed") is not None
     ]
+    all_tool_selection_checks = sum(
+        item.get("tool_selection_checks", 0)
+        for item in variant_metrics.values()
+    )
+    all_tool_selection_correct = sum(
+        item.get("tool_selection_correct_count", 0)
+        for item in variant_metrics.values()
+    )
     return {
         "attempted_tasks": len(runs),
         "completed_tasks": sum(run["run_status"] == "success" for run in runs),
@@ -229,8 +262,16 @@ def calculate_metrics(
                 len(all_tool_calls),
             )
         ),
-        "tool_selection_correctness": None,
-        "tool_selection_correctness_status": "pending_human_review",
+        "tool_selection_correctness": (
+            all_tool_selection_correct / all_tool_selection_checks
+            if all_tool_selection_checks
+            else None
+        ),
+        "tool_selection_correctness_status": (
+            "available_against_declared_expected_tools"
+            if all_tool_selection_checks
+            else "unavailable"
+        ),
         "citation_structural_validity": (
             sum(bool(check.get("passed")) for check in all_citation_checks)
             / len(all_citation_checks)
