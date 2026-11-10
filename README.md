@@ -237,11 +237,15 @@ ResearchPilot/
 
 ```bash
 cd ResearchPilot
-python3 -m venv .venv
+python3.14 --version
+python3.14 -m venv .venv
 source .venv/bin/activate
 python -m pip install --upgrade pip
 python -m pip install -r requirements.txt
 ```
+
+如果系统中没有 `python3.14`，请使用已安装的 Python 3.11+ 解释器替代；
+不要直接使用 macOS 自带的旧版 `/usr/bin/python3` 创建本项目环境。
 
 项目目前不需要 GitHub Token、Crossref API Key 或云端模型 API Key。
 
