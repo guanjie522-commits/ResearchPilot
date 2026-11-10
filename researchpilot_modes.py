@@ -42,13 +42,21 @@ def chunks_to_evidence(chunks) -> list[dict]:
     return evidence
 
 
-async def run_fast_mode(question: str, profiler: PerformanceProfiler | None = None):
+async def run_fast_mode(
+    question: str,
+    profiler: PerformanceProfiler | None = None,
+    source_file: str | None = None,
+):
     profiler = profiler or PerformanceProfiler()
     profiler.reset()
     started = time.perf_counter()
 
     retrieval_started = time.perf_counter()
-    chunks = await asyncio.to_thread(retrieve, question)
+    chunks = await asyncio.to_thread(
+        retrieve,
+        question,
+        source_file=source_file,
+    )
     retrieval_seconds = time.perf_counter() - retrieval_started
     profiler.record_chroma_retrieval(retrieval_seconds)
     profiler.record_node("fast_retrieval", retrieval_seconds)

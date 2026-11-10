@@ -192,7 +192,11 @@ def explicit_source_file(task: str) -> str | None:
     return files[0] if len(files) == 1 else None
 
 
-async def run_pipeline(task: str, timeout: float) -> dict[str, Any]:
+async def run_pipeline(
+    task: str,
+    timeout: float,
+    selected_source_files: list[str] | None = None,
+) -> dict[str, Any]:
     started = time.perf_counter()
     project_context = CONTEXT_PATH.read_text(encoding="utf-8")
     decomposition_llm = ChatOllama(
@@ -282,14 +286,22 @@ async def run_pipeline(task: str, timeout: float) -> dict[str, Any]:
     chunks = []
     excluded_reference_chunks = []
     seen_chunks = set()
-    source_filter = explicit_source_file(task)
+    source_filter = (
+        sorted(set(selected_source_files))
+        if selected_source_files
+        else (
+            [source]
+            if (source := explicit_source_file(task))
+            else None
+        )
+    )
     for query in queries:
         retrieval_started = time.perf_counter()
         matches = await asyncio.to_thread(
             retrieve,
             query,
             top_k=TOP_K,
-            source_file=source_filter,
+            source_files=source_filter,
         )
         retrieval_runs.append(
             {

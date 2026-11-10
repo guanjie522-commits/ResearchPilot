@@ -1,0 +1,17 @@
+{
+  "status": "success",
+  "query": "antiferroelectric energy storage",
+  "papers": [
+    {
+      "title": "PbZrO3-based antiferroelectric films for energy storage applications",
+      "year": "2026",
+      "journal": "Journal/venue not provided",
+      "doi": "10.70675/6c6b6ce5z31ccz449az88dbzde3d29588ec2",
+      "url": "https://doi.org/10.70675/6c6b6ce5z31ccz449az88dbzde3d29588ec2",
+      "abstract": "Films anti ferroélectrique à base de PbZrO3 pour le stockage de l’énergie Avec le développement de nouvelles sources d’énergie, les technologies dédiées à son stockage ont un rôle capital. Le zirconate de Plomb (PZ de structure Pérovskite) présente un grand intérêt pour les futures capacités rapides permettant le stockage de forte densité d’énergie. Cette propriété est associée à la transition de phase ferroélectrique – anti ferroélectrique induite par le champ électrique et qui s’accompagne d’une grande capacité de stockage. Le PZ a été déposé par pulvérisation cathodique RF sur différents types de substrats et notamment le SrTiO3, les cibles sont obtenues par mélange des poudres et pressage à froid. L’étude s’est focalisée sur les effets d’interfaces entre le film et l’électrode inférieure (LaNiO3 dans notre cas), l’orientation préférentielle des films et la réalisation de films épitax... [truncated]"
+    }
+  ],
+  "returned": "1",
+  "request_seconds": "10.381320",
+  "raw": "Crossref request status: 200. Returned papers: 1\nCrossref request seconds: 10.381320\nQuery: antiferroelectric energy storage\n\n1. Title: PbZrO3-based antiferroelectric films for energy storage applications\n   Authors: Jun Ge\n   Publication Year: 2026\n   Journal: Journal/venue not provided\n   DOI: 10.70675/6c6b6ce5z31ccz449az88dbzde3d29588ec2\n   URL: https://doi.org/10.70675/6c6b6ce5z31ccz449az88dbzde3d29588ec2\n   Abstract: Films anti ferroélectrique à base de PbZrO3 pour le stockage de l’énergie Avec le développement de nouvelles sources d’énergie, les technologies dédiées à son stockage ont un rôle capital. Le zirconate de Plomb (PZ de structure Pérovskite) présente un grand intérêt pour les futures capacités rapides permettant le stockage de forte densité d’énergie. Cette propriété est associée à la transition de phase ferroélectrique – anti ferroélectrique induite par le champ électrique et qui s’accompagne d’une grande capacité de stockage. Le PZ a été déposé par pulvérisation cathodique RF sur différents types de substrats et notamment le SrTiO3, les cibles sont obtenues par mélange des poudres et pressage à froid. L’étude s’est focalisée sur les effets d’interfaces entre le film et l’électrode inférieure (LaNiO3 dans notre cas), l’orientation préférentielle des films et la réalisation de films épitax... [truncated]\n   Source: Crossref"
+}

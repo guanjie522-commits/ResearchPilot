@@ -1,0 +1,201 @@
+[
+  {
+    "mode": "fast",
+    "question": "Using only the imported local PDFs, which three variables are investigated in the phase-field study of PZO-based antiferroelectric films?",
+    "final_answer": "The three variables investigated in the phase-field study of PZO-based antiferroelectric films are:  \n(1) misfit strain between the thin film and substrate [S4],  \n(2) defect dipoles doping [S4],  \n(3) film thickness [S4].\n\n引用索引：\n- [S4] 1-s2.0-S2352847824001278-main.pdf 第 1 页",
+    "evidence": [
+      {
+        "evidence_id": "S1",
+        "source_type": "local_pdf",
+        "supporting_text": "Fig. 4. PZO-based antiferroelectric thin ﬁlm substrate tensile strain versus defect dipole concentration on (a) AFE / FE transition electric ﬁeld (b) loss energy density (c) effective\nenergy storage density (d) energy storage ef ﬁciency.\nFig. 5. PZO-based AFE thin ﬁlm: three-dimensional domain structure of (a ec) 4-layers (def) 8-layers (gei) 16-layers (jel) 24-layers, top view of the domain structure and magni ﬁed\nview of the local polarization.\nK. Xu, S. Tang, C. Guo et al. Journal of Materiomics 1 1 (2025) 100901\n5",
+        "source_file": "1-s2.0-S2352847824001278-main.pdf",
+        "page_number": 5,
+        "chunk_id": "d99a382568c429f7:p0005:c0000",
+        "retrieval_score": 0.6189222728118988,
+        "score_type": "chroma_relevance_1_minus_cosine_distance_higher_is_better"
+      },
+      {
+        "evidence_id": "S2",
+        "source_type": "local_pdf",
+        "supporting_text": "of Dz for the substrate) For mechanical boundary conditions of PZO-\nbased thin ﬁlm, the top ﬁlm surface is assumed to be traction-free.\nIn contrast, the interface between the thin ﬁlm and the substrate is\nmechanically coherent. We use Landau coef ﬁcients of the\nPb(Zr1exTix)O3 (x /C20 0.1) system modiﬁed for the calculation [44,45].\na1 ¼/C0 5.54 /C2 107 J,m/C2, a11 ¼ 5.60 /C2 108 J,m5/C4,\na12 ¼ 2.89 /C2 108 J,m5/C4, a111 ¼ 1.65 /C2 109 J,m9/C6,\na112 ¼/C0 8.66 /C2 108 J,m9/C6, a123 ¼ 3.19 /C2 1010 J,m9/C6,\nC11 ¼ 15.6 /C2 1010 N/m2, C12 ¼ 9.6 /C2 1010 N/m2, C44 ¼ 12.7 /C2 1010 N/\nm2, Q11 ¼ 0.048 m 4/C2, Q12 ¼/C0 0.015 m4/C2, Q44 ¼ 0.047 m4/C2.\n3. Results and discussion\n3.1. Effect of defect dipoles and substrate mis ﬁt strain\nTo investigate the multivariate effects on the domain structure\nand energy storage performance of PZO-based antiferroelectric",
+        "source_file": "1-s2.0-S2352847824001278-main.pdf",
+        "page_number": 2,
+        "chunk_id": "d99a382568c429f7:p0002:c0005",
+        "retrieval_score": 0.6086271042729913,
+        "score_type": "chroma_relevance_1_minus_cosine_distance_higher_is_better"
+      },
+      {
+        "evidence_id": "S3",
+        "source_type": "local_pdf",
+        "supporting_text": "[45] Liu Z, Xu B. Insight into perovskite antiferroelectric phases: Landau theory and\nphase ﬁeld study. Scripta Mater 2020;186:136 e41.\nK. Xu, S. Tang, C. Guo et al. Journal of Materiomics 1 1 (2025) 100901\n8",
+        "source_file": "1-s2.0-S2352847824001278-main.pdf",
+        "page_number": 8,
+        "chunk_id": "d99a382568c429f7:p0008:c0012",
+        "retrieval_score": 0.5984693766070777,
+        "score_type": "chroma_relevance_1_minus_cosine_distance_higher_is_better"
+      },
+      {
+        "evidence_id": "S4",
+        "source_type": "local_pdf",
+        "supporting_text": "are expected to be candidates for dielectric capacitors. It remains a challenge to further enhance the\neffective energy storage density and ef ﬁciency of PZO-based antiferroelectric ﬁlms through domain\nengineering. In this work, the effects of three variables, mis ﬁt strain between the thin ﬁlm and substrate,\ndefect dipoles doping, and ﬁlm thickness, on the domain structure and energy storage performance of\nPZO-based antiferroelectric materials are comprehensively investigated via phase-ﬁeld simulations. The\nresults show that applying tensile strain to the ﬁlms can effectively increase the transition electric ﬁeld\nfrom antiferroelectric to ferroelectric. In addition, the introduction of defect dipoles while applying\ntensile strain can signi ﬁcantly reduce the hysteresis and improve energy storage ef ﬁciency. Ultimately, a",
+        "source_file": "1-s2.0-S2352847824001278-main.pdf",
+        "page_number": 1,
+        "chunk_id": "d99a382568c429f7:p0001:c0001",
+        "retrieval_score": 0.5931420149553007,
+        "score_type": "chroma_relevance_1_minus_cosine_distance_higher_is_better"
+      }
+    ],
+    "citation_validation": {
+      "passed": true,
+      "known_evidence_ids": [
+        "S1",
+        "S2",
+        "S3",
+        "S4"
+      ],
+      "used_citation_ids": [
+        "S4"
+      ],
+      "unknown_citation_ids": [],
+      "valid_source_files": [
+        "1-s2.0-S2352847824001278-main.pdf"
+      ],
+      "mentioned_source_files": [],
+      "invalid_source_files": [],
+      "valid_dois": [],
+      "mentioned_dois": [],
+      "invalid_dois": [],
+      "page_checks": [],
+      "page_mismatches": [],
+      "insufficient_evidence_stated": false,
+      "scope": "Checks citation-ID existence, source-file membership, and structured page references; scientific correctness is not auto-verified"
+    },
+    "performance": {
+      "total_seconds": 172.907723,
+      "planner_seconds": 0.0,
+      "executor_seconds": 0.0,
+      "replanner_seconds": 0.0,
+      "writer_seconds": 0.0,
+      "context_loader_seconds": 0.0,
+      "node_wall_seconds": {
+        "context_loader": 0.0,
+        "executor": 0.0,
+        "fast_retrieval": 1.765888,
+        "fast_writer": 170.651192,
+        "planner": 0.0,
+        "replanner": 0.0,
+        "writer": 0.0
+      },
+      "mcp_tool_seconds": {},
+      "mcp_tool_total_seconds": 0,
+      "chroma_retrieval_seconds": 1.765888,
+      "crossref_api_seconds": 0.0,
+      "llm_call_count": 1,
+      "llm_error_count": 0,
+      "llm_wall_seconds": 170.37124,
+      "llm_generation_seconds": 164.910144,
+      "prompt_tokens": 1357,
+      "completion_tokens": 2445,
+      "total_tokens": 3802,
+      "llm_calls": [
+        {
+          "call_index": 1,
+          "node": "fast_writer",
+          "configured_thinking_setting": "default",
+          "prompt_tokens": 1357,
+          "completion_tokens": 2445,
+          "total_tokens": 3802,
+          "generation_duration_seconds": 164.910144,
+          "wall_seconds": 170.371252,
+          "thinking_tokens": null,
+          "thinking_tokens_status": "unavailable",
+          "thinking_chars": 0,
+          "final_answer_chars": 222,
+          "has_tool_calls": false,
+          "error": null
+        }
+      ],
+      "thinking_tokens_status": "unavailable",
+      "token_metadata_status": "available",
+      "tool_call_count": 0,
+      "tool_calls_by_name": {},
+      "executed_steps": 0,
+      "replanning_count": 0,
+      "generation_model_loaded_before_run": false,
+      "cold_start": true,
+      "node_call_counts": {
+        "executor": 0,
+        "fast_retrieval": 1,
+        "fast_writer": 1
+      }
+    },
+    "status": "success",
+    "elapsed_seconds": 173.186885,
+    "question_id": "q04"
+  },
+  {
+    "mode": "fast",
+    "question": "根据当前已导入的本地 PDF，这些论文在 500 K 下测得的超导临界温度是多少？",
+    "final_answer": "证据不足。",
+    "evidence": [],
+    "citation_validation": {
+      "passed": true,
+      "known_evidence_ids": [],
+      "used_citation_ids": [],
+      "unknown_citation_ids": [],
+      "valid_source_files": [],
+      "mentioned_source_files": [],
+      "invalid_source_files": [],
+      "valid_dois": [],
+      "mentioned_dois": [],
+      "invalid_dois": [],
+      "page_checks": [],
+      "page_mismatches": [],
+      "insufficient_evidence_stated": true,
+      "scope": "Checks citation-ID existence, source-file membership, and structured page references; scientific correctness is not auto-verified"
+    },
+    "performance": {
+      "total_seconds": 9.975151,
+      "planner_seconds": 0.0,
+      "executor_seconds": 0.0,
+      "replanner_seconds": 0.0,
+      "writer_seconds": 0.0,
+      "context_loader_seconds": 0.0,
+      "node_wall_seconds": {
+        "context_loader": 0.0,
+        "executor": 0.0,
+        "fast_retrieval": 9.969483,
+        "planner": 0.0,
+        "replanner": 0.0,
+        "writer": 0.0
+      },
+      "mcp_tool_seconds": {},
+      "mcp_tool_total_seconds": 0,
+      "chroma_retrieval_seconds": 9.969483,
+      "crossref_api_seconds": 0.0,
+      "llm_call_count": 0,
+      "llm_error_count": 0,
+      "llm_wall_seconds": 0.0,
+      "llm_generation_seconds": null,
+      "prompt_tokens": null,
+      "completion_tokens": null,
+      "total_tokens": null,
+      "llm_calls": [],
+      "thinking_tokens_status": "unavailable",
+      "token_metadata_status": "unavailable",
+      "tool_call_count": 0,
+      "tool_calls_by_name": {},
+      "executed_steps": 0,
+      "replanning_count": 0,
+      "generation_model_loaded_before_run": true,
+      "cold_start": false,
+      "node_call_counts": {
+        "executor": 0,
+        "fast_retrieval": 1
+      }
+    },
+    "status": "success",
+    "elapsed_seconds": 10.792077,
+    "question_id": "q10"
+  }
+]
