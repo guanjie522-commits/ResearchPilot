@@ -62,6 +62,7 @@ class DocumentationTests(unittest.TestCase):
             "mcp==",
             "chromadb==",
             "pypdf==",
+            "fonttools==",
             "requests==",
             "streamlit==",
             "pydantic==",

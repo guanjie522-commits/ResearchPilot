@@ -17,6 +17,7 @@ The package metadata observed in the verified environment reports:
 | mcp | 2.3.0 | MIT |
 | chromadb | 1.5.9 | Apache-2.0 |
 | pypdf | 7.0.0 | BSD-3-Clause |
+| fonttools | 4.68.0 | MIT |
 | requests | 2.34.2 | Apache-2.0 |
 | streamlit | 1.67.0 | Apache-2.0 |
 | pydantic | 2.14.1 | MIT |
