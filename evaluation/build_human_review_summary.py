@@ -183,6 +183,41 @@ def main() -> None:
         ]
     )
 
+    q09 = question_map["q09"]
+    lines.extend(
+        [
+            "## 科学术语检查：常系数 vs 各向同性",
+            "",
+            "**来源：** "
+            f"`{q09['source_file']}` p.{q09['page_number']}",
+            "",
+            f"> {q09['supporting_excerpt']}",
+            "",
+            "该原文中的两个限制不能直接视为同义词：",
+            "",
+            "- constant-coefficient approximation：梯度系数不随空间变化；",
+            "- isotropic approximation：物理性质不随方向变化。",
+            "",
+            "**已有回答检查：**",
+            "",
+            "- q09 Direct RAG：将常数梯度系数与各向异性/空间异质性分开描述，"
+            "没有把二者完全等同。",
+            "- q09 Fast：写出了“常系数（即各向同性）”，存在把两个概念"
+            "合并的术语风险。",
+            "- 原始 q09 Deep：使用无关 Crossref 证据，不能用于术语结论。",
+            "- q09_local_pdf：使用了本地正确文本，但尚未经过人工科学审核。",
+            "",
+            "**审核状态：** `pending_human_review`",
+            "",
+            "**审核选项：** [ ] correct | [ ] partially_correct | "
+            "[ ] incorrect | [ ] insufficient_evidence | "
+            "[ ] needs_source_check",
+            "",
+            "**备注：** ",
+            "",
+        ]
+    )
+
     OUTPUT_PATH.write_text("\n".join(lines).rstrip() + "\n", encoding="utf-8")
     print(f"Human review summary: {OUTPUT_PATH}")
 

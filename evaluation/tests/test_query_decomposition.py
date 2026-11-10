@@ -16,6 +16,24 @@ Q09_VARIANT_RESULT_PATH = (
     / "results"
     / "benchmark_20261110T063228Z.json"
 )
+INTEGRATED_RETRIEVAL_PATH = (
+    ROOT
+    / "evaluation"
+    / "results"
+    / "q16_integrated_retrieval_20261110.json"
+)
+Q16_DECOMPOSED_TIMEOUT_PATH = (
+    ROOT
+    / "evaluation"
+    / "results"
+    / "benchmark_20261110T090436Z.json"
+)
+GATE_CHECK_PATH = (
+    ROOT
+    / "evaluation"
+    / "results"
+    / "query_decomposition_gate_checks_20261110.json"
+)
 
 
 class QueryDecompositionTests(unittest.TestCase):
@@ -124,6 +142,45 @@ class QueryDecompositionTests(unittest.TestCase):
             {source["source_file"] for source in run["cited_sources"]},
             {"materials-4180042.pdf"},
         )
+
+    def test_integrated_decomposition_retrieval_covers_both_target_papers(self):
+        payload = json.loads(
+            INTEGRATED_RETRIEVAL_PATH.read_text(encoding="utf-8")
+        )
+        self.assertEqual(len(payload["queries"]), 2)
+        self.assertEqual(len(payload["trace"]), 2)
+        files = {
+            source
+            for item in payload["trace"]
+            for source in item["source_files"]
+        }
+        self.assertIn("s41467-025-56194-1.pdf", files)
+        self.assertIn("1-s2.0-S2352847824001278-main.pdf", files)
+        self.assertTrue(
+            all(item["source_filter_enabled"] is False for item in payload["trace"])
+        )
+
+    def test_full_integrated_run_timeout_is_recorded_honestly(self):
+        payload = json.loads(
+            Q16_DECOMPOSED_TIMEOUT_PATH.read_text(encoding="utf-8")
+        )
+        self.assertEqual(payload["runs"][0]["run_status"], "timeout")
+        self.assertIsNone(
+            payload["runs"][0]["performance"].get("total_tokens")
+            if payload["runs"][0]["performance"]
+            else None
+        )
+
+    def test_gate_disables_simple_tasks_and_enables_q16(self):
+        payload = json.loads(GATE_CHECK_PATH.read_text(encoding="utf-8"))
+        decisions = {
+            item["question_id"]: item["validated_eligible"]
+            for item in payload["checks"]
+        }
+        self.assertFalse(decisions["q04"])
+        self.assertFalse(decisions["q09_local_pdf"])
+        self.assertFalse(decisions["q10"])
+        self.assertTrue(decisions["q16"])
 
 
 if __name__ == "__main__":

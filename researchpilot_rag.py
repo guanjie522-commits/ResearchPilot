@@ -16,6 +16,14 @@ from langgraph.graph import END, START, MessagesState, StateGraph
 from langgraph.prebuilt import ToolNode
 from pydantic import BaseModel, Field
 
+from query_decomposition import (
+    QueryDecompositionPlan,
+    QueryDecompositionRetriever,
+    query_decomposition_messages,
+    repair_query_decomposition_messages,
+    validate_decomposition_plan,
+)
+
 
 SERVER_PATH = Path(__file__).with_name("research_mcp_server.py")
 PROJECT_CONTEXT_URI = "project://researchpilot/context"
@@ -68,6 +76,9 @@ class ResearchState(TypedDict):
     replanner_reason: str
     citation_validation: dict[str, Any]
     performance: dict[str, Any]
+    query_decomposition: dict[str, Any]
+    retrieval_trace: list[dict[str, Any]]
+    decomposition_retrieval_result: str
 
 
 class PlanOutput(BaseModel):
@@ -95,6 +106,10 @@ no_thinking_llm = ChatOllama(
 )
 planner_llm = llm.with_structured_output(PlanOutput, method="json_schema")
 replanner_llm = llm.with_structured_output(ReplanDecision, method="json_schema")
+query_decomposer_llm = no_thinking_llm.with_structured_output(
+    QueryDecompositionPlan,
+    method="json_schema",
+)
 no_thinking_planner_llm = no_thinking_llm.with_structured_output(
     PlanOutput,
     method="json_schema",
@@ -510,6 +525,7 @@ def build_research_graph(
     mcp_tools: list[BaseTool],
     profiler=None,
     thinking_profile: str = "default",
+    enable_query_decomposition: bool = False,
 ):
     executor_agent = build_executor_agent(mcp_tools, profiler=profiler)
     if thinking_profile == "default":
@@ -547,6 +563,15 @@ def build_research_graph(
             "replanner_reason": "",
             "citation_validation": {},
             "performance": {},
+            "query_decomposition": {
+                "eligible": False,
+                "reason": "not_evaluated",
+                "queries": [],
+                "raw_queries": [],
+                "source_filter_enabled": False,
+            },
+            "retrieval_trace": [],
+            "decomposition_retrieval_result": "",
         }
 
     async def planner(state: ResearchState):
@@ -577,7 +602,98 @@ def build_research_graph(
         print("\nInitial Plan:")
         for index, step in enumerate(result.steps, start=1):
             print(f"  {index}. {step}")
-        return {"plan": result.steps, "current_step": 0}
+
+        decomposition = {
+            "eligible": False,
+            "reason": "query_decomposition_disabled",
+            "queries": [],
+            "raw_queries": [],
+            "source_filter_enabled": False,
+        }
+        if enable_query_decomposition:
+            try:
+                decomposition_result = await invoke_structured_once_retry(
+                    query_decomposer_llm,
+                    query_decomposition_messages(
+                        state["original_task"],
+                        result.steps,
+                        state["project_context"],
+                    ),
+                    "QueryDecomposer",
+                    callbacks=[profiler] if profiler is not None else None,
+                    thinking_setting=control_thinking_setting,
+                )
+                eligible, queries, validation_error = (
+                    validate_decomposition_plan(
+                        state["original_task"],
+                        state["project_context"],
+                        decomposition_result.eligible,
+                        decomposition_result.queries,
+                    )
+                )
+                raw_queries = list(decomposition_result.queries)
+                if (
+                    eligible is False
+                    and validation_error
+                    and (
+                        "too broad" in validation_error
+                        or "ungrounded domain" in validation_error
+                    )
+                ):
+                    repaired_result = await invoke_structured_once_retry(
+                        query_decomposer_llm,
+                        repair_query_decomposition_messages(
+                            state["original_task"],
+                            result.steps,
+                            state["project_context"],
+                            raw_queries,
+                            validation_error,
+                        ),
+                        "QueryDecomposerRepair",
+                        callbacks=[profiler] if profiler is not None else None,
+                        thinking_setting=control_thinking_setting,
+                    )
+                    eligible, queries, validation_error = (
+                        validate_decomposition_plan(
+                            state["original_task"],
+                            state["project_context"],
+                            repaired_result.eligible,
+                            repaired_result.queries,
+                        )
+                    )
+                    if repaired_result.queries:
+                        raw_queries = list(repaired_result.queries)
+                decomposition = {
+                    "eligible": eligible,
+                    "reason": (
+                        validation_error
+                        or decomposition_result.reason
+                    ),
+                    "queries": queries,
+                    "raw_queries": raw_queries,
+                    "source_filter_enabled": False,
+                }
+            except Exception as exc:
+                decomposition = {
+                    "eligible": False,
+                    "reason": (
+                        "query_decomposition_failed: "
+                        f"{type(exc).__name__}: {exc}"
+                    ),
+                    "queries": [],
+                    "raw_queries": [],
+                    "source_filter_enabled": False,
+                }
+            print("\nQuery Decomposition:")
+            print(f"Eligible: {decomposition['eligible']}")
+            print(f"Reason: {decomposition['reason']}")
+            print(f"Queries: {decomposition['queries']}")
+
+        return {
+            "plan": result.steps,
+            "current_step": 0,
+            "query_decomposition": decomposition,
+        }
 
     async def executor(state: ResearchState):
         index = state["current_step"]
@@ -588,7 +704,41 @@ def build_research_graph(
         print(f"Step: {current_step}")
         print(f"Existing Evidence IDs: {[e['evidence_id'] for e in state['evidence']]}")
 
-        execution_state = await executor_agent.ainvoke(
+        execution_tools = mcp_tools
+        decomposition_retriever = None
+        if state["query_decomposition"].get("eligible"):
+            retriever_tool = next(
+                (
+                    tool
+                    for tool in mcp_tools
+                    if tool.name == "retrieve_paper_evidence"
+                ),
+                None,
+            )
+            if retriever_tool is None:
+                raise RuntimeError(
+                    "Query decomposition requires retrieve_paper_evidence."
+                )
+            decomposition_retriever = QueryDecompositionRetriever(
+                retriever_tool,
+                state["query_decomposition"]["queries"],
+                cached_result=state["decomposition_retrieval_result"] or None,
+            )
+            execution_tools = [
+                (
+                    decomposition_retriever.as_tool()
+                    if tool.name == "retrieve_paper_evidence"
+                    else tool
+                )
+                for tool in mcp_tools
+            ]
+        active_executor_agent = (
+            build_executor_agent(execution_tools, profiler=profiler)
+            if decomposition_retriever is not None
+            else executor_agent
+        )
+
+        execution_state = await active_executor_agent.ainvoke(
             {
                 "messages": [
                     HumanMessage(
@@ -687,6 +837,29 @@ def build_research_graph(
             print("\nSelected MCP Tool: none")
         print("Step Result:", summarize(step_result, 1000))
 
+        retrieval_trace = list(state["retrieval_trace"])
+        if decomposition_retriever is not None:
+            retrieval_trace.extend(decomposition_retriever.trace)
+            print(
+                "Query Decomposition Retrieval Runs:",
+                json.dumps(
+                    decomposition_retriever.trace,
+                    ensure_ascii=False,
+                ),
+            )
+            source_files = sorted(
+                {
+                    source
+                    for item in retrieval_trace
+                    for source in item.get("source_files", [])
+                }
+            )
+            if source_files:
+                step_result += (
+                    "\n\n程序记录的 Query Decomposition 来源覆盖："
+                    + ", ".join(source_files)
+                )
+
         updated_results: list[StepResult] = [
             *state["step_results"],
             {
@@ -702,6 +875,13 @@ def build_research_graph(
             "completed_steps": [*state["completed_steps"], current_step],
             "step_results": updated_results,
             "evidence": all_evidence,  # type: ignore[typeddict-item]
+            "retrieval_trace": retrieval_trace,
+            "decomposition_retrieval_result": (
+                decomposition_retriever.result
+                if decomposition_retriever is not None
+                and decomposition_retriever.result
+                else state["decomposition_retrieval_result"]
+            ),
             "replanner_action": "",
             "replanner_reason": "",
         }
@@ -953,6 +1133,15 @@ async def run_research(graph, task: str, label: str, profiler=None):
         "replanner_reason": "",
         "citation_validation": {},
         "performance": {},
+        "query_decomposition": {
+            "eligible": False,
+            "reason": "not_initialized",
+            "queries": [],
+            "raw_queries": [],
+            "source_filter_enabled": False,
+        },
+        "retrieval_trace": [],
+        "decomposition_retrieval_result": "",
     }
     final = initial
     async for state in graph.astream(

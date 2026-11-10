@@ -299,6 +299,7 @@ async def run_researchpilot(
     graph,
     timeout: float,
     profiler: PerformanceProfiler | None = None,
+    variant: str = "D_deep",
 ) -> dict[str, Any]:
     started = time.perf_counter()
     try:
@@ -306,7 +307,7 @@ async def run_researchpilot(
             run_research(
                 graph,
                 question["question"],
-                f"Benchmark D: {question['question_id']}",
+                f"Benchmark {variant}: {question['question_id']}",
                 profiler=profiler,
             ),
             timeout=timeout,
@@ -361,10 +362,12 @@ async def run_researchpilot(
             "replanner_reason": state.get("replanner_reason"),
             "replan_count": state.get("replan_count"),
             "evidence_ids": [item["evidence_id"] for item in evidence],
+            "query_decomposition": state.get("query_decomposition", {}),
+            "retrieval_trace": state.get("retrieval_trace", []),
         }
         return make_run_record(
             question,
-            "D_deep",
+            variant,
             elapsed,
             state.get("final_answer", ""),
             cited_sources=cited_sources,
@@ -386,7 +389,7 @@ async def run_researchpilot(
         status = "timeout" if isinstance(exc, asyncio.TimeoutError) else "error"
         return make_run_record(
             question,
-            "D_deep",
+            variant,
             elapsed,
             "",
             error_message=(
@@ -420,6 +423,11 @@ async def main() -> None:
         default="baseline,direct_rag,fast,deep",
     )
     parser.add_argument("--timeout", type=float, default=600.0)
+    parser.add_argument(
+        "--query-decomposition",
+        action="store_true",
+        help="Enable the experimental cross-paper query decomposition branch.",
+    )
     args = parser.parse_args()
 
     dataset = json.loads(DATASET_PATH.read_text(encoding="utf-8"))
@@ -455,6 +463,7 @@ async def main() -> None:
             adapter.client,
             tools,
             profiler=deep_profiler,
+            enable_query_decomposition=args.query_decomposition,
         )
 
         for question in selected_questions:
@@ -465,12 +474,18 @@ async def main() -> None:
             if "fast" in variants:
                 runs.append(await run_fast(question, args.timeout))
             if "deep" in variants:
+                deep_variant = (
+                    "D_deep_decomposed"
+                    if args.query_decomposition
+                    else "D_deep"
+                )
                 runs.append(
                     await run_researchpilot(
                         question,
                         graph,
                         args.timeout,
                         profiler=deep_profiler,
+                        variant=deep_variant,
                     )
                 )
 
@@ -484,6 +499,7 @@ async def main() -> None:
                 ),
                 "questions": question_ids,
                 "variants": variants,
+                "query_decomposition_enabled": args.query_decomposition,
                 "mcp_tool_catalog": tool_catalog,
                 "runs": runs,
                 "metrics": calculate_metrics(runs, selected_questions),

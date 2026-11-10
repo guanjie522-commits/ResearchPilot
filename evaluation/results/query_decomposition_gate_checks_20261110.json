@@ -1,0 +1,53 @@
+{
+  "check_id": "query_decomposition_gate_20261110",
+  "created_at": "2026-11-10T08:28:10.076794+00:00",
+  "scope": "gate-only; does not execute the full Agent",
+  "checks": [
+    {
+      "question_id": "q04",
+      "question": "Using only the imported local PDFs, which three variables are investigated in the phase-field study of PZO-based antiferroelectric films?",
+      "raw_eligible": false,
+      "raw_queries": [],
+      "reason": "The task asks for three variables investigated in a phase-field study of PZO-based antiferroelectric films using only imported local PDFs. This is a single-paper question about specific variables in a phase-field study, not requiring comparison or synthesis across multiple papers. The user has not provided multiple sources or asked for comparative analysis.",
+      "validated_eligible": false,
+      "validated_queries": [],
+      "validation_error": null
+    },
+    {
+      "question_id": "q09_local_pdf",
+      "question": "请仅根据当前已经导入的本地 PDF，针对 materials-4180042.pdf，用中文说明这个扰动模型为何能处理以前常系数或各向同性近似难以处理的问题。",
+      "raw_eligible": false,
+      "raw_queries": [],
+      "reason": "任务要求仅针对单篇论文 materials-4180042.pdf 用中文说明扰动模型为何能处理以前常系数或各向同性近似难以处理的问题。这属于单篇论文的机制解释题，不需要跨论文或多来源综合。因此 eligible=false。",
+      "validated_eligible": false,
+      "validated_queries": [],
+      "validation_error": null
+    },
+    {
+      "question_id": "q16",
+      "question": "Using only the imported local PDFs, compare the main design approaches of the entropy paper and the PZO domain-modulation paper.",
+      "raw_eligible": true,
+      "raw_queries": [
+        "What is the primary design methodology employed in the entropy paper for optimizing energy storage systems in ferroelectric materials?",
+        "How does the PZO domain-modulation paper propose to implement magnetic domain engineering in high-capacity energy storage devices?"
+      ],
+      "reason": "Query-repair run: the task explicitly requires comparing two distinct papers, so the gate remained eligible after rejecting ungrounded domain terms.",
+      "validated_eligible": true,
+      "validated_queries": [
+        "What specific design strategies does the entropy paper propose for optimizing energy storage in ferroelectric materials?",
+        "How does the PZO domain-modulation paper implement domain engineering techniques in fer. electrostatic energy storage systems?"
+      ],
+      "validation_error": null
+    },
+    {
+      "question_id": "q10",
+      "question": "根据当前已导入的本地 PDF，这些论文在 500 K 下测得的超导临界温度是多少？",
+      "raw_eligible": false,
+      "raw_queries": [],
+      "reason": "任务仅询问单篇论文在特定条件下的超导临界温度，不需要跨论文或多来源综合。问题明确指定'当前已导入的本地 PDF'，属于单篇论文的证据检索，不涉及比较或综合多个来源。",
+      "validated_eligible": false,
+      "validated_queries": [],
+      "validation_error": null
+    }
+  ]
+}

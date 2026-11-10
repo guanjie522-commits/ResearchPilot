@@ -125,6 +125,7 @@ class DatasetIntegrityTests(unittest.TestCase):
         for question_id in ("q01", "q04", "q09", "q16", "q10"):
             self.assertIn(f"## {question_id}", text)
         self.assertIn("## 附录：q09_local_pdf", text)
+        self.assertIn("## 科学术语检查：常系数 vs 各向同性", text)
         self.assertIn("pending_human_review", text)
         self.assertIn("retrieve_paper_evidence", text)
 

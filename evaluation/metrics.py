@@ -95,7 +95,7 @@ def calculate_metrics(
             "chroma_retrieval_seconds",
         )
         tool_selection_checks = []
-        if variant == "D_deep":
+        if variant.startswith("D_deep"):
             for run in variant_runs:
                 expected = set(
                     run.get("expected_tools")
@@ -185,7 +185,7 @@ def calculate_metrics(
             ),
             "tool_selection_correctness_status": (
                 "not_applicable_by_variant"
-                if variant != "D_deep"
+                if not variant.startswith("D_deep")
                 else (
                     "available_against_declared_expected_tools"
                     if tool_selection_checks
